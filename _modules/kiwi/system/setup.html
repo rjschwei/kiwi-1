@@ -1,0 +1,1291 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>kiwi.system.setup &mdash; kiwi 9.9.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="kiwi 9.9.2 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> kiwi
+          
+
+          
+            
+            <img src="../../../_static/kiwi-logo.png" class="logo" />
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview/legacy_kiwi.html">Legacy KIWI vs. Next Generation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../overview/legacy_kiwi.html#when-do-i-need-to-use-the-legacy-kiwi">When Do I need to use the legacy kiwi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../overview/legacy_kiwi.html#dropped-features">Dropped Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../overview/legacy_kiwi.html#compatibility">Compatibility</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview/workflow.html">Basic Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../overview/workflow.html#building-images">Building Images</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../overview/workflow.html#the-prepare-step">The Prepare Step</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../overview/workflow.html#the-create-step">The Create Step</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../overview/workflow.html#components-of-an-image-description">Components of an Image Description</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../overview/workflow.html#image-customization-with-config-sh-shell-script">Image Customization with <code class="docutils literal"><span class="pre">config.sh</span></code> Shell Script</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../overview/workflow.html#image-customization-with-images-sh-shell-script">Image Customization with <code class="docutils literal"><span class="pre">images.sh</span></code> Shell Script</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../overview/workflow.html#customizing-the-boot-process">Customizing the Boot Process</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../overview/workflow.html#boot-image-hook-scripts">Boot Image Hook-Scripts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../overview/workflow.html#boot-parameters">Boot Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../overview/workflow.html#faq-boot-image-customization">FAQ: Boot Image Customization</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../overview/workflow.html#distribution-specific-code">Distribution Specific Code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#conceptual-overview">Conceptual Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#terminology">Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#system-requirements">System Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#before-you-start">Before you start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#build-your-first-image">Build your first image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#run-your-image">Run your image</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../building.html">Building Images</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../building/build_live_iso.html">Build an ISO Hybrid Live Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../building/build_vmx_disk.html">Build a Virtual Disk Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../building/build_oem_disk.html">Build an OEM Expandable Disk Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_oem_disk.html#deployment-methods">Deployment Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_oem_disk.html#manual-deployment">Manual Deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_oem_disk.html#cd-dvd-deployment">CD/DVD Deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_oem_disk.html#network-deployment">Network Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../building/build_pxe_root_filesystem.html">Build a PXE Root File System Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../building/build_docker_container.html">Build a Docker Container Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../building/build_containerized.html">Building in a Self-Contained Environment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#installing-and-setting-up-dice">Installing and Setting up Dice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#installing-and-setting-up-docker">Installing and Setting up Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#installing-and-setting-up-the-build-container">Installing and Setting up the Build Container</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#installing-and-setting-up-vagrant">Installing and Setting up Vagrant</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#configuring-dice">Configuring Dice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#selecting-a-kiwi-template">Selecting a KIWI Template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#the-dicefile">The Dicefile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#building-with-dice">Building with Dice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#buildsystem-backends">Buildsystem Backends</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#building-with-the-host-buildsystem">Building with the Host Buildsystem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#id1">The Dicefile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#building-with-the-vagrant-buildsystem">Building with the Vagrant Buildsystem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#id2">The Dicefile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#the-vagrant-setup-for-the-docker-provider">The Vagrant setup for the Docker Provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#the-vagrantfile">The Vagrantfile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#the-vagrant-setup-for-the-libvirt-provider">The Vagrant setup for the libvirt Provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#the-vagrant-build-box">The Vagrant Build Box</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#id3">The Vagrantfile</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../building/build_in_buildservice.html">Building in the Open Buildservice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../building/working_with_images.html">Working with Images</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/iso_to_usb_stick_deployment.html">Deploy ISO Image on an USB Stick</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/vmx_setup_for_ec2.html">KIWI Image Description for Amazon EC2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/vmx_setup_for_azure.html">KIWI Image Description for Microsoft Azure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/vmx_setup_for_google.html">KIWI Image Description for Google Compute Engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/setup_pxe_bootserver.html">Setting Up a Network Boot Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../building/working_with_images/setup_pxe_bootserver.html#installing-and-configuring-atftp">Installing and Configuring atftp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../building/working_with_images/setup_pxe_bootserver.html#installing-and-configuring-dhcp">Installing and Configuring DHCP</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/pxe_client_configuration.html">PXE Client Setup Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../building/working_with_images/pxe_client_configuration.html#setup-client-with-remote-root">Setup Client with Remote Root</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../building/working_with_images/pxe_client_configuration.html#setup-client-with-system-on-local-disk">Setup Client with System on Local Disk</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../building/working_with_images/pxe_client_configuration.html#setup-client-with-system-on-local-md-raid-disk">Setup Client with System on Local MD RAID Disk</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../building/working_with_images/pxe_client_configuration.html#setup-loading-of-custom-configuration-file-s">Setup Loading of Custom Configuration File(s)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../building/working_with_images/pxe_client_configuration.html#setup-client-to-force-reload-image">Setup Client to Force Reload Image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../building/working_with_images/pxe_client_configuration.html#setup-client-to-force-reload-configuration-files">Setup Client to Force Reload Configuration Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../building/working_with_images/pxe_client_configuration.html#setup-client-for-reboot-after-deployment">Setup Client for Reboot After Deployment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../building/working_with_images/pxe_client_configuration.html#setup-custom-kernel-boot-options">Setup custom kernel boot options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../building/working_with_images/pxe_client_configuration.html#setup-a-custom-boot-timeout">Setup a Custom Boot Timeout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../building/working_with_images/pxe_client_configuration.html#setup-a-different-download-protocol-and-server">Setup a Different Download Protocol and Server</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../building.html#supported-distributions">Supported Distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../commands.html">KIWI Commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../commands/kiwi.html">kiwi</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/kiwi.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/kiwi.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/kiwi.html#global-options">GLOBAL OPTIONS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/kiwi.html#example">EXAMPLE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/kiwi.html#runtime-config-file">RUNTIME CONFIG FILE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/kiwi.html#compatibility">COMPATIBILITY</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../commands/result_list.html">kiwi result list</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/result_list.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/result_list.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/result_list.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../commands/result_bundle.html">kiwi result bundle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/result_bundle.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/result_bundle.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/result_bundle.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../commands/system_prepare.html">kiwi system prepare</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/system_prepare.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/system_prepare.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/system_prepare.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../commands/system_update.html">kiwi system update</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/system_update.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/system_update.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/system_update.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../commands/system_build.html">kiwi system build</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/system_build.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/system_build.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/system_build.html#options">OPTIONS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/system_build.html#uri-types">URI_TYPES</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../commands/system_create.html">kiwi system create</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/system_create.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/system_create.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/system_create.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../commands/image_resize.html">kiwi image resize</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/image_resize.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/image_resize.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/image_resize.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../commands/image_info.html">kiwi image info</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/image_info.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/image_info.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/image_info.html#options">OPTIONS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.9.2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.bootloader.html">kiwi.bootloader Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.builder.html">kiwi.builder Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.container.html">kiwi.container Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.filesystem.html">kiwi.filesystem Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.package_manager.html">kiwi.package_manager Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.partitioner.html">kiwi.partitioner Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.repository.html">kiwi.repository Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.storage.html">kiwi.storage Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.system.html">kiwi.system Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.solver.html">kiwi.solver Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.tasks.html">kiwi.tasks package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.utils.html">kiwi.utils Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.volume_manager.html">kiwi.volume_manager Package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#module-kiwi.app"><code class="docutils literal"><span class="pre">kiwi.app</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#module-kiwi.cli"><code class="docutils literal"><span class="pre">kiwi.cli</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#module-kiwi.command"><code class="docutils literal"><span class="pre">kiwi.command</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#module-kiwi.command_process"><code class="docutils literal"><span class="pre">kiwi.command_process</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#module-kiwi.defaults"><code class="docutils literal"><span class="pre">kiwi.defaults</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#module-kiwi.exceptions"><code class="docutils literal"><span class="pre">kiwi.exceptions</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#module-kiwi.firmware"><code class="docutils literal"><span class="pre">kiwi.firmware</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#module-kiwi.help"><code class="docutils literal"><span class="pre">kiwi.help</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#module-kiwi.iso"><code class="docutils literal"><span class="pre">kiwi.iso</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#module-kiwi.kiwi"><code class="docutils literal"><span class="pre">kiwi.kiwi</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#module-kiwi.logger"><code class="docutils literal"><span class="pre">kiwi.logger</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#module-kiwi.mount_manager"><code class="docutils literal"><span class="pre">kiwi.mount_manager</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#module-kiwi.path"><code class="docutils literal"><span class="pre">kiwi.path</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#module-kiwi.privileges"><code class="docutils literal"><span class="pre">kiwi.privileges</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#module-kiwi.version"><code class="docutils literal"><span class="pre">kiwi.version</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#module-kiwi.xml_description"><code class="docutils literal"><span class="pre">kiwi.xml_description</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#module-kiwi.xml_state"><code class="docutils literal"><span class="pre">kiwi.xml_state</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#module-kiwi">Module Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/schema.html">Schema Documentation 6.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/schema_extensions.html">Extending KIWI with Custom Operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/schema_extensions.html#the-extension-section">The &lt;extension&gt; Section</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/schema_extensions.html#relax-ng-schema-for-the-extension">RELAX NG Schema for the Extension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/schema_extensions.html#extension-schema-in-xml-catalog">Extension Schema in XML catalog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/schema_extensions.html#using-the-extension">Using the Extension</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development.html#fork-the-upstream-kiwi-repository">Fork the upstream KIWI repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development.html#create-a-local-clone-of-the-forked-kiwi-repository">Create a local clone of the forked KIWI repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development.html#create-a-python-virtual-development-environment">Create a python virtual development environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development.html#running-test-cases">Running Test Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development.html#create-a-branch-for-each-feature-or-bugfix">Create a branch for each feature or bugfix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development.html#good-to-know">Good to know</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../development.html#signing-git-patches">Signing Git Patches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development.html#raising-versions">Raising Versions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development.html#creating-a-package">Creating a Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development.html#building-documentation">Building Documentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">kiwi</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>kiwi.system.setup</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for kiwi.system.setup</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright (c) 2015 SUSE Linux GmbH.  All rights reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># This file is part of kiwi.</span>
+<span class="c1">#</span>
+<span class="c1"># kiwi is free software: you can redistribute it and/or modify</span>
+<span class="c1"># it under the terms of the GNU General Public License as published by</span>
+<span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1"># (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># kiwi is distributed in the hope that it will be useful,</span>
+<span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1"># GNU General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License</span>
+<span class="c1"># along with kiwi.  If not, see &lt;http://www.gnu.org/licenses/&gt;</span>
+<span class="c1">#</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">platform</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">OrderedDict</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">namedtuple</span>
+<span class="kn">from</span> <span class="nn">tempfile</span> <span class="k">import</span> <span class="n">NamedTemporaryFile</span>
+
+<span class="c1"># project</span>
+<span class="kn">from</span> <span class="nn">kiwi.system.uri</span> <span class="k">import</span> <span class="n">Uri</span>
+<span class="kn">from</span> <span class="nn">kiwi.repository</span> <span class="k">import</span> <span class="n">Repository</span>
+<span class="kn">from</span> <span class="nn">kiwi.system.root_bind</span> <span class="k">import</span> <span class="n">RootBind</span>
+<span class="kn">from</span> <span class="nn">kiwi.system.root_init</span> <span class="k">import</span> <span class="n">RootInit</span>
+<span class="kn">from</span> <span class="nn">kiwi.command</span> <span class="k">import</span> <span class="n">Command</span>
+<span class="kn">from</span> <span class="nn">kiwi.command_process</span> <span class="k">import</span> <span class="n">CommandProcess</span>
+<span class="kn">from</span> <span class="nn">kiwi.utils.sync</span> <span class="k">import</span> <span class="n">DataSync</span>
+<span class="kn">from</span> <span class="nn">kiwi.logger</span> <span class="k">import</span> <span class="n">log</span>
+<span class="kn">from</span> <span class="nn">kiwi.defaults</span> <span class="k">import</span> <span class="n">Defaults</span>
+<span class="kn">from</span> <span class="nn">kiwi.system.users</span> <span class="k">import</span> <span class="n">Users</span>
+<span class="kn">from</span> <span class="nn">kiwi.system.shell</span> <span class="k">import</span> <span class="n">Shell</span>
+<span class="kn">from</span> <span class="nn">kiwi.path</span> <span class="k">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">kiwi.archive.tar</span> <span class="k">import</span> <span class="n">ArchiveTar</span>
+<span class="kn">from</span> <span class="nn">kiwi.utils.compress</span> <span class="k">import</span> <span class="n">Compress</span>
+
+<span class="kn">from</span> <span class="nn">kiwi.exceptions</span> <span class="k">import</span> <span class="p">(</span>
+    <span class="n">KiwiImportDescriptionError</span><span class="p">,</span>
+    <span class="n">KiwiScriptFailed</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="SystemSetup"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.setup.SystemSetup">[docs]</a><span class="k">class</span> <span class="nc">SystemSetup</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Implementation of system setup steps supported by kiwi.</span>
+<span class="sd">    kiwi is not responsible for the system configuration, however</span>
+<span class="sd">    some setup steps needs to be performed in order to provide</span>
+<span class="sd">    a minimal work environment inside of the image according to</span>
+<span class="sd">    the desired image type.</span>
+
+<span class="sd">    Attributes</span>
+
+<span class="sd">    * :attr:`arch`</span>
+<span class="sd">        platform.machine</span>
+<span class="sd">        The 32bit x86 platform is handled as &#39;ix86&#39;</span>
+
+<span class="sd">    * :attr:`xml_state`</span>
+<span class="sd">        Instance of XMLState</span>
+
+<span class="sd">    * :attr:`description_dir`</span>
+<span class="sd">        path to image description directory</span>
+
+<span class="sd">    * :attr:`derived_description_dir`</span>
+<span class="sd">        path to derived_description_dir</span>
+<span class="sd">        boot image descriptions inherits data from the system image</span>
+<span class="sd">        description, thus they are derived from another image</span>
+<span class="sd">        description directory which is needed to e.g find system</span>
+<span class="sd">        image archives, overlay files</span>
+
+<span class="sd">    * :attr:`root_dir`</span>
+<span class="sd">        root directory path name</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xml_state</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">arch</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">machine</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">arch</span> <span class="o">==</span> <span class="s1">&#39;i686&#39;</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">arch</span> <span class="o">==</span> <span class="s1">&#39;i586&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">arch</span> <span class="o">=</span> <span class="s1">&#39;ix86&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span> <span class="o">=</span> <span class="n">xml_state</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">description_dir</span> <span class="o">=</span> \
+            <span class="n">xml_state</span><span class="o">.</span><span class="n">xml_data</span><span class="o">.</span><span class="n">description_dir</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">derived_description_dir</span> <span class="o">=</span> \
+            <span class="n">xml_state</span><span class="o">.</span><span class="n">xml_data</span><span class="o">.</span><span class="n">derived_description_dir</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">=</span> <span class="n">root_dir</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_preferences_lookup</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_oemconfig_lookup</span><span class="p">()</span>
+
+<div class="viewcode-block" id="SystemSetup.import_description"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.setup.SystemSetup.import_description">[docs]</a>    <span class="k">def</span> <span class="nf">import_description</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Import XML descriptions, custom scripts, archives and</span>
+<span class="sd">        script helper methods</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Importing Image description to system tree&#39;</span><span class="p">)</span>
+        <span class="n">description</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/image/config.xml&#39;</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;--&gt; Importing state XML description as image/config.xml&#39;</span><span class="p">)</span>
+        <span class="n">Path</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/image&#39;</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">description</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">config</span><span class="p">:</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">xml_data</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="n">outfile</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_import_custom_scripts</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_import_custom_archives</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="SystemSetup.cleanup"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.setup.SystemSetup.cleanup">[docs]</a>    <span class="k">def</span> <span class="nf">cleanup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Delete all traces of a kiwi description which are not</span>
+<span class="sd">        required in the later image</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s1">&#39;rm&#39;</span><span class="p">,</span> <span class="s1">&#39;-r&#39;</span><span class="p">,</span> <span class="s1">&#39;-f&#39;</span><span class="p">,</span> <span class="s1">&#39;/.kconfig&#39;</span><span class="p">,</span> <span class="s1">&#39;/image&#39;</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="SystemSetup.import_repositories_marked_as_imageinclude"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.setup.SystemSetup.import_repositories_marked_as_imageinclude">[docs]</a>    <span class="k">def</span> <span class="nf">import_repositories_marked_as_imageinclude</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Those &lt;repository&gt; sections which are marked with the</span>
+<span class="sd">        imageinclude attribute should be permanently added to</span>
+<span class="sd">        the image repository configuration</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">repository_sections</span> <span class="o">=</span> \
+            <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_repository_sections_used_in_image</span><span class="p">()</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="n">RootInit</span><span class="p">(</span>
+            <span class="n">root_dir</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">allow_existing</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+        <span class="n">repo</span> <span class="o">=</span> <span class="n">Repository</span><span class="p">(</span>
+            <span class="n">RootBind</span><span class="p">(</span><span class="n">root</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_package_manager</span><span class="p">()</span>
+        <span class="p">)</span>
+        <span class="n">repo</span><span class="o">.</span><span class="n">use_default_location</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">xml_repo</span> <span class="ow">in</span> <span class="n">repository_sections</span><span class="p">:</span>
+            <span class="n">repo_type</span> <span class="o">=</span> <span class="n">xml_repo</span><span class="o">.</span><span class="n">get_type</span><span class="p">()</span>
+            <span class="n">repo_source</span> <span class="o">=</span> <span class="n">xml_repo</span><span class="o">.</span><span class="n">get_source</span><span class="p">()</span><span class="o">.</span><span class="n">get_path</span><span class="p">()</span>
+            <span class="n">repo_user</span> <span class="o">=</span> <span class="n">xml_repo</span><span class="o">.</span><span class="n">get_username</span><span class="p">()</span>
+            <span class="n">repo_secret</span> <span class="o">=</span> <span class="n">xml_repo</span><span class="o">.</span><span class="n">get_password</span><span class="p">()</span>
+            <span class="n">repo_alias</span> <span class="o">=</span> <span class="n">xml_repo</span><span class="o">.</span><span class="n">get_alias</span><span class="p">()</span>
+            <span class="n">repo_priority</span> <span class="o">=</span> <span class="n">xml_repo</span><span class="o">.</span><span class="n">get_priority</span><span class="p">()</span>
+            <span class="n">repo_dist</span> <span class="o">=</span> <span class="n">xml_repo</span><span class="o">.</span><span class="n">get_distribution</span><span class="p">()</span>
+            <span class="n">repo_components</span> <span class="o">=</span> <span class="n">xml_repo</span><span class="o">.</span><span class="n">get_components</span><span class="p">()</span>
+            <span class="n">repo_repository_gpgcheck</span> <span class="o">=</span> <span class="n">xml_repo</span><span class="o">.</span><span class="n">get_repository_gpgcheck</span><span class="p">()</span>
+            <span class="n">repo_package_gpgcheck</span> <span class="o">=</span> <span class="n">xml_repo</span><span class="o">.</span><span class="n">get_package_gpgcheck</span><span class="p">()</span>
+            <span class="n">uri</span> <span class="o">=</span> <span class="n">Uri</span><span class="p">(</span><span class="n">repo_source</span><span class="p">,</span> <span class="n">repo_type</span><span class="p">)</span>
+            <span class="n">repo_source_translated</span> <span class="o">=</span> <span class="n">uri</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span>
+                <span class="n">check_build_environment</span><span class="o">=</span><span class="kc">False</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">repo_alias</span><span class="p">:</span>
+                <span class="n">repo_alias</span> <span class="o">=</span> <span class="n">uri</span><span class="o">.</span><span class="n">alias</span><span class="p">()</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Setting up image repository </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">repo_source</span><span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;--&gt; Type: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">repo_type</span><span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;--&gt; Translated: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">repo_source_translated</span><span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;--&gt; Alias: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">repo_alias</span><span class="p">)</span>
+            <span class="n">repo</span><span class="o">.</span><span class="n">add_repo</span><span class="p">(</span>
+                <span class="n">repo_alias</span><span class="p">,</span> <span class="n">repo_source_translated</span><span class="p">,</span>
+                <span class="n">repo_type</span><span class="p">,</span> <span class="n">repo_priority</span><span class="p">,</span> <span class="n">repo_dist</span><span class="p">,</span> <span class="n">repo_components</span><span class="p">,</span>
+                <span class="n">repo_user</span><span class="p">,</span> <span class="n">repo_secret</span><span class="p">,</span> <span class="n">uri</span><span class="o">.</span><span class="n">credentials_file_name</span><span class="p">(),</span>
+                <span class="n">repo_repository_gpgcheck</span><span class="p">,</span> <span class="n">repo_package_gpgcheck</span>
+            <span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemSetup.import_shell_environment"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.setup.SystemSetup.import_shell_environment">[docs]</a>    <span class="k">def</span> <span class="nf">import_shell_environment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">profile</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create profile environment to let scripts consume</span>
+<span class="sd">        information from the XML description.</span>
+
+<span class="sd">        :param object profile: Instance of Profile</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">profile_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/.profile&#39;</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Creating .profile environment&#39;</span><span class="p">)</span>
+        <span class="n">profile_environment</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">profile_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">profile</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">profile_environment</span><span class="p">:</span>
+                <span class="n">profile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;--&gt; </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemSetup.import_overlay_files"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.setup.SystemSetup.import_overlay_files">[docs]</a>    <span class="k">def</span> <span class="nf">import_overlay_files</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">follow_links</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">preserve_owner_group</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Copy overlay files from the image description to</span>
+<span class="sd">        the image root tree. Supported are a root/ directory</span>
+<span class="sd">        or a root.tar.gz tarball. The root/ directory takes</span>
+<span class="sd">        precedence over the tarball</span>
+
+<span class="sd">        :param bool follow_links: follow symlinks true|false</span>
+<span class="sd">        :param bool preserve_owner_group: preserve permissions true|false</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">overlay_directory</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">description_dir</span> <span class="o">+</span> <span class="s1">&#39;/root/&#39;</span>
+        <span class="n">overlay_archive</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">description_dir</span> <span class="o">+</span> <span class="s1">&#39;/root.tar.gz&#39;</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">overlay_directory</span><span class="p">):</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Copying user defined files to image tree&#39;</span><span class="p">)</span>
+            <span class="n">sync_options</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="s1">&#39;-r&#39;</span><span class="p">,</span> <span class="s1">&#39;-p&#39;</span><span class="p">,</span> <span class="s1">&#39;-t&#39;</span><span class="p">,</span> <span class="s1">&#39;-D&#39;</span><span class="p">,</span> <span class="s1">&#39;-H&#39;</span><span class="p">,</span> <span class="s1">&#39;-X&#39;</span><span class="p">,</span> <span class="s1">&#39;-A&#39;</span><span class="p">,</span> <span class="s1">&#39;--one-file-system&#39;</span>
+            <span class="p">]</span>
+            <span class="k">if</span> <span class="n">follow_links</span><span class="p">:</span>
+                <span class="n">sync_options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;--copy-links&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">sync_options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;--links&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">preserve_owner_group</span><span class="p">:</span>
+                <span class="n">sync_options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-o&#39;</span><span class="p">)</span>
+                <span class="n">sync_options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-g&#39;</span><span class="p">)</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">DataSync</span><span class="p">(</span>
+                <span class="n">overlay_directory</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span>
+            <span class="p">)</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">sync_data</span><span class="p">(</span>
+                <span class="n">options</span><span class="o">=</span><span class="n">sync_options</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">overlay_archive</span><span class="p">):</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Extracting user defined files from archive to image tree&#39;</span><span class="p">)</span>
+            <span class="n">archive</span> <span class="o">=</span> <span class="n">ArchiveTar</span><span class="p">(</span><span class="n">overlay_archive</span><span class="p">)</span>
+            <span class="n">archive</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemSetup.setup_hardware_clock"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.setup.SystemSetup.setup_hardware_clock">[docs]</a>    <span class="k">def</span> <span class="nf">setup_hardware_clock</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Setup etc/adjtime by running hwclock</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="s1">&#39;hwclock&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">preferences</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="s1">&#39;Setting up hardware clock: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">preferences</span><span class="p">[</span><span class="s1">&#39;hwclock&#39;</span><span class="p">]</span>
+            <span class="p">)</span>
+            <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">([</span>
+                <span class="s1">&#39;chroot&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span>
+                <span class="s1">&#39;hwclock&#39;</span><span class="p">,</span> <span class="s1">&#39;--adjust&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">preferences</span><span class="p">[</span><span class="s1">&#39;hwclock&#39;</span><span class="p">]</span>
+            <span class="p">])</span></div>
+
+<div class="viewcode-block" id="SystemSetup.setup_keyboard_map"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.setup.SystemSetup.setup_keyboard_map">[docs]</a>    <span class="k">def</span> <span class="nf">setup_keyboard_map</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Setup etc/sysconfig/keyboard console keyboard</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="s1">&#39;keytable&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">preferences</span><span class="p">:</span>
+            <span class="n">keyboard_config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/etc/sysconfig/keyboard&#39;</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">keyboard_config</span><span class="p">):</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                    <span class="s1">&#39;Setting up keytable: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">preferences</span><span class="p">[</span><span class="s1">&#39;keytable&#39;</span><span class="p">]</span>
+                <span class="p">)</span>
+                <span class="n">Shell</span><span class="o">.</span><span class="n">run_common_function</span><span class="p">(</span>
+                    <span class="s1">&#39;baseUpdateSysConfig&#39;</span><span class="p">,</span> <span class="p">[</span>
+                        <span class="n">keyboard_config</span><span class="p">,</span> <span class="s1">&#39;KEYTABLE&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;&quot;&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">preferences</span><span class="p">[</span><span class="s1">&#39;keytable&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;&quot;&#39;</span>
+                    <span class="p">]</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                    <span class="s1">&#39;keyboard setup skipped etc/sysconfig/keyboard not found&#39;</span>
+                <span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemSetup.setup_locale"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.setup.SystemSetup.setup_locale">[docs]</a>    <span class="k">def</span> <span class="nf">setup_locale</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Setup etc/sysconfig/language UTF8 locale</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="s1">&#39;locale&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">preferences</span><span class="p">:</span>
+            <span class="n">lang_config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/etc/sysconfig/language&#39;</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">lang_config</span><span class="p">):</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                    <span class="s1">&#39;Setting up locale: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">preferences</span><span class="p">[</span><span class="s1">&#39;locale&#39;</span><span class="p">]</span>
+                <span class="p">)</span>
+                <span class="n">Shell</span><span class="o">.</span><span class="n">run_common_function</span><span class="p">(</span>
+                    <span class="s1">&#39;baseUpdateSysConfig&#39;</span><span class="p">,</span> <span class="p">[</span>
+                        <span class="n">lang_config</span><span class="p">,</span> <span class="s1">&#39;RC_LANG&#39;</span><span class="p">,</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">preferences</span><span class="p">[</span><span class="s1">&#39;locale&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;.UTF-8&#39;</span>
+                    <span class="p">]</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                    <span class="s1">&#39;locale setup skipped etc/sysconfig/language not found&#39;</span>
+                <span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemSetup.setup_timezone"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.setup.SystemSetup.setup_timezone">[docs]</a>    <span class="k">def</span> <span class="nf">setup_timezone</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Setup timezone symlink</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="s1">&#39;timezone&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">preferences</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="s1">&#39;Setting up timezone: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">preferences</span><span class="p">[</span><span class="s1">&#39;timezone&#39;</span><span class="p">]</span>
+            <span class="p">)</span>
+            <span class="n">zoneinfo</span> <span class="o">=</span> <span class="s1">&#39;/usr/share/zoneinfo/&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">preferences</span><span class="p">[</span><span class="s1">&#39;timezone&#39;</span><span class="p">]</span>
+            <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">([</span>
+                <span class="s1">&#39;chroot&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span>
+                <span class="s1">&#39;ln&#39;</span><span class="p">,</span> <span class="s1">&#39;-s&#39;</span><span class="p">,</span> <span class="s1">&#39;-f&#39;</span><span class="p">,</span> <span class="n">zoneinfo</span><span class="p">,</span> <span class="s1">&#39;/etc/localtime&#39;</span>
+            <span class="p">])</span></div>
+
+<div class="viewcode-block" id="SystemSetup.setup_groups"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.setup.SystemSetup.setup_groups">[docs]</a>    <span class="k">def</span> <span class="nf">setup_groups</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add groups for configured users</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">system_users</span> <span class="o">=</span> <span class="n">Users</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_users</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_user_groups</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">get_name</span><span class="p">()):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">system_users</span><span class="o">.</span><span class="n">group_exists</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
+                    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Adding group </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">group</span><span class="p">)</span>
+                    <span class="n">system_users</span><span class="o">.</span><span class="n">group_add</span><span class="p">(</span><span class="n">group</span><span class="p">,</span> <span class="p">[])</span></div>
+
+<div class="viewcode-block" id="SystemSetup.setup_users"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.setup.SystemSetup.setup_users">[docs]</a>    <span class="k">def</span> <span class="nf">setup_users</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add/Modify configured users</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">system_users</span> <span class="o">=</span> <span class="n">Users</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_users</span><span class="p">():</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Setting up user </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">user</span><span class="o">.</span><span class="n">get_name</span><span class="p">())</span>
+            <span class="n">password</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">get_password</span><span class="p">()</span>
+            <span class="n">password_format</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">get_pwdformat</span><span class="p">()</span>
+            <span class="n">home_path</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">get_home</span><span class="p">()</span>
+            <span class="n">user_name</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span>
+            <span class="n">user_id</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">get_id</span><span class="p">()</span>
+            <span class="n">user_realname</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">get_realname</span><span class="p">()</span>
+            <span class="n">user_shell</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">get_shell</span><span class="p">()</span>
+            <span class="n">user_groups</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_user_groups</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">get_name</span><span class="p">())</span>
+
+            <span class="n">user_exists</span> <span class="o">=</span> <span class="n">system_users</span><span class="o">.</span><span class="n">user_exists</span><span class="p">(</span><span class="n">user_name</span><span class="p">)</span>
+
+            <span class="n">options</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">if</span> <span class="n">password_format</span> <span class="o">==</span> <span class="s1">&#39;plain&#39;</span><span class="p">:</span>
+                <span class="n">password</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_passwd_hash</span><span class="p">(</span><span class="n">password</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">password</span><span class="p">:</span>
+                <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-p&#39;</span><span class="p">)</span>
+                <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">password</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">user_shell</span><span class="p">:</span>
+                <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-s&#39;</span><span class="p">)</span>
+                <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">user_shell</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">user_groups</span><span class="p">):</span>
+                <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-g&#39;</span><span class="p">)</span>
+                <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">user_groups</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">user_groups</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-G&#39;</span><span class="p">)</span>
+                    <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">user_groups</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
+            <span class="k">if</span> <span class="n">user_id</span><span class="p">:</span>
+                <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-u&#39;</span><span class="p">)</span>
+                <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">user_id</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">user_realname</span><span class="p">:</span>
+                <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-c&#39;</span><span class="p">)</span>
+                <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">user_realname</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">user_exists</span> <span class="ow">and</span> <span class="n">home_path</span><span class="p">:</span>
+                <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-m&#39;</span><span class="p">)</span>
+                <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-d&#39;</span><span class="p">)</span>
+                <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">home_path</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">user_exists</span><span class="p">:</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                    <span class="s1">&#39;--&gt; Modifying user: </span><span class="si">%s</span><span class="s1"> [</span><span class="si">%s</span><span class="s1">]&#39;</span><span class="p">,</span>
+                    <span class="n">user_name</span><span class="p">,</span>
+                    <span class="n">user_groups</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">user_groups</span><span class="p">)</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+                <span class="p">)</span>
+                <span class="n">system_users</span><span class="o">.</span><span class="n">user_modify</span><span class="p">(</span><span class="n">user_name</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                    <span class="s1">&#39;--&gt; Adding user: </span><span class="si">%s</span><span class="s1"> [</span><span class="si">%s</span><span class="s1">]&#39;</span><span class="p">,</span>
+                    <span class="n">user_name</span><span class="p">,</span>
+                    <span class="n">user_groups</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">user_groups</span><span class="p">)</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+                <span class="p">)</span>
+                <span class="n">system_users</span><span class="o">.</span><span class="n">user_add</span><span class="p">(</span><span class="n">user_name</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">home_path</span><span class="p">:</span>
+                    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                        <span class="s1">&#39;--&gt; Setting permissions for </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">home_path</span>
+                    <span class="p">)</span>
+                    <span class="c1"># Emtpy group string assumes the login or default group</span>
+                    <span class="n">system_users</span><span class="o">.</span><span class="n">setup_home_for_user</span><span class="p">(</span>
+                        <span class="n">user_name</span><span class="p">,</span>
+                        <span class="n">user_groups</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">user_groups</span><span class="p">)</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                        <span class="n">home_path</span>
+                    <span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemSetup.setup_plymouth_splash"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.setup.SystemSetup.setup_plymouth_splash">[docs]</a>    <span class="k">def</span> <span class="nf">setup_plymouth_splash</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Setup the KIWI configured splash theme as default</span>
+
+<span class="sd">        The method uses the plymouth-set-default-theme tool to setup the</span>
+<span class="sd">        theme for the plymouth splash system. Only in case the tool could</span>
+<span class="sd">        be found in the image root, it is assumed plymouth splash is in</span>
+<span class="sd">        use and the tool is called in a chroot operation</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">chroot_env</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;PATH&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;usr&#39;</span><span class="p">,</span> <span class="s1">&#39;sbin&#39;</span><span class="p">])</span>
+        <span class="p">}</span>
+        <span class="n">theme_setup</span> <span class="o">=</span> <span class="s1">&#39;plymouth-set-default-theme&#39;</span>
+        <span class="k">if</span> <span class="n">Path</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">theme_setup</span><span class="p">,</span> <span class="n">custom_env</span><span class="o">=</span><span class="n">chroot_env</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">preferences</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_preferences_sections</span><span class="p">():</span>
+                <span class="n">splash_section_content</span> <span class="o">=</span> <span class="n">preferences</span><span class="o">.</span><span class="n">get_bootsplash_theme</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">splash_section_content</span><span class="p">:</span>
+                    <span class="n">splash_theme</span> <span class="o">=</span> <span class="n">splash_section_content</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+                        <span class="p">[</span><span class="s1">&#39;chroot&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">theme_setup</span><span class="p">,</span> <span class="n">splash_theme</span><span class="p">]</span>
+                    <span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemSetup.import_image_identifier"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.setup.SystemSetup.import_image_identifier">[docs]</a>    <span class="k">def</span> <span class="nf">import_image_identifier</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create etc/ImageID identifier file</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">image_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">xml_data</span><span class="o">.</span><span class="n">get_id</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">image_id</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/etc&#39;</span><span class="p">):</span>
+            <span class="n">image_id_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/etc/ImageID&#39;</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Creating identifier: </span><span class="si">%s</span><span class="s1"> as </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">image_id</span><span class="p">,</span> <span class="n">image_id_file</span><span class="p">)</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">image_id_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">identifier</span><span class="p">:</span>
+                <span class="n">identifier</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">image_id</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemSetup.set_selinux_file_contexts"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.setup.SystemSetup.set_selinux_file_contexts">[docs]</a>    <span class="k">def</span> <span class="nf">set_selinux_file_contexts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">security_context_file</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the security context fields (extended attributes)</span>
+<span class="sd">        on the files matching the security_context_file</span>
+
+<span class="sd">        :param string security_context_file: path file name</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Processing SELinux file security contexts&#39;</span><span class="p">)</span>
+        <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="s1">&#39;chroot&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span>
+                <span class="s1">&#39;setfiles&#39;</span><span class="p">,</span> <span class="n">security_context_file</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="s1">&#39;-v&#39;</span>
+            <span class="p">]</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemSetup.export_modprobe_setup"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.setup.SystemSetup.export_modprobe_setup">[docs]</a>    <span class="k">def</span> <span class="nf">export_modprobe_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_root_dir</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Export etc/modprobe.d to given root_dir</span>
+
+<span class="sd">        :param string target_root_dir: path name</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">modprobe_config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/etc/modprobe.d&#39;</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">modprobe_config</span><span class="p">):</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Export modprobe configuration&#39;</span><span class="p">)</span>
+            <span class="n">Path</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">target_root_dir</span> <span class="o">+</span> <span class="s1">&#39;/etc&#39;</span><span class="p">)</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">DataSync</span><span class="p">(</span>
+                <span class="n">modprobe_config</span><span class="p">,</span> <span class="n">target_root_dir</span> <span class="o">+</span> <span class="s1">&#39;/etc/&#39;</span>
+            <span class="p">)</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">sync_data</span><span class="p">(</span>
+                <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;-z&#39;</span><span class="p">,</span> <span class="s1">&#39;-a&#39;</span><span class="p">]</span>
+            <span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemSetup.export_rpm_package_list"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.setup.SystemSetup.export_rpm_package_list">[docs]</a>    <span class="k">def</span> <span class="nf">export_rpm_package_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_dir</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Export image rpm package list as metadata reference</span>
+<span class="sd">        used by the open buildservice</span>
+
+<span class="sd">        :param string target_dir: path name</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/var/lib/rpm/Packages&#39;</span><span class="p">):</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Export rpm packages metadata&#39;</span><span class="p">)</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                <span class="p">[</span>
+                    <span class="n">target_dir</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">xml_data</span><span class="o">.</span><span class="n">get_name</span><span class="p">(),</span>
+                    <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">arch</span><span class="p">,</span>
+                    <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_image_version</span><span class="p">(),</span>
+                    <span class="s1">&#39;.packages&#39;</span>
+                <span class="p">]</span>
+            <span class="p">)</span>
+            <span class="n">query_call</span> <span class="o">=</span> <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+                <span class="p">[</span>
+                    <span class="s1">&#39;rpm&#39;</span><span class="p">,</span> <span class="s1">&#39;--root&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;-qa&#39;</span><span class="p">,</span> <span class="s1">&#39;--qf&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;|&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                        <span class="p">[</span>
+                            <span class="s1">&#39;%</span><span class="si">{NAME}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;%</span><span class="si">{EPOCH}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;%</span><span class="si">{VERSION}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;%</span><span class="si">{RELEASE}</span><span class="s1">&#39;</span><span class="p">,</span>
+                            <span class="s1">&#39;%</span><span class="si">{ARCH}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;%</span><span class="si">{DISTURL}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">n&#39;</span>
+                        <span class="p">]</span>
+                    <span class="p">)</span>
+                <span class="p">]</span>
+            <span class="p">)</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">packages</span><span class="p">:</span>
+                <span class="n">packages</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">query_call</span><span class="o">.</span><span class="n">output</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">filename</span></div>
+
+<div class="viewcode-block" id="SystemSetup.export_rpm_package_verification"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.setup.SystemSetup.export_rpm_package_verification">[docs]</a>    <span class="k">def</span> <span class="nf">export_rpm_package_verification</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_dir</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Export rpm package verification result as metadata reference</span>
+<span class="sd">        used by the open buildservice</span>
+
+<span class="sd">        :param string target_dir: path name</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/var/lib/rpm/Packages&#39;</span><span class="p">):</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Export rpm verification metadata&#39;</span><span class="p">)</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                <span class="p">[</span>
+                    <span class="n">target_dir</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">xml_data</span><span class="o">.</span><span class="n">get_name</span><span class="p">(),</span>
+                    <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">arch</span><span class="p">,</span>
+                    <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_image_version</span><span class="p">(),</span>
+                    <span class="s1">&#39;.verified&#39;</span>
+                <span class="p">]</span>
+            <span class="p">)</span>
+            <span class="n">query_call</span> <span class="o">=</span> <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+                <span class="n">command</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;rpm&#39;</span><span class="p">,</span> <span class="s1">&#39;--root&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;-Va&#39;</span><span class="p">],</span>
+                <span class="n">raise_on_error</span><span class="o">=</span><span class="kc">False</span>
+            <span class="p">)</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">verified</span><span class="p">:</span>
+                <span class="n">verified</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">query_call</span><span class="o">.</span><span class="n">output</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">filename</span></div>
+
+<div class="viewcode-block" id="SystemSetup.call_config_script"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.setup.SystemSetup.call_config_script">[docs]</a>    <span class="k">def</span> <span class="nf">call_config_script</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Call config.sh script chrooted</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_call_script</span><span class="p">(</span><span class="s1">&#39;config.sh&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemSetup.call_image_script"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.setup.SystemSetup.call_image_script">[docs]</a>    <span class="k">def</span> <span class="nf">call_image_script</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Call images.sh script chrooted</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_call_script</span><span class="p">(</span><span class="s1">&#39;images.sh&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemSetup.call_edit_boot_config_script"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.setup.SystemSetup.call_edit_boot_config_script">[docs]</a>    <span class="k">def</span> <span class="nf">call_edit_boot_config_script</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">filesystem</span><span class="p">,</span> <span class="n">boot_part_id</span><span class="p">,</span> <span class="n">working_directory</span><span class="o">=</span><span class="kc">None</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Call configured editbootconfig script _NON_ chrooted</span>
+
+<span class="sd">        Pass the boot filesystem name and the partition number of</span>
+<span class="sd">        the boot partition as parameters to the call</span>
+
+<span class="sd">        :param string filesystem: boot filesystem name</span>
+<span class="sd">        :param int boot_part_id: boot partition number</span>
+<span class="sd">        :param string working_directory: directory name</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_call_script_no_chroot</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s1">&#39;edit_boot_config.sh&#39;</span><span class="p">,</span>
+            <span class="n">option_list</span><span class="o">=</span><span class="p">[</span><span class="n">filesystem</span><span class="p">,</span> <span class="nb">format</span><span class="p">(</span><span class="n">boot_part_id</span><span class="p">)],</span>
+            <span class="n">working_directory</span><span class="o">=</span><span class="n">working_directory</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemSetup.call_edit_boot_install_script"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.setup.SystemSetup.call_edit_boot_install_script">[docs]</a>    <span class="k">def</span> <span class="nf">call_edit_boot_install_script</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">diskname</span><span class="p">,</span> <span class="n">boot_device_node</span><span class="p">,</span> <span class="n">working_directory</span><span class="o">=</span><span class="kc">None</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Call configured editbootinstall script _NON_ chrooted</span>
+
+<span class="sd">        Pass the disk file name and the device node of the boot partition</span>
+<span class="sd">        as parameters to the call</span>
+
+<span class="sd">        :param string diskname: file path name</span>
+<span class="sd">        :param string boot_device_node: boot device node name</span>
+<span class="sd">        :param string working_directory: directory name</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_call_script_no_chroot</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s1">&#39;edit_boot_install.sh&#39;</span><span class="p">,</span>
+            <span class="n">option_list</span><span class="o">=</span><span class="p">[</span><span class="n">diskname</span><span class="p">,</span> <span class="n">boot_device_node</span><span class="p">],</span>
+            <span class="n">working_directory</span><span class="o">=</span><span class="n">working_directory</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemSetup.create_fstab"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.setup.SystemSetup.create_fstab">[docs]</a>    <span class="k">def</span> <span class="nf">create_fstab</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entries</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create etc/fstab from given list of entries</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">fstab_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/etc/fstab&#39;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fstab_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fstab</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">entries</span><span class="p">:</span>
+                <span class="n">fstab</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">entry</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">linesep</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemSetup.create_init_link_from_linuxrc"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.setup.SystemSetup.create_init_link_from_linuxrc">[docs]</a>    <span class="k">def</span> <span class="nf">create_init_link_from_linuxrc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        kiwi boot images provides the linuxrc script, however the kernel</span>
+<span class="sd">        also expects an init executable to be present. This method creates</span>
+<span class="sd">        a hard link to the linuxrc file</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+            <span class="p">[</span><span class="s1">&#39;ln&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/linuxrc&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/init&#39;</span><span class="p">]</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemSetup.create_recovery_archive"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.setup.SystemSetup.create_recovery_archive">[docs]</a>    <span class="k">def</span> <span class="nf">create_recovery_archive</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create a compressed recovery archive from the root tree</span>
+<span class="sd">        for use with kiwi&#39;s recvoery system. The method creates</span>
+<span class="sd">        additional data into the image root filesystem which is</span>
+<span class="sd">        deleted prior to the creation of a new recovery data set</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># cleanup</span>
+        <span class="n">bash_comand</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;rm&#39;</span><span class="p">,</span> <span class="s1">&#39;-f&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/recovery.*&#39;</span>
+        <span class="p">]</span>
+        <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s1">&#39;bash&#39;</span><span class="p">,</span> <span class="s1">&#39;-c&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">bash_comand</span><span class="p">)])</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">oemconfig</span><span class="p">[</span><span class="s1">&#39;recovery&#39;</span><span class="p">]:</span>
+            <span class="k">return</span>
+        <span class="c1"># recovery.tar</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Creating recovery tar archive&#39;</span><span class="p">)</span>
+        <span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;archive_name&#39;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/recovery.tar&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;archive_filecount&#39;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/recovery.tar.files&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;archive_size&#39;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/recovery.tar.size&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;partition_size&#39;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/recovery.partition.size&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;partition_filesystem&#39;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/recovery.tar.filesystem&#39;</span>
+        <span class="p">}</span>
+        <span class="n">recovery_archive</span> <span class="o">=</span> <span class="n">NamedTemporaryFile</span><span class="p">(</span>
+            <span class="n">delete</span><span class="o">=</span><span class="kc">False</span>
+        <span class="p">)</span>
+        <span class="n">archive</span> <span class="o">=</span> <span class="n">ArchiveTar</span><span class="p">(</span>
+            <span class="n">filename</span><span class="o">=</span><span class="n">recovery_archive</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="n">create_from_file_list</span><span class="o">=</span><span class="kc">False</span>
+        <span class="p">)</span>
+        <span class="n">archive</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+            <span class="n">source_dir</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span>
+            <span class="n">exclude</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;dev&#39;</span><span class="p">,</span> <span class="s1">&#39;proc&#39;</span><span class="p">,</span> <span class="s1">&#39;sys&#39;</span><span class="p">],</span>
+            <span class="n">options</span><span class="o">=</span><span class="p">[</span>
+                <span class="s1">&#39;--numeric-owner&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;--hard-dereference&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;--preserve-permissions&#39;</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+        <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+            <span class="p">[</span><span class="s1">&#39;mv&#39;</span><span class="p">,</span> <span class="n">recovery_archive</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;archive_name&#39;</span><span class="p">]]</span>
+        <span class="p">)</span>
+        <span class="c1"># recovery.tar.filesystem</span>
+        <span class="n">recovery_filesystem</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_filesystem</span><span class="p">()</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;partition_filesystem&#39;</span><span class="p">],</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">partfs</span><span class="p">:</span>
+            <span class="n">partfs</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">recovery_filesystem</span><span class="p">)</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="s1">&#39;--&gt; Recovery partition filesystem: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">recovery_filesystem</span>
+        <span class="p">)</span>
+        <span class="c1"># recovery.tar.files</span>
+        <span class="n">bash_comand</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;tar&#39;</span><span class="p">,</span> <span class="s1">&#39;-tf&#39;</span><span class="p">,</span> <span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;archive_name&#39;</span><span class="p">],</span> <span class="s1">&#39;|&#39;</span><span class="p">,</span> <span class="s1">&#39;wc&#39;</span><span class="p">,</span> <span class="s1">&#39;-l&#39;</span>
+        <span class="p">]</span>
+        <span class="n">tar_files_call</span> <span class="o">=</span> <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+            <span class="p">[</span><span class="s1">&#39;bash&#39;</span><span class="p">,</span> <span class="s1">&#39;-c&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">bash_comand</span><span class="p">)]</span>
+        <span class="p">)</span>
+        <span class="n">tar_files_count</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">tar_files_call</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">))</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;archive_filecount&#39;</span><span class="p">],</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">files</span><span class="p">:</span>
+            <span class="n">files</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">tar_files_count</span><span class="p">)</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="s1">&#39;--&gt; Recovery file count: </span><span class="si">%d</span><span class="s1"> files&#39;</span><span class="p">,</span> <span class="n">tar_files_count</span>
+        <span class="p">)</span>
+        <span class="c1"># recovery.tar.size</span>
+        <span class="n">recovery_archive_size_bytes</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;archive_name&#39;</span><span class="p">])</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;archive_size&#39;</span><span class="p">],</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">size</span><span class="p">:</span>
+            <span class="n">size</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">recovery_archive_size_bytes</span><span class="p">)</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="s1">&#39;--&gt; Recovery uncompressed size: </span><span class="si">%d</span><span class="s1"> mbytes&#39;</span><span class="p">,</span>
+            <span class="nb">int</span><span class="p">(</span><span class="n">recovery_archive_size_bytes</span> <span class="o">/</span> <span class="mi">1048576</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="c1"># recovery.tar.gz</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;--&gt; Compressing recovery archive&#39;</span><span class="p">)</span>
+        <span class="n">compress</span> <span class="o">=</span> <span class="n">Compress</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/recovery.tar&#39;</span><span class="p">)</span>
+        <span class="n">compress</span><span class="o">.</span><span class="n">gzip</span><span class="p">()</span>
+        <span class="c1"># recovery.partition.size</span>
+        <span class="n">recovery_archive_gz_size_mbytes</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;archive_name&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;.gz&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="mi">1048576</span>
+        <span class="p">)</span>
+        <span class="n">recovery_partition_mbytes</span> <span class="o">=</span> <span class="n">recovery_archive_gz_size_mbytes</span> \
+            <span class="o">+</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_recovery_spare_mbytes</span><span class="p">()</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;partition_size&#39;</span><span class="p">],</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">gzsize</span><span class="p">:</span>
+            <span class="n">gzsize</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">recovery_partition_mbytes</span><span class="p">)</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="s1">&#39;--&gt; Recovery partition size: </span><span class="si">%d</span><span class="s1"> mbytes&#39;</span><span class="p">,</span>
+            <span class="n">recovery_partition_mbytes</span>
+        <span class="p">)</span>
+        <span class="c1"># delete recovery archive if inplace recovery is requested</span>
+        <span class="c1"># In this mode the recovery archive is created at install time</span>
+        <span class="c1"># and not at image creation time. However the recovery metadata</span>
+        <span class="c1"># is preserved in order to be able to check if enough space</span>
+        <span class="c1"># is available on the disk to create the recovery archive.</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">oemconfig</span><span class="p">[</span><span class="s1">&#39;recovery_inplace&#39;</span><span class="p">]:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="s1">&#39;--&gt; Inplace recovery requested, deleting archive&#39;</span>
+            <span class="p">)</span>
+            <span class="n">Path</span><span class="o">.</span><span class="n">wipe</span><span class="p">(</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;archive_name&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;.gz&#39;</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_import_custom_archives</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Import custom tar archive files</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">archive_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">system_archives</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_system_archives</span><span class="p">()</span>
+        <span class="n">bootstrap_archives</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_bootstrap_archives</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">system_archives</span><span class="p">:</span>
+            <span class="n">archive_list</span> <span class="o">+=</span> <span class="n">system_archives</span>
+        <span class="k">if</span> <span class="n">bootstrap_archives</span><span class="p">:</span>
+            <span class="n">archive_list</span> <span class="o">+=</span> <span class="n">bootstrap_archives</span>
+
+        <span class="n">description_target</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/image/&#39;</span>
+
+        <span class="k">for</span> <span class="n">archive</span> <span class="ow">in</span> <span class="n">archive_list</span><span class="p">:</span>
+            <span class="n">archive_is_absolute</span> <span class="o">=</span> <span class="n">archive</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">archive_is_absolute</span><span class="p">:</span>
+                <span class="n">archive_file</span> <span class="o">=</span> <span class="n">archive</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">archive_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">description_dir</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">archive</span>
+
+            <span class="n">archive_exists</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">archive_file</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">archive_exists</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">derived_description_dir</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">archive_is_absolute</span><span class="p">:</span>
+                    <span class="n">archive_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">derived_description_dir</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">archive</span>
+                    <span class="n">archive_exists</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">archive_file</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">archive_exists</span><span class="p">:</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                    <span class="s1">&#39;--&gt; Importing </span><span class="si">%s</span><span class="s1"> archive as </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span>
+                    <span class="n">archive_file</span><span class="p">,</span> <span class="s1">&#39;image/&#39;</span> <span class="o">+</span> <span class="n">archive</span>
+                <span class="p">)</span>
+                <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+                    <span class="p">[</span><span class="s1">&#39;cp&#39;</span><span class="p">,</span> <span class="n">archive_file</span><span class="p">,</span> <span class="n">description_target</span><span class="p">]</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">KiwiImportDescriptionError</span><span class="p">(</span>
+                    <span class="s1">&#39;Specified archive </span><span class="si">%s</span><span class="s1"> does not exist&#39;</span> <span class="o">%</span> <span class="n">archive_file</span>
+                <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_import_custom_scripts</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Import custom scripts</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># custom_scripts defines a dictionary with all script hooks</span>
+        <span class="c1"># for each script name a the filepath and additional flags</span>
+        <span class="c1"># are defined. the filepath could be either a relative or</span>
+        <span class="c1"># absolute information. If filepath is set to None this indicates</span>
+        <span class="c1"># the script hook is not used. The raise_if_not_exists flag</span>
+        <span class="c1"># causes kiwi to raise an exception if a specified script</span>
+        <span class="c1"># filepath does not exist</span>
+        <span class="n">script_type</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span>
+            <span class="s1">&#39;script_type&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;filepath&#39;</span><span class="p">,</span> <span class="s1">&#39;raise_if_not_exists&#39;</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="n">custom_scripts</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;config.sh&#39;</span><span class="p">:</span> <span class="n">script_type</span><span class="p">(</span>
+                <span class="n">filepath</span><span class="o">=</span><span class="s1">&#39;config.sh&#39;</span><span class="p">,</span>
+                <span class="n">raise_if_not_exists</span><span class="o">=</span><span class="kc">False</span>
+            <span class="p">),</span>
+            <span class="s1">&#39;images.sh&#39;</span><span class="p">:</span> <span class="n">script_type</span><span class="p">(</span>
+                <span class="n">filepath</span><span class="o">=</span><span class="s1">&#39;images.sh&#39;</span><span class="p">,</span>
+                <span class="n">raise_if_not_exists</span><span class="o">=</span><span class="kc">False</span>
+            <span class="p">),</span>
+            <span class="s1">&#39;edit_boot_config.sh&#39;</span><span class="p">:</span> <span class="n">script_type</span><span class="p">(</span>
+                <span class="n">filepath</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_editbootconfig</span><span class="p">(),</span>
+                <span class="n">raise_if_not_exists</span><span class="o">=</span><span class="kc">True</span>
+            <span class="p">),</span>
+            <span class="s1">&#39;edit_boot_install.sh&#39;</span><span class="p">:</span> <span class="n">script_type</span><span class="p">(</span>
+                <span class="n">filepath</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">build_type</span><span class="o">.</span><span class="n">get_editbootinstall</span><span class="p">(),</span>
+                <span class="n">raise_if_not_exists</span><span class="o">=</span><span class="kc">True</span>
+            <span class="p">)</span>
+        <span class="p">}</span>
+        <span class="n">sorted_custom_scripts</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">(</span>
+            <span class="nb">sorted</span><span class="p">(</span><span class="n">custom_scripts</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+        <span class="p">)</span>
+
+        <span class="n">description_target</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/image/&#39;</span>
+        <span class="n">need_script_helper_functions</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">script</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">sorted_custom_scripts</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+            <span class="k">if</span> <span class="n">script</span><span class="o">.</span><span class="n">filepath</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">script</span><span class="o">.</span><span class="n">filepath</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">):</span>
+                    <span class="n">script_file</span> <span class="o">=</span> <span class="n">script</span><span class="o">.</span><span class="n">filepath</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">script_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">description_dir</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">script</span><span class="o">.</span><span class="n">filepath</span>
+                <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">script_file</span><span class="p">):</span>
+                    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                        <span class="s1">&#39;--&gt; Importing </span><span class="si">%s</span><span class="s1"> script as </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span>
+                        <span class="n">script</span><span class="o">.</span><span class="n">filepath</span><span class="p">,</span> <span class="s1">&#39;image/&#39;</span> <span class="o">+</span> <span class="n">name</span>
+                    <span class="p">)</span>
+                    <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+                        <span class="p">[</span><span class="s1">&#39;cp&#39;</span><span class="p">,</span> <span class="n">script_file</span><span class="p">,</span> <span class="n">description_target</span> <span class="o">+</span> <span class="n">name</span><span class="p">]</span>
+                    <span class="p">)</span>
+                    <span class="n">need_script_helper_functions</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">elif</span> <span class="n">script</span><span class="o">.</span><span class="n">raise_if_not_exists</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">KiwiImportDescriptionError</span><span class="p">(</span>
+                        <span class="s1">&#39;Specified script </span><span class="si">%s</span><span class="s1"> does not exist&#39;</span> <span class="o">%</span> <span class="n">script_file</span>
+                    <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">need_script_helper_functions</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;--&gt; Importing script helper functions&#39;</span><span class="p">)</span>
+            <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+                <span class="p">[</span>
+                    <span class="s1">&#39;cp&#39;</span><span class="p">,</span>
+                    <span class="n">Defaults</span><span class="o">.</span><span class="n">get_common_functions_file</span><span class="p">(),</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/.kconfig&#39;</span>
+                <span class="p">]</span>
+            <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_call_script</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s1">&#39;/image/&#39;</span> <span class="o">+</span> <span class="n">name</span><span class="p">):</span>
+            <span class="n">config_script</span> <span class="o">=</span> <span class="n">Command</span><span class="o">.</span><span class="n">call</span><span class="p">(</span>
+                <span class="p">[</span><span class="s1">&#39;chroot&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;bash&#39;</span><span class="p">,</span> <span class="s1">&#39;/image/&#39;</span> <span class="o">+</span> <span class="n">name</span><span class="p">]</span>
+            <span class="p">)</span>
+            <span class="n">process</span> <span class="o">=</span> <span class="n">CommandProcess</span><span class="p">(</span>
+                <span class="n">command</span><span class="o">=</span><span class="n">config_script</span><span class="p">,</span> <span class="n">log_topic</span><span class="o">=</span><span class="s1">&#39;Calling &#39;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s1">&#39; script&#39;</span>
+            <span class="p">)</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">process</span><span class="o">.</span><span class="n">poll_and_watch</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">returncode</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">KiwiScriptFailed</span><span class="p">(</span>
+                    <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> failed: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">format</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="p">))</span>
+                <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_call_script_no_chroot</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">option_list</span><span class="p">,</span> <span class="n">working_directory</span>
+    <span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">working_directory</span><span class="p">:</span>
+            <span class="n">working_directory</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span>
+        <span class="n">script_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;image&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">])</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">script_path</span><span class="p">):</span>
+            <span class="n">bash_command</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="s1">&#39;cd&#39;</span><span class="p">,</span> <span class="n">working_directory</span><span class="p">,</span> <span class="s1">&#39;&amp;&amp;&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;bash&#39;</span><span class="p">,</span> <span class="s1">&#39;--norc&#39;</span><span class="p">,</span> <span class="n">script_path</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">option_list</span><span class="p">)</span>
+            <span class="p">]</span>
+            <span class="n">config_script</span> <span class="o">=</span> <span class="n">Command</span><span class="o">.</span><span class="n">call</span><span class="p">(</span>
+                <span class="p">[</span><span class="s1">&#39;bash&#39;</span><span class="p">,</span> <span class="s1">&#39;-c&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">bash_command</span><span class="p">)]</span>
+            <span class="p">)</span>
+            <span class="n">process</span> <span class="o">=</span> <span class="n">CommandProcess</span><span class="p">(</span>
+                <span class="n">command</span><span class="o">=</span><span class="n">config_script</span><span class="p">,</span> <span class="n">log_topic</span><span class="o">=</span><span class="s1">&#39;Calling &#39;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s1">&#39; script&#39;</span>
+            <span class="p">)</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">process</span><span class="o">.</span><span class="n">poll_and_watch</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">returncode</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">KiwiScriptFailed</span><span class="p">(</span>
+                    <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> failed: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">format</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="p">))</span>
+                <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_create_passwd_hash</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
+        <span class="n">openssl</span> <span class="o">=</span> <span class="n">Command</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+            <span class="p">[</span><span class="s1">&#39;openssl&#39;</span><span class="p">,</span> <span class="s1">&#39;passwd&#39;</span><span class="p">,</span> <span class="s1">&#39;-1&#39;</span><span class="p">,</span> <span class="s1">&#39;-salt&#39;</span><span class="p">,</span> <span class="s1">&#39;xyz&#39;</span><span class="p">,</span> <span class="n">password</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">openssl</span><span class="o">.</span><span class="n">output</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">_preferences_lookup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">preferences</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">preferences</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_preferences_sections</span><span class="p">():</span>
+            <span class="n">timezone_section</span> <span class="o">=</span> <span class="n">preferences</span><span class="o">.</span><span class="n">get_timezone</span><span class="p">()</span>
+            <span class="n">locale_section</span> <span class="o">=</span> <span class="n">preferences</span><span class="o">.</span><span class="n">get_locale</span><span class="p">()</span>
+            <span class="n">hwclock_section</span> <span class="o">=</span> <span class="n">preferences</span><span class="o">.</span><span class="n">get_hwclock</span><span class="p">()</span>
+            <span class="n">keytable_section</span> <span class="o">=</span> <span class="n">preferences</span><span class="o">.</span><span class="n">get_keytable</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">timezone_section</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">preferences</span><span class="p">[</span><span class="s1">&#39;timezone&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">timezone_section</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">locale_section</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">preferences</span><span class="p">[</span><span class="s1">&#39;locale&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">locale_section</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">hwclock_section</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">preferences</span><span class="p">[</span><span class="s1">&#39;hwclock&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hwclock_section</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">keytable_section</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">preferences</span><span class="p">[</span><span class="s1">&#39;keytable&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">keytable_section</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">_oemconfig_lookup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">oemconfig</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;recovery_inplace&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="s1">&#39;recovery&#39;</span><span class="p">:</span> <span class="kc">False</span>
+        <span class="p">}</span>
+        <span class="n">oemconfig</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_build_type_oemconfig_section</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">oemconfig</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">oemconfig</span><span class="p">[</span><span class="s1">&#39;recovery&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">oemconfig</span><span class="o">.</span><span class="n">get_oem_recovery</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">oemconfig</span><span class="p">[</span><span class="s1">&#39;recovery_inplace&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">oemconfig</span><span class="o">.</span><span class="n">get_oem_inplace_recovery</span><span class="p">())</span>
+
+    <span class="k">def</span> <span class="nf">_text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section_content</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Helper method to return the text for XML elements of the</span>
+<span class="sd">        following structure: &lt;section&gt;text&lt;/section&gt;.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">section_content</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">section_content</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Marcus Schäfer.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'9.9.2',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

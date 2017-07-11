@@ -1,0 +1,688 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>PXE Client Setup Configuration &mdash; kiwi 9.9.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="kiwi 9.9.2 documentation" href="../../index.html"/>
+        <link rel="up" title="Working with Images" href="../working_with_images.html"/>
+        <link rel="next" title="KIWI Commands" href="../../commands.html"/>
+        <link rel="prev" title="Setting Up a Network Boot Server" href="setup_pxe_bootserver.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> kiwi
+          
+
+          
+            
+            <img src="../../_static/kiwi-logo.png" class="logo" />
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../overview/legacy_kiwi.html">Legacy KIWI vs. Next Generation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#when-do-i-need-to-use-the-legacy-kiwi">When Do I need to use the legacy kiwi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#dropped-features">Dropped Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#compatibility">Compatibility</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../overview/workflow.html">Basic Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../overview/workflow.html#building-images">Building Images</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../overview/workflow.html#the-prepare-step">The Prepare Step</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../overview/workflow.html#the-create-step">The Create Step</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../overview/workflow.html#components-of-an-image-description">Components of an Image Description</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../overview/workflow.html#image-customization-with-config-sh-shell-script">Image Customization with <code class="docutils literal"><span class="pre">config.sh</span></code> Shell Script</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../overview/workflow.html#image-customization-with-images-sh-shell-script">Image Customization with <code class="docutils literal"><span class="pre">images.sh</span></code> Shell Script</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../overview/workflow.html#customizing-the-boot-process">Customizing the Boot Process</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../overview/workflow.html#boot-image-hook-scripts">Boot Image Hook-Scripts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../overview/workflow.html#boot-parameters">Boot Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../overview/workflow.html#faq-boot-image-customization">FAQ: Boot Image Customization</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../overview/workflow.html#distribution-specific-code">Distribution Specific Code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../overview.html#conceptual-overview">Conceptual Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../overview.html#terminology">Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../overview.html#system-requirements">System Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#before-you-start">Before you start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#build-your-first-image">Build your first image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#run-your-image">Run your image</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../building.html">Building Images</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../build_live_iso.html">Build an ISO Hybrid Live Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build_vmx_disk.html">Build a Virtual Disk Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build_oem_disk.html">Build an OEM Expandable Disk Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../build_oem_disk.html#deployment-methods">Deployment Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build_oem_disk.html#manual-deployment">Manual Deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build_oem_disk.html#cd-dvd-deployment">CD/DVD Deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build_oem_disk.html#network-deployment">Network Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../build_pxe_root_filesystem.html">Build a PXE Root File System Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build_docker_container.html">Build a Docker Container Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build_containerized.html">Building in a Self-Contained Environment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../build_containerized.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build_containerized.html#installing-and-setting-up-dice">Installing and Setting up Dice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build_containerized.html#installing-and-setting-up-docker">Installing and Setting up Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build_containerized.html#installing-and-setting-up-the-build-container">Installing and Setting up the Build Container</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build_containerized.html#installing-and-setting-up-vagrant">Installing and Setting up Vagrant</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build_containerized.html#configuring-dice">Configuring Dice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build_containerized.html#selecting-a-kiwi-template">Selecting a KIWI Template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build_containerized.html#the-dicefile">The Dicefile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build_containerized.html#building-with-dice">Building with Dice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build_containerized.html#buildsystem-backends">Buildsystem Backends</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build_containerized.html#building-with-the-host-buildsystem">Building with the Host Buildsystem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build_containerized.html#id1">The Dicefile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build_containerized.html#building-with-the-vagrant-buildsystem">Building with the Vagrant Buildsystem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build_containerized.html#id2">The Dicefile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build_containerized.html#the-vagrant-setup-for-the-docker-provider">The Vagrant setup for the Docker Provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build_containerized.html#the-vagrantfile">The Vagrantfile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build_containerized.html#the-vagrant-setup-for-the-libvirt-provider">The Vagrant setup for the libvirt Provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build_containerized.html#the-vagrant-build-box">The Vagrant Build Box</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build_containerized.html#id3">The Vagrantfile</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../build_in_buildservice.html">Building in the Open Buildservice</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../working_with_images.html">Working with Images</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="iso_to_usb_stick_deployment.html">Deploy ISO Image on an USB Stick</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vmx_setup_for_ec2.html">KIWI Image Description for Amazon EC2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vmx_setup_for_azure.html">KIWI Image Description for Microsoft Azure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vmx_setup_for_google.html">KIWI Image Description for Google Compute Engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="setup_pxe_bootserver.html">Setting Up a Network Boot Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="setup_pxe_bootserver.html#installing-and-configuring-atftp">Installing and Configuring atftp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="setup_pxe_bootserver.html#installing-and-configuring-dhcp">Installing and Configuring DHCP</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">PXE Client Setup Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#setup-client-with-remote-root">Setup Client with Remote Root</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setup-client-with-system-on-local-disk">Setup Client with System on Local Disk</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setup-client-with-system-on-local-md-raid-disk">Setup Client with System on Local MD RAID Disk</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setup-loading-of-custom-configuration-file-s">Setup Loading of Custom Configuration File(s)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setup-client-to-force-reload-image">Setup Client to Force Reload Image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setup-client-to-force-reload-configuration-files">Setup Client to Force Reload Configuration Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setup-client-for-reboot-after-deployment">Setup Client for Reboot After Deployment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setup-custom-kernel-boot-options">Setup custom kernel boot options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setup-a-custom-boot-timeout">Setup a Custom Boot Timeout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setup-a-different-download-protocol-and-server">Setup a Different Download Protocol and Server</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../building.html#supported-distributions">Supported Distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../commands.html">KIWI Commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../commands/kiwi.html">kiwi</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/kiwi.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/kiwi.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/kiwi.html#global-options">GLOBAL OPTIONS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/kiwi.html#example">EXAMPLE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/kiwi.html#runtime-config-file">RUNTIME CONFIG FILE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/kiwi.html#compatibility">COMPATIBILITY</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../commands/result_list.html">kiwi result list</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/result_list.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/result_list.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/result_list.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../commands/result_bundle.html">kiwi result bundle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/result_bundle.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/result_bundle.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/result_bundle.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../commands/system_prepare.html">kiwi system prepare</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/system_prepare.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/system_prepare.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/system_prepare.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../commands/system_update.html">kiwi system update</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/system_update.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/system_update.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/system_update.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../commands/system_build.html">kiwi system build</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/system_build.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/system_build.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/system_build.html#options">OPTIONS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/system_build.html#uri-types">URI_TYPES</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../commands/system_create.html">kiwi system create</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/system_create.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/system_create.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/system_create.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../commands/image_resize.html">kiwi image resize</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/image_resize.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/image_resize.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/image_resize.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../commands/image_info.html">kiwi image info</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/image_info.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/image_info.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/image_info.html#options">OPTIONS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.9.2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.bootloader.html">kiwi.bootloader Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.builder.html">kiwi.builder Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.container.html">kiwi.container Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.filesystem.html">kiwi.filesystem Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.package_manager.html">kiwi.package_manager Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.partitioner.html">kiwi.partitioner Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.repository.html">kiwi.repository Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.storage.html">kiwi.storage Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.system.html">kiwi.system Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.solver.html">kiwi.solver Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.tasks.html">kiwi.tasks package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.utils.html">kiwi.utils Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.volume_manager.html">kiwi.volume_manager Package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#module-kiwi.app"><code class="docutils literal"><span class="pre">kiwi.app</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#module-kiwi.cli"><code class="docutils literal"><span class="pre">kiwi.cli</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#module-kiwi.command"><code class="docutils literal"><span class="pre">kiwi.command</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#module-kiwi.command_process"><code class="docutils literal"><span class="pre">kiwi.command_process</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#module-kiwi.defaults"><code class="docutils literal"><span class="pre">kiwi.defaults</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#module-kiwi.exceptions"><code class="docutils literal"><span class="pre">kiwi.exceptions</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#module-kiwi.firmware"><code class="docutils literal"><span class="pre">kiwi.firmware</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#module-kiwi.help"><code class="docutils literal"><span class="pre">kiwi.help</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#module-kiwi.iso"><code class="docutils literal"><span class="pre">kiwi.iso</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#module-kiwi.kiwi"><code class="docutils literal"><span class="pre">kiwi.kiwi</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#module-kiwi.logger"><code class="docutils literal"><span class="pre">kiwi.logger</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#module-kiwi.mount_manager"><code class="docutils literal"><span class="pre">kiwi.mount_manager</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#module-kiwi.path"><code class="docutils literal"><span class="pre">kiwi.path</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#module-kiwi.privileges"><code class="docutils literal"><span class="pre">kiwi.privileges</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#module-kiwi.version"><code class="docutils literal"><span class="pre">kiwi.version</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#module-kiwi.xml_description"><code class="docutils literal"><span class="pre">kiwi.xml_description</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#module-kiwi.xml_state"><code class="docutils literal"><span class="pre">kiwi.xml_state</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#module-kiwi">Module Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../development/schema.html">Schema Documentation 6.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../development/schema_extensions.html">Extending KIWI with Custom Operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../development/schema_extensions.html#the-extension-section">The &lt;extension&gt; Section</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/schema_extensions.html#relax-ng-schema-for-the-extension">RELAX NG Schema for the Extension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/schema_extensions.html#extension-schema-in-xml-catalog">Extension Schema in XML catalog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/schema_extensions.html#using-the-extension">Using the Extension</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../development.html#fork-the-upstream-kiwi-repository">Fork the upstream KIWI repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../development.html#create-a-local-clone-of-the-forked-kiwi-repository">Create a local clone of the forked KIWI repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../development.html#create-a-python-virtual-development-environment">Create a python virtual development environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../development.html#running-test-cases">Running Test Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../development.html#create-a-branch-for-each-feature-or-bugfix">Create a branch for each feature or bugfix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../development.html#good-to-know">Good to know</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../development.html#signing-git-patches">Signing Git Patches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development.html#raising-versions">Raising Versions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development.html#creating-a-package">Creating a Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development.html#building-documentation">Building Documentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">kiwi</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../building.html">Building Images</a> &raquo;</li>
+        
+          <li><a href="../working_with_images.html">Working with Images</a> &raquo;</li>
+        
+      <li>PXE Client Setup Configuration</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/building/working_with_images/pxe_client_configuration.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="pxe-client-setup-configuration">
+<span id="pxe-client-config"></span><h1>PXE Client Setup Configuration<a class="headerlink" href="#pxe-client-setup-configuration" title="Permalink to this headline">¶</a></h1>
+<div class="sidebar">
+<p class="first sidebar-title">Abstract</p>
+<p>This page provides further information for handling
+vmx images built with KIWI and references the following
+articles:</p>
+<ul class="last simple">
+<li><a class="reference internal" href="../build_pxe_root_filesystem.html#build-pxe"><span class="std std-ref">Build a PXE Root File System Image</span></a></li>
+</ul>
+</div>
+<p>All PXE boot based deployment methods are controlled by configuration files
+located in <code class="file docutils literal"><span class="pre">/srv/tftpboot/KIWI</span></code> on the PXE server. Such a configuration
+file can either be client-specific (config.MAC_ADDRESS, for example
+config.00.AB.F3.11.73.C8), or generic (config.default).</p>
+<p>In an environment
+with heterogeneous clients, this allows to have a default configuration
+suitable for the majority of clients, to have configurations suitable
+for a group of clients (for example machines with similar or identical
+hardware), and individual configurations for selected machines.</p>
+<p>The configuration file contains data about the image and about
+configuration, synchronization, and partition parameters.
+The configuration file has got the following general format:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">IMAGE</span><span class="o">=</span><span class="s2">&quot;device;name;version;srvip;bsize;compressed,...,&quot;</span>
+
+<span class="n">DISK</span><span class="o">=</span><span class="s2">&quot;device&quot;</span>
+<span class="n">PART</span><span class="o">=</span><span class="s2">&quot;size;id;Mount,...,size;id;Mount&quot;</span>
+<span class="n">RAID</span><span class="o">=</span><span class="s2">&quot;raid-level;device1;device2;...&quot;</span>
+
+<span class="n">AOEROOT</span><span class="o">=</span><span class="n">ro</span><span class="o">-</span><span class="n">device</span><span class="p">[,</span><span class="n">rw</span><span class="o">-</span><span class="n">device</span><span class="p">]</span>
+<span class="n">NBDROOT</span><span class="o">=</span><span class="s2">&quot;ip-address;export-name;device;swap-export-name;swap-device;write-export-name;write-device&quot;</span>
+<span class="n">NFSROOT</span><span class="o">=</span><span class="s2">&quot;ip-address;path&quot;</span>
+
+<span class="n">UNIONFS_CONFIGURATION</span><span class="o">=</span><span class="s2">&quot;rw-partition,compressed-partition,overlayfs&quot;</span>
+
+<span class="n">CONF</span><span class="o">=</span><span class="s2">&quot;src;dest;srvip;bsize;[hash],...,src;dest;srvip;bsize;[hash]&quot;</span>
+
+<span class="n">KIWI_BOOT_TIMEOUT</span><span class="o">=</span><span class="s2">&quot;seconds&quot;</span>
+<span class="n">KIWI_KERNEL_OPTIONS</span><span class="o">=</span><span class="s2">&quot;opt1 opt2 ...&quot;</span>
+
+<span class="n">REBOOT_IMAGE</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">RELOAD_CONFIG</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">RELOAD_IMAGE</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Quoting the Values</p>
+<p class="last">The configuration file is sourced by Bash, so the same quoting
+rules as for Bash apply.</p>
+</div>
+<p>Not all configuration options needs to be specified. It depends on the
+setup of the client which configuration values are required. The
+following is a collection of client setup examples which covers all
+supported PXE client configurations.</p>
+<div class="section" id="setup-client-with-remote-root">
+<h2>Setup Client with Remote Root<a class="headerlink" href="#setup-client-with-remote-root" title="Permalink to this headline">¶</a></h2>
+<p>To serve the image from a remote location and redirect all
+write operations on a tmpfs, the following setup is required:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="c1"># When using AoE, see vblade toolchain for image export</span>
+
+<span class="n">AOEROOT</span><span class="o">=/</span><span class="n">dev</span><span class="o">/</span><span class="n">etherd</span><span class="o">/</span><span class="n">e0</span><span class="o">.</span><span class="mi">1</span>
+<span class="n">UNIONFS_CONFIG</span><span class="o">=</span><span class="n">tmpfs</span><span class="p">,</span><span class="n">aoe</span><span class="p">,</span><span class="n">overlay</span>
+
+<span class="c1"># When using NFS, see exports manual page for image export</span>
+
+<span class="n">NFSROOT</span><span class="o">=</span><span class="s2">&quot;192.168.100.2;/srv/tftpboot/image/root&quot;</span>
+<span class="n">UNIONFS_CONFIG</span><span class="o">=</span><span class="n">tmpfs</span><span class="p">,</span><span class="n">nfs</span><span class="p">,</span><span class="n">overlay</span>
+
+<span class="c1"># When using NBD, see nbd-server manual page for image export</span>
+
+<span class="n">NBDROOT</span><span class="o">=</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">100.2</span><span class="p">;</span><span class="n">root_export</span><span class="p">;</span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">nbd0</span>
+<span class="n">UNIONFS_CONFIG</span><span class="o">=</span><span class="n">tmpfs</span><span class="p">,</span><span class="n">nbd</span><span class="p">,</span><span class="n">overlay</span>
+</pre></div>
+</div>
+<p>The above setup shows the most common use case where the image built
+with KIWI is populated over the network using either AoE, NBD or NFS
+in combination with overlayfs which redirects all write operations
+to be local to the client. In any case a setup of either AoE, NBD or
+NFS on the image server is required beforehand.</p>
+</div>
+<div class="section" id="setup-client-with-system-on-local-disk">
+<h2>Setup Client with System on Local Disk<a class="headerlink" href="#setup-client-with-system-on-local-disk" title="Permalink to this headline">¶</a></h2>
+<p>To deploy the image on a local disk the following setup
+is required:</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>In the referenced <code class="file docutils literal"><span class="pre">suse-leap-42.1-JeOS</span></code> XML description the <code class="docutils literal"><span class="pre">pxe</span></code>
+type must be changed as follows and the image needs to be
+rebuild:</p>
+<div class="code xml last highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nb">type</span> <span class="n">image</span><span class="o">=</span><span class="s2">&quot;pxe&quot;</span> <span class="n">filesystem</span><span class="o">=</span><span class="s2">&quot;ext3&quot;</span> <span class="n">boot</span><span class="o">=</span><span class="s2">&quot;netboot/suse-leap42.1&quot;</span><span class="o">/&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">IMAGE</span><span class="o">=</span><span class="s2">&quot;/dev/sda2;LimeJeOS-Leap-42.1.x86_64;1.42.1;192.168.100.2;4096&quot;</span>
+<span class="n">DISK</span><span class="o">=</span><span class="s2">&quot;/dev/sda&quot;</span>
+<span class="n">PART</span><span class="o">=</span><span class="s2">&quot;5;S;X,X;L;/&quot;</span>
+</pre></div>
+</div>
+<p>The setup above will create a partition table on sda with a 5MB swap
+partition (no mountpoint) and the rest of the disk will be a Linux(L)
+partition with <code class="file docutils literal"><span class="pre">/</span></code> as mountpoint. The (<code class="docutils literal"><span class="pre">X</span></code>) in the PART setup specifies
+a place holder to indicate the default behaviour.</p>
+</div>
+<div class="section" id="setup-client-with-system-on-local-md-raid-disk">
+<h2>Setup Client with System on Local MD RAID Disk<a class="headerlink" href="#setup-client-with-system-on-local-md-raid-disk" title="Permalink to this headline">¶</a></h2>
+<p>To deploy the image on a local disk with prior software RAID
+configuration, the following setup is required:</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>In the referenced <code class="file docutils literal"><span class="pre">suse-leap-42.1-JeOS</span></code> XML description the <code class="docutils literal"><span class="pre">pxe</span></code>
+type must be changed as follows and the image needs to be
+rebuild:</p>
+<div class="code xml last highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nb">type</span> <span class="n">image</span><span class="o">=</span><span class="s2">&quot;pxe&quot;</span> <span class="n">filesystem</span><span class="o">=</span><span class="s2">&quot;ext3&quot;</span> <span class="n">boot</span><span class="o">=</span><span class="s2">&quot;netboot/suse-leap42.1&quot;</span><span class="o">/&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">RAID</span><span class="o">=</span><span class="s1">&#39;1;/dev/sda;/dev/sdb&#39;</span>
+<span class="n">IMAGE</span><span class="o">=</span><span class="s2">&quot;/dev/md1;LimeJeOS-Leap-42.1.x86_64;1.42.1;192.168.100.2;4096&quot;</span>
+<span class="n">PART</span><span class="o">=</span><span class="s2">&quot;5;S;x,x;L;/&quot;</span>
+</pre></div>
+</div>
+<p>The first parameter of the RAID line is the RAID level. So far only raid1
+(mirroring) is supported. The second and third parameter specifies the
+raid disk devices which make up the array. If a RAID line is present
+all partitions in <code class="docutils literal"><span class="pre">PART</span></code> will be created as RAID partitions. The first
+RAID is named <code class="docutils literal"><span class="pre">md0</span></code>, the second one <code class="docutils literal"><span class="pre">md1</span></code> and so on. It is required to
+specify the correct RAID partition in the <code class="docutils literal"><span class="pre">IMAGE</span></code> line according to the
+<code class="docutils literal"><span class="pre">PART</span></code> setup. In this case <code class="docutils literal"><span class="pre">md0</span></code> is reserved for the SWAP space and <code class="docutils literal"><span class="pre">md1</span></code>
+is reserved for the system.</p>
+</div>
+<div class="section" id="setup-loading-of-custom-configuration-file-s">
+<h2>Setup Loading of Custom Configuration File(s)<a class="headerlink" href="#setup-loading-of-custom-configuration-file-s" title="Permalink to this headline">¶</a></h2>
+<p>In order to load for example a custom <code class="file docutils literal"><span class="pre">/etc/hosts</span></code> file on the client,
+the following setup is required:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">CONF</span><span class="o">=</span><span class="s2">&quot;hosts;/etc/hosts;192.168.1.2;4096;ffffffff&quot;</span>
+</pre></div>
+</div>
+<p>On boot of the client KIWI’s boot code will fetch the <code class="file docutils literal"><span class="pre">hosts</span></code> file
+from the root of the server (192.168.1.2) with 4k blocksize and deploy
+it as <code class="file docutils literal"><span class="pre">/etc/hosts</span></code> on the client. The protocol is by default tftp
+but can be changed via the <code class="docutils literal"><span class="pre">kiwiservertype</span></code> kernel commandline option.
+For details, see <a class="reference internal" href="#custom-download-server"><span class="std std-ref">Setup a Different Download Protocol and Server</span></a></p>
+</div>
+<div class="section" id="setup-client-to-force-reload-image">
+<h2>Setup Client to Force Reload Image<a class="headerlink" href="#setup-client-to-force-reload-image" title="Permalink to this headline">¶</a></h2>
+<p>To force the reload of the system image even if the image on
+the disk is up-to-date, the following setup is required:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">RELOAD_IMAGE</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>The option only applies to configurations with a DISK/PART setup</p>
+</div>
+<div class="section" id="setup-client-to-force-reload-configuration-files">
+<h2>Setup Client to Force Reload Configuration Files<a class="headerlink" href="#setup-client-to-force-reload-configuration-files" title="Permalink to this headline">¶</a></h2>
+<p>To force the reload of all configuration files specified in
+CONF, the following setup is required:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">RELOAD_CONFIG</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>By default only configuration files which has changed according to
+their md5sum value will be reloaded. With the above setup all files
+will be reloaded from the PXE server. The option only applies to
+configurations with a DISK/PART setup</p>
+</div>
+<div class="section" id="setup-client-for-reboot-after-deployment">
+<h2>Setup Client for Reboot After Deployment<a class="headerlink" href="#setup-client-for-reboot-after-deployment" title="Permalink to this headline">¶</a></h2>
+<p>To reboot the system after the initial deployment process is
+done the following setup is required:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">REBOOT_IMAGE</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setup-custom-kernel-boot-options">
+<h2>Setup custom kernel boot options<a class="headerlink" href="#setup-custom-kernel-boot-options" title="Permalink to this headline">¶</a></h2>
+<p>To deactivate the kernel mode setting on local
+boot of the client the following setup is required:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">KIWI_KERNEL_OPTIONS</span><span class="o">=</span><span class="s2">&quot;nomodeset&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This does not influence the kernel options passed to the client
+if it boots from the network. In order to setup those the PXE
+configuration on the PXE server needs to be changed</p>
+</div>
+</div>
+<div class="section" id="setup-a-custom-boot-timeout">
+<h2>Setup a Custom Boot Timeout<a class="headerlink" href="#setup-a-custom-boot-timeout" title="Permalink to this headline">¶</a></h2>
+<p>To setup a 10sec custom timeout for the local boot of the client
+the following setup is required.</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">KIWI_BOOT_TIMEOUT</span><span class="o">=</span><span class="s2">&quot;10&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This does not influence the boot timeout if the client boots off
+from the network.</p>
+</div>
+</div>
+<div class="section" id="setup-a-different-download-protocol-and-server">
+<span id="custom-download-server"></span><h2>Setup a Different Download Protocol and Server<a class="headerlink" href="#setup-a-different-download-protocol-and-server" title="Permalink to this headline">¶</a></h2>
+<p>By default all downloads controlled by the KIWI linuxrc code are
+performed by an atftp call using the TFTP protocol. With PXE the download
+protocol is fixed and thus you cannot change the way how the kernel and
+the boot image (<code class="file docutils literal"><span class="pre">initrd</span></code>) is downloaded. As soon as Linux takes over, the
+download protocols http, https and ftp are supported too. KIWI uses
+the curl program to support the additional protocols.</p>
+<p>To select one of the additional download protocols the following
+kernel parameters need to be specified</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">kiwiserver</span><span class="o">=</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">1.1</span> <span class="n">kiwiservertype</span><span class="o">=</span><span class="n">ftp</span>
+</pre></div>
+</div>
+<p>To set up this parameters edit the file
+<code class="file docutils literal"><span class="pre">/srv/tftpboot/pxelinux.cfg/default</span></code> on your PXE boot server and change
+the append line accordingly.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Once configured all downloads except for kernel and initrd are
+now controlled by the given server and protocol. You need to make
+sure that this server provides the same directory and file structure
+as initially provided by the <code class="docutils literal"><span class="pre">kiwi-pxeboot</span></code> package</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../commands.html" class="btn btn-neutral float-right" title="KIWI Commands" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="setup_pxe_bootserver.html" class="btn btn-neutral" title="Setting Up a Network Boot Server" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Marcus Schäfer.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'9.9.2',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

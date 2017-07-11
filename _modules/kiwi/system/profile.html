@@ -1,0 +1,823 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>kiwi.system.profile &mdash; kiwi 9.9.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="kiwi 9.9.2 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> kiwi
+          
+
+          
+            
+            <img src="../../../_static/kiwi-logo.png" class="logo" />
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview/legacy_kiwi.html">Legacy KIWI vs. Next Generation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../overview/legacy_kiwi.html#when-do-i-need-to-use-the-legacy-kiwi">When Do I need to use the legacy kiwi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../overview/legacy_kiwi.html#dropped-features">Dropped Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../overview/legacy_kiwi.html#compatibility">Compatibility</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview/workflow.html">Basic Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../overview/workflow.html#building-images">Building Images</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../overview/workflow.html#the-prepare-step">The Prepare Step</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../overview/workflow.html#the-create-step">The Create Step</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../overview/workflow.html#components-of-an-image-description">Components of an Image Description</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../overview/workflow.html#image-customization-with-config-sh-shell-script">Image Customization with <code class="docutils literal"><span class="pre">config.sh</span></code> Shell Script</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../overview/workflow.html#image-customization-with-images-sh-shell-script">Image Customization with <code class="docutils literal"><span class="pre">images.sh</span></code> Shell Script</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../overview/workflow.html#customizing-the-boot-process">Customizing the Boot Process</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../overview/workflow.html#boot-image-hook-scripts">Boot Image Hook-Scripts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../overview/workflow.html#boot-parameters">Boot Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../overview/workflow.html#faq-boot-image-customization">FAQ: Boot Image Customization</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../overview/workflow.html#distribution-specific-code">Distribution Specific Code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#conceptual-overview">Conceptual Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#terminology">Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#system-requirements">System Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#before-you-start">Before you start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#build-your-first-image">Build your first image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#run-your-image">Run your image</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../building.html">Building Images</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../building/build_live_iso.html">Build an ISO Hybrid Live Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../building/build_vmx_disk.html">Build a Virtual Disk Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../building/build_oem_disk.html">Build an OEM Expandable Disk Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_oem_disk.html#deployment-methods">Deployment Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_oem_disk.html#manual-deployment">Manual Deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_oem_disk.html#cd-dvd-deployment">CD/DVD Deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_oem_disk.html#network-deployment">Network Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../building/build_pxe_root_filesystem.html">Build a PXE Root File System Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../building/build_docker_container.html">Build a Docker Container Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../building/build_containerized.html">Building in a Self-Contained Environment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#installing-and-setting-up-dice">Installing and Setting up Dice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#installing-and-setting-up-docker">Installing and Setting up Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#installing-and-setting-up-the-build-container">Installing and Setting up the Build Container</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#installing-and-setting-up-vagrant">Installing and Setting up Vagrant</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#configuring-dice">Configuring Dice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#selecting-a-kiwi-template">Selecting a KIWI Template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#the-dicefile">The Dicefile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#building-with-dice">Building with Dice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#buildsystem-backends">Buildsystem Backends</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#building-with-the-host-buildsystem">Building with the Host Buildsystem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#id1">The Dicefile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#building-with-the-vagrant-buildsystem">Building with the Vagrant Buildsystem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#id2">The Dicefile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#the-vagrant-setup-for-the-docker-provider">The Vagrant setup for the Docker Provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#the-vagrantfile">The Vagrantfile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#the-vagrant-setup-for-the-libvirt-provider">The Vagrant setup for the libvirt Provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#the-vagrant-build-box">The Vagrant Build Box</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/build_containerized.html#id3">The Vagrantfile</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../building/build_in_buildservice.html">Building in the Open Buildservice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../building/working_with_images.html">Working with Images</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/iso_to_usb_stick_deployment.html">Deploy ISO Image on an USB Stick</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/vmx_setup_for_ec2.html">KIWI Image Description for Amazon EC2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/vmx_setup_for_azure.html">KIWI Image Description for Microsoft Azure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/vmx_setup_for_google.html">KIWI Image Description for Google Compute Engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/setup_pxe_bootserver.html">Setting Up a Network Boot Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../building/working_with_images/setup_pxe_bootserver.html#installing-and-configuring-atftp">Installing and Configuring atftp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../building/working_with_images/setup_pxe_bootserver.html#installing-and-configuring-dhcp">Installing and Configuring DHCP</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../building/working_with_images/pxe_client_configuration.html">PXE Client Setup Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../building/working_with_images/pxe_client_configuration.html#setup-client-with-remote-root">Setup Client with Remote Root</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../building/working_with_images/pxe_client_configuration.html#setup-client-with-system-on-local-disk">Setup Client with System on Local Disk</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../building/working_with_images/pxe_client_configuration.html#setup-client-with-system-on-local-md-raid-disk">Setup Client with System on Local MD RAID Disk</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../building/working_with_images/pxe_client_configuration.html#setup-loading-of-custom-configuration-file-s">Setup Loading of Custom Configuration File(s)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../building/working_with_images/pxe_client_configuration.html#setup-client-to-force-reload-image">Setup Client to Force Reload Image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../building/working_with_images/pxe_client_configuration.html#setup-client-to-force-reload-configuration-files">Setup Client to Force Reload Configuration Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../building/working_with_images/pxe_client_configuration.html#setup-client-for-reboot-after-deployment">Setup Client for Reboot After Deployment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../building/working_with_images/pxe_client_configuration.html#setup-custom-kernel-boot-options">Setup custom kernel boot options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../building/working_with_images/pxe_client_configuration.html#setup-a-custom-boot-timeout">Setup a Custom Boot Timeout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../building/working_with_images/pxe_client_configuration.html#setup-a-different-download-protocol-and-server">Setup a Different Download Protocol and Server</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../building.html#supported-distributions">Supported Distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../commands.html">KIWI Commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../commands/kiwi.html">kiwi</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/kiwi.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/kiwi.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/kiwi.html#global-options">GLOBAL OPTIONS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/kiwi.html#example">EXAMPLE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/kiwi.html#runtime-config-file">RUNTIME CONFIG FILE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/kiwi.html#compatibility">COMPATIBILITY</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../commands/result_list.html">kiwi result list</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/result_list.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/result_list.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/result_list.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../commands/result_bundle.html">kiwi result bundle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/result_bundle.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/result_bundle.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/result_bundle.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../commands/system_prepare.html">kiwi system prepare</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/system_prepare.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/system_prepare.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/system_prepare.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../commands/system_update.html">kiwi system update</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/system_update.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/system_update.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/system_update.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../commands/system_build.html">kiwi system build</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/system_build.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/system_build.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/system_build.html#options">OPTIONS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/system_build.html#uri-types">URI_TYPES</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../commands/system_create.html">kiwi system create</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/system_create.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/system_create.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/system_create.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../commands/image_resize.html">kiwi image resize</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/image_resize.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/image_resize.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/image_resize.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../commands/image_info.html">kiwi image info</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/image_info.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/image_info.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../commands/image_info.html#options">OPTIONS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development and Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/api/kiwi.html">API Documentation 9.9.2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.bootloader.html">kiwi.bootloader Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.builder.html">kiwi.builder Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.container.html">kiwi.container Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.filesystem.html">kiwi.filesystem Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.package_manager.html">kiwi.package_manager Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.partitioner.html">kiwi.partitioner Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.repository.html">kiwi.repository Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.storage.html">kiwi.storage Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.system.html">kiwi.system Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.solver.html">kiwi.solver Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.tasks.html">kiwi.tasks package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.utils.html">kiwi.utils Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../development/api/kiwi.volume_manager.html">kiwi.volume_manager Package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#module-kiwi.app"><code class="docutils literal"><span class="pre">kiwi.app</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#module-kiwi.cli"><code class="docutils literal"><span class="pre">kiwi.cli</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#module-kiwi.command"><code class="docutils literal"><span class="pre">kiwi.command</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#module-kiwi.command_process"><code class="docutils literal"><span class="pre">kiwi.command_process</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#module-kiwi.defaults"><code class="docutils literal"><span class="pre">kiwi.defaults</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#module-kiwi.exceptions"><code class="docutils literal"><span class="pre">kiwi.exceptions</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#module-kiwi.firmware"><code class="docutils literal"><span class="pre">kiwi.firmware</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#module-kiwi.help"><code class="docutils literal"><span class="pre">kiwi.help</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#module-kiwi.iso"><code class="docutils literal"><span class="pre">kiwi.iso</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#module-kiwi.kiwi"><code class="docutils literal"><span class="pre">kiwi.kiwi</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#module-kiwi.logger"><code class="docutils literal"><span class="pre">kiwi.logger</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#module-kiwi.mount_manager"><code class="docutils literal"><span class="pre">kiwi.mount_manager</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#module-kiwi.path"><code class="docutils literal"><span class="pre">kiwi.path</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#module-kiwi.privileges"><code class="docutils literal"><span class="pre">kiwi.privileges</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#module-kiwi.version"><code class="docutils literal"><span class="pre">kiwi.version</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#module-kiwi.xml_description"><code class="docutils literal"><span class="pre">kiwi.xml_description</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#module-kiwi.xml_state"><code class="docutils literal"><span class="pre">kiwi.xml_state</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/api/kiwi.html#module-kiwi">Module Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/schema.html">Schema Documentation 6.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/schema_extensions.html">Extending KIWI with Custom Operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/schema_extensions.html#the-extension-section">The &lt;extension&gt; Section</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/schema_extensions.html#relax-ng-schema-for-the-extension">RELAX NG Schema for the Extension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/schema_extensions.html#extension-schema-in-xml-catalog">Extension Schema in XML catalog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/schema_extensions.html#using-the-extension">Using the Extension</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development.html#fork-the-upstream-kiwi-repository">Fork the upstream KIWI repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development.html#create-a-local-clone-of-the-forked-kiwi-repository">Create a local clone of the forked KIWI repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development.html#create-a-python-virtual-development-environment">Create a python virtual development environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development.html#running-test-cases">Running Test Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development.html#create-a-branch-for-each-feature-or-bugfix">Create a branch for each feature or bugfix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development.html#good-to-know">Good to know</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../development.html#signing-git-patches">Signing Git Patches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development.html#raising-versions">Raising Versions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development.html#creating-a-package">Creating a Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development.html#building-documentation">Building Documentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">kiwi</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>kiwi.system.profile</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for kiwi.system.profile</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright (c) 2015 SUSE Linux GmbH.  All rights reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># This file is part of kiwi.</span>
+<span class="c1">#</span>
+<span class="c1"># kiwi is free software: you can redistribute it and/or modify</span>
+<span class="c1"># it under the terms of the GNU General Public License as published by</span>
+<span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1"># (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># kiwi is distributed in the hope that it will be useful,</span>
+<span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1"># GNU General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License</span>
+<span class="c1"># along with kiwi.  If not, see &lt;http://www.gnu.org/licenses/&gt;</span>
+<span class="c1">#</span>
+<span class="kn">import</span> <span class="nn">collections</span>
+<span class="kn">from</span> <span class="nn">tempfile</span> <span class="k">import</span> <span class="n">NamedTemporaryFile</span>
+
+<span class="c1"># project</span>
+<span class="kn">from</span> <span class="nn">kiwi.system.shell</span> <span class="k">import</span> <span class="n">Shell</span>
+<span class="kn">from</span> <span class="nn">kiwi.defaults</span> <span class="k">import</span> <span class="n">Defaults</span>
+
+
+<div class="viewcode-block" id="Profile"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.profile.Profile">[docs]</a><span class="k">class</span> <span class="nc">Profile</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create bash readable .profile environment from the XML</span>
+<span class="sd">    description. The information is used by the kiwi first</span>
+<span class="sd">    boot code.</span>
+
+<span class="sd">    Attributes</span>
+
+<span class="sd">    * :attr:`xml_state`</span>
+<span class="sd">        Instance of XMLState</span>
+
+<span class="sd">    * :attr:`dot_profile`</span>
+<span class="sd">        profile dictionary</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xml_state</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span> <span class="o">=</span> <span class="n">xml_state</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_image_names_to_profile</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_profile_names_to_profile</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_packages_marked_for_deletion_to_profile</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_type_to_profile</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_preferences_to_profile</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_systemdisk_to_profile</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_strip_to_profile</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_machine_to_profile</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_oemconfig_to_profile</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_drivers_to_profile</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Profile.add"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.profile.Profile.add">[docs]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add key/value pair to profile dictionary</span>
+
+<span class="sd">        :param string key: profile key</span>
+<span class="sd">        :param string value: profile value</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span></div>
+
+<div class="viewcode-block" id="Profile.delete"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.profile.Profile.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">:</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="n">key</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="Profile.create"><a class="viewcode-back" href="../../../development/api/kiwi.system.html#kiwi.system.profile.Profile.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create bash quoted profile</span>
+
+<span class="sd">        :return: profile dump for bash</span>
+<span class="sd">        :rtype: string</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">sorted_profile</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">OrderedDict</span><span class="p">(</span>
+            <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+        <span class="p">)</span>
+        <span class="n">temp_profile</span> <span class="o">=</span> <span class="n">NamedTemporaryFile</span><span class="p">()</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">temp_profile</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">profile</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">sorted_profile</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+                <span class="k">if</span> <span class="n">value</span><span class="p">:</span>
+                    <span class="n">profile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+                        <span class="nb">format</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;=&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_format</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+                    <span class="p">)</span>
+        <span class="k">return</span> <span class="n">Shell</span><span class="o">.</span><span class="n">quote_key_value_file</span><span class="p">(</span><span class="n">temp_profile</span><span class="o">.</span><span class="n">name</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_oemconfig_to_profile</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># kiwi_oemataraid_scan</span>
+        <span class="c1"># kiwi_oemvmcp_parmfile</span>
+        <span class="c1"># kiwi_oemmultipath_scan</span>
+        <span class="c1"># kiwi_oemswapMB</span>
+        <span class="c1"># kiwi_oemrootMB</span>
+        <span class="c1"># kiwi_oemswap</span>
+        <span class="c1"># kiwi_oempartition_install</span>
+        <span class="c1"># kiwi_oemdevicefilter</span>
+        <span class="c1"># kiwi_oemtitle</span>
+        <span class="c1"># kiwi_oemkboot</span>
+        <span class="c1"># kiwi_oemnicfilter</span>
+        <span class="c1"># kiwi_oemreboot</span>
+        <span class="c1"># kiwi_oemrebootinteractive</span>
+        <span class="c1"># kiwi_oemshutdown</span>
+        <span class="c1"># kiwi_oemshutdowninteractive</span>
+        <span class="c1"># kiwi_oemsilentboot</span>
+        <span class="c1"># kiwi_oemsilentinstall</span>
+        <span class="c1"># kiwi_oemsilentverify</span>
+        <span class="c1"># kiwi_oemskipverify</span>
+        <span class="c1"># kiwi_oembootwait</span>
+        <span class="c1"># kiwi_oemunattended</span>
+        <span class="c1"># kiwi_oemunattended_id</span>
+        <span class="c1"># kiwi_oemrecovery</span>
+        <span class="c1"># kiwi_oemrecoveryID</span>
+        <span class="c1"># kiwi_oemrecoveryPartSize</span>
+        <span class="c1"># kiwi_oemrecoveryInPlace</span>
+        <span class="n">oemconfig</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_build_type_oemconfig_section</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">oemconfig</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_oemataraid_scan&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">oemconfig</span><span class="o">.</span><span class="n">get_oem_ataraid_scan</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_oemvmcp_parmfile&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">oemconfig</span><span class="o">.</span><span class="n">get_oem_vmcp_parmfile</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_oemmultipath_scan&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">oemconfig</span><span class="o">.</span><span class="n">get_oem_multipath_scan</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_oemswapMB&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">oemconfig</span><span class="o">.</span><span class="n">get_oem_swapsize</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_oemrootMB&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">oemconfig</span><span class="o">.</span><span class="n">get_oem_systemsize</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_oemswap&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">oemconfig</span><span class="o">.</span><span class="n">get_oem_swap</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_oempartition_install&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">oemconfig</span><span class="o">.</span><span class="n">get_oem_partition_install</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_oemdevicefilter&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">oemconfig</span><span class="o">.</span><span class="n">get_oem_device_filter</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_oemtitle&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">oemconfig</span><span class="o">.</span><span class="n">get_oem_boot_title</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_oemkboot&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">oemconfig</span><span class="o">.</span><span class="n">get_oem_kiwi_initrd</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_oemnicfilter&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">oemconfig</span><span class="o">.</span><span class="n">get_oem_nic_filter</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_oemreboot&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">oemconfig</span><span class="o">.</span><span class="n">get_oem_reboot</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_oemrebootinteractive&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">oemconfig</span><span class="o">.</span><span class="n">get_oem_reboot_interactive</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_oemshutdown&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">oemconfig</span><span class="o">.</span><span class="n">get_oem_shutdown</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_oemshutdowninteractive&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">oemconfig</span><span class="o">.</span><span class="n">get_oem_shutdown_interactive</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_oemsilentboot&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">oemconfig</span><span class="o">.</span><span class="n">get_oem_silent_boot</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_oemsilentinstall&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">oemconfig</span><span class="o">.</span><span class="n">get_oem_silent_install</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_oemsilentverify&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">oemconfig</span><span class="o">.</span><span class="n">get_oem_silent_verify</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_oemskipverify&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">oemconfig</span><span class="o">.</span><span class="n">get_oem_skip_verify</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_oembootwait&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">oemconfig</span><span class="o">.</span><span class="n">get_oem_bootwait</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_oemunattended&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">oemconfig</span><span class="o">.</span><span class="n">get_oem_unattended</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_oemunattended_id&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">oemconfig</span><span class="o">.</span><span class="n">get_oem_unattended_id</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_oemrecovery&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">oemconfig</span><span class="o">.</span><span class="n">get_oem_recovery</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_oemrecoveryID&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">oemconfig</span><span class="o">.</span><span class="n">get_oem_recoveryID</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_oemrecoveryPartSize&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">oemconfig</span><span class="o">.</span><span class="n">get_oem_recovery_part_size</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_oemrecoveryInPlace&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">oemconfig</span><span class="o">.</span><span class="n">get_oem_inplace_recovery</span><span class="p">())</span>
+
+    <span class="k">def</span> <span class="nf">_drivers_to_profile</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># kiwi_drivers</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_drivers&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_drivers_list</span><span class="p">()</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_machine_to_profile</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># kiwi_xendomain</span>
+        <span class="n">machine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_build_type_machine_section</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">machine</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_xendomain&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">get_domain</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_strip_to_profile</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># kiwi_strip_delete</span>
+        <span class="c1"># kiwi_strip_tools</span>
+        <span class="c1"># kiwi_strip_libs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_strip_delete&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_strip_files_to_delete</span><span class="p">()</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_strip_tools&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_strip_tools_to_keep</span><span class="p">()</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_strip_libs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_strip_libraries_to_keep</span><span class="p">()</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_systemdisk_to_profile</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># kiwi_lvmgroup</span>
+        <span class="c1"># kiwi_lvm</span>
+        <span class="c1"># kiwi_Volume_X</span>
+        <span class="n">systemdisk</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_build_type_system_disk_section</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">systemdisk</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_lvmgroup&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">systemdisk</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_lvmgroup&#39;</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_lvmgroup&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                    <span class="n">Defaults</span><span class="o">.</span><span class="n">get_default_volume_group_name</span><span class="p">()</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_volume_management</span><span class="p">():</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_lvm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;true&#39;</span>
+
+            <span class="n">volume_count</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">for</span> <span class="n">volume</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_volumes</span><span class="p">():</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_Volume_&#39;</span> <span class="o">+</span> <span class="nb">format</span><span class="p">(</span><span class="n">volume_count</span><span class="p">)]</span> <span class="o">=</span> <span class="s1">&#39;|&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                    <span class="p">[</span>
+                        <span class="n">volume</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                        <span class="s1">&#39;size:all&#39;</span> <span class="k">if</span> <span class="n">volume</span><span class="o">.</span><span class="n">fullsize</span> <span class="k">else</span> <span class="n">volume</span><span class="o">.</span><span class="n">size</span><span class="p">,</span>
+                        <span class="n">volume</span><span class="o">.</span><span class="n">mountpoint</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span>
+                    <span class="p">]</span>
+                <span class="p">)</span>
+                <span class="n">volume_count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">def</span> <span class="nf">_preferences_to_profile</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># kiwi_iversion</span>
+        <span class="c1"># kiwi_showlicense</span>
+        <span class="c1"># kiwi_keytable</span>
+        <span class="c1"># kiwi_timezone</span>
+        <span class="c1"># kiwi_hwclock</span>
+        <span class="c1"># kiwi_language</span>
+        <span class="c1"># kiwi_splash_theme</span>
+        <span class="c1"># kiwi_loader_theme</span>
+        <span class="k">for</span> <span class="n">preferences</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_preferences_sections</span><span class="p">():</span>
+            <span class="k">if</span> <span class="s1">&#39;kiwi_iversion&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_iversion&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">preferences</span><span class="o">.</span><span class="n">get_version</span><span class="p">())</span>
+            <span class="k">if</span> <span class="s1">&#39;kiwi_showlicense&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_showlicense&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">preferences</span><span class="o">.</span><span class="n">get_showlicense</span><span class="p">())</span>
+            <span class="k">if</span> <span class="s1">&#39;kiwi_keytable&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_keytable&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">preferences</span><span class="o">.</span><span class="n">get_keytable</span><span class="p">())</span>
+            <span class="k">if</span> <span class="s1">&#39;kiwi_timezone&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_timezone&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">preferences</span><span class="o">.</span><span class="n">get_timezone</span><span class="p">())</span>
+            <span class="k">if</span> <span class="s1">&#39;kiwi_hwclock&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_hwclock&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">preferences</span><span class="o">.</span><span class="n">get_hwclock</span><span class="p">())</span>
+            <span class="k">if</span> <span class="s1">&#39;kiwi_language&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_language&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">preferences</span><span class="o">.</span><span class="n">get_locale</span><span class="p">())</span>
+            <span class="k">if</span> <span class="s1">&#39;kiwi_splash_theme&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_splash_theme&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">preferences</span><span class="o">.</span><span class="n">get_bootsplash_theme</span><span class="p">())</span>
+            <span class="k">if</span> <span class="s1">&#39;kiwi_loader_theme&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_loader_theme&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">(</span><span class="n">preferences</span><span class="o">.</span><span class="n">get_bootloader_theme</span><span class="p">())</span>
+
+    <span class="k">def</span> <span class="nf">_type_to_profile</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># kiwi_type</span>
+        <span class="c1"># kiwi_compressed</span>
+        <span class="c1"># kiwi_boot_timeout</span>
+        <span class="c1"># kiwi_wwid_wait_timeout</span>
+        <span class="c1"># kiwi_hybrid</span>
+        <span class="c1"># kiwi_hybridpersistent</span>
+        <span class="c1"># kiwi_hybridpersistent_filesystem</span>
+        <span class="c1"># kiwi_initrd_system</span>
+        <span class="c1"># kiwi_ramonly</span>
+        <span class="c1"># kiwi_target_blocksize</span>
+        <span class="c1"># kiwi_target_removable</span>
+        <span class="c1"># kiwi_cmdline</span>
+        <span class="c1"># kiwi_firmware</span>
+        <span class="c1"># kiwi_bootloader</span>
+        <span class="c1"># kiwi_bootloader_console</span>
+        <span class="c1"># kiwi_devicepersistency</span>
+        <span class="c1"># kiwi_installboot</span>
+        <span class="c1"># kiwi_bootkernel</span>
+        <span class="c1"># kiwi_fsmountoptions</span>
+        <span class="c1"># kiwi_bootprofile</span>
+        <span class="c1"># kiwi_vga</span>
+        <span class="c1"># kiwi_btrfs_root_is_snapshot</span>
+        <span class="n">type_section</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">build_type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_type&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">type_section</span><span class="o">.</span><span class="n">get_image</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_compressed&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">type_section</span><span class="o">.</span><span class="n">get_compressed</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_boot_timeout&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">type_section</span><span class="o">.</span><span class="n">get_boottimeout</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_wwid_wait_timeout&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">type_section</span><span class="o">.</span><span class="n">get_wwid_wait_timeout</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_hybrid&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">type_section</span><span class="o">.</span><span class="n">get_hybrid</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_hybridpersistent&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">type_section</span><span class="o">.</span><span class="n">get_hybridpersistent</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_hybridpersistent_filesystem&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">type_section</span><span class="o">.</span><span class="n">get_hybridpersistent_filesystem</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_initrd_system&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">type_section</span><span class="o">.</span><span class="n">get_initrd_system</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_ramonly&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">type_section</span><span class="o">.</span><span class="n">get_ramonly</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_target_blocksize&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">type_section</span><span class="o">.</span><span class="n">get_target_blocksize</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_target_removable&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">type_section</span><span class="o">.</span><span class="n">get_target_removable</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_cmdline&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">type_section</span><span class="o">.</span><span class="n">get_kernelcmdline</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_firmware&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">type_section</span><span class="o">.</span><span class="n">get_firmware</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_bootloader&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">type_section</span><span class="o">.</span><span class="n">get_bootloader</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_bootloader_console&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">type_section</span><span class="o">.</span><span class="n">get_bootloader_console</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_btrfs_root_is_snapshot&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">type_section</span><span class="o">.</span><span class="n">get_btrfs_root_is_snapshot</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_gpt_hybrid_mbr&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">type_section</span><span class="o">.</span><span class="n">get_gpt_hybrid_mbr</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_devicepersistency&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">type_section</span><span class="o">.</span><span class="n">get_devicepersistency</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_installboot&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">type_section</span><span class="o">.</span><span class="n">get_installboot</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_bootkernel&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">type_section</span><span class="o">.</span><span class="n">get_bootkernel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_fsmountoptions&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">type_section</span><span class="o">.</span><span class="n">get_fsmountoptions</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_bootprofile&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">type_section</span><span class="o">.</span><span class="n">get_bootprofile</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_vga&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">type_section</span><span class="o">.</span><span class="n">get_vga</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_profile_names_to_profile</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># kiwi_profiles</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_profiles&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">profiles</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_packages_marked_for_deletion_to_profile</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># kiwi_delete</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_delete&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_to_become_deleted_packages</span><span class="p">()</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_image_names_to_profile</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># kiwi_displayname</span>
+        <span class="c1"># kiwi_cpio_name</span>
+        <span class="c1"># kiwi_iname</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_iname&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">xml_data</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_displayname&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">xml_data</span><span class="o">.</span><span class="n">get_displayname</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_displayname&#39;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_displayname&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_iname&#39;</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">xml_state</span><span class="o">.</span><span class="n">get_build_type_name</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;cpio&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_cpio_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dot_profile</span><span class="p">[</span><span class="s1">&#39;kiwi_iname&#39;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">_text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section_content</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Helper method to return the text for XML elements of the</span>
+<span class="sd">        following structure: &lt;section&gt;text&lt;/section&gt;. The data</span>
+<span class="sd">        structure builder will return the text as a list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">section_content</span><span class="p">:</span>
+            <span class="n">content</span> <span class="o">=</span> <span class="n">section_content</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">content</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s1">&#39;true&#39;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">content</span>
+
+    <span class="k">def</span> <span class="nf">_format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Helper method to format bool profile values in the way</span>
+<span class="sd">        the boot code expects them</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;true&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">format</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Marcus Schäfer.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'9.9.2',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

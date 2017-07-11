@@ -1,0 +1,1283 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>kiwi.defaults &mdash; kiwi 9.9.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="kiwi 9.9.2 documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> kiwi
+          
+
+          
+            
+            <img src="../../_static/kiwi-logo.png" class="logo" />
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../overview/legacy_kiwi.html">Legacy KIWI vs. Next Generation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#when-do-i-need-to-use-the-legacy-kiwi">When Do I need to use the legacy kiwi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#dropped-features">Dropped Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../overview/legacy_kiwi.html#compatibility">Compatibility</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../overview/workflow.html">Basic Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../overview/workflow.html#building-images">Building Images</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../overview/workflow.html#the-prepare-step">The Prepare Step</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../overview/workflow.html#the-create-step">The Create Step</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../overview/workflow.html#components-of-an-image-description">Components of an Image Description</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../overview/workflow.html#image-customization-with-config-sh-shell-script">Image Customization with <code class="docutils literal"><span class="pre">config.sh</span></code> Shell Script</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../overview/workflow.html#image-customization-with-images-sh-shell-script">Image Customization with <code class="docutils literal"><span class="pre">images.sh</span></code> Shell Script</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../overview/workflow.html#customizing-the-boot-process">Customizing the Boot Process</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../overview/workflow.html#boot-image-hook-scripts">Boot Image Hook-Scripts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../overview/workflow.html#boot-parameters">Boot Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../overview/workflow.html#faq-boot-image-customization">FAQ: Boot Image Customization</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../overview/workflow.html#distribution-specific-code">Distribution Specific Code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../overview.html#conceptual-overview">Conceptual Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../overview.html#terminology">Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../overview.html#system-requirements">System Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#before-you-start">Before you start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#build-your-first-image">Build your first image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html#run-your-image">Run your image</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../building.html">Building Images</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../building/build_live_iso.html">Build an ISO Hybrid Live Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../building/build_vmx_disk.html">Build a Virtual Disk Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../building/build_oem_disk.html">Build an OEM Expandable Disk Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_oem_disk.html#deployment-methods">Deployment Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_oem_disk.html#manual-deployment">Manual Deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_oem_disk.html#cd-dvd-deployment">CD/DVD Deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_oem_disk.html#network-deployment">Network Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../building/build_pxe_root_filesystem.html">Build a PXE Root File System Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../building/build_docker_container.html">Build a Docker Container Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../building/build_containerized.html">Building in a Self-Contained Environment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_containerized.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_containerized.html#installing-and-setting-up-dice">Installing and Setting up Dice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_containerized.html#installing-and-setting-up-docker">Installing and Setting up Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_containerized.html#installing-and-setting-up-the-build-container">Installing and Setting up the Build Container</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_containerized.html#installing-and-setting-up-vagrant">Installing and Setting up Vagrant</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_containerized.html#configuring-dice">Configuring Dice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_containerized.html#selecting-a-kiwi-template">Selecting a KIWI Template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_containerized.html#the-dicefile">The Dicefile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_containerized.html#building-with-dice">Building with Dice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_containerized.html#buildsystem-backends">Buildsystem Backends</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_containerized.html#building-with-the-host-buildsystem">Building with the Host Buildsystem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_containerized.html#id1">The Dicefile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_containerized.html#building-with-the-vagrant-buildsystem">Building with the Vagrant Buildsystem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_containerized.html#id2">The Dicefile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_containerized.html#the-vagrant-setup-for-the-docker-provider">The Vagrant setup for the Docker Provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_containerized.html#the-vagrantfile">The Vagrantfile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_containerized.html#the-vagrant-setup-for-the-libvirt-provider">The Vagrant setup for the libvirt Provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_containerized.html#the-vagrant-build-box">The Vagrant Build Box</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/build_containerized.html#id3">The Vagrantfile</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../building/build_in_buildservice.html">Building in the Open Buildservice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../building/working_with_images.html">Working with Images</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/iso_to_usb_stick_deployment.html">Deploy ISO Image on an USB Stick</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/vmx_setup_for_ec2.html">KIWI Image Description for Amazon EC2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/vmx_setup_for_azure.html">KIWI Image Description for Microsoft Azure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/vmx_setup_for_google.html">KIWI Image Description for Google Compute Engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/setup_pxe_bootserver.html">Setting Up a Network Boot Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../building/working_with_images/setup_pxe_bootserver.html#installing-and-configuring-atftp">Installing and Configuring atftp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../building/working_with_images/setup_pxe_bootserver.html#installing-and-configuring-dhcp">Installing and Configuring DHCP</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../building/working_with_images/pxe_client_configuration.html">PXE Client Setup Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../building/working_with_images/pxe_client_configuration.html#setup-client-with-remote-root">Setup Client with Remote Root</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../building/working_with_images/pxe_client_configuration.html#setup-client-with-system-on-local-disk">Setup Client with System on Local Disk</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../building/working_with_images/pxe_client_configuration.html#setup-client-with-system-on-local-md-raid-disk">Setup Client with System on Local MD RAID Disk</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../building/working_with_images/pxe_client_configuration.html#setup-loading-of-custom-configuration-file-s">Setup Loading of Custom Configuration File(s)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../building/working_with_images/pxe_client_configuration.html#setup-client-to-force-reload-image">Setup Client to Force Reload Image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../building/working_with_images/pxe_client_configuration.html#setup-client-to-force-reload-configuration-files">Setup Client to Force Reload Configuration Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../building/working_with_images/pxe_client_configuration.html#setup-client-for-reboot-after-deployment">Setup Client for Reboot After Deployment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../building/working_with_images/pxe_client_configuration.html#setup-custom-kernel-boot-options">Setup custom kernel boot options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../building/working_with_images/pxe_client_configuration.html#setup-a-custom-boot-timeout">Setup a Custom Boot Timeout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../building/working_with_images/pxe_client_configuration.html#setup-a-different-download-protocol-and-server">Setup a Different Download Protocol and Server</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../building.html#supported-distributions">Supported Distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../commands.html">KIWI Commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../commands/kiwi.html">kiwi</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/kiwi.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/kiwi.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/kiwi.html#global-options">GLOBAL OPTIONS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/kiwi.html#example">EXAMPLE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/kiwi.html#runtime-config-file">RUNTIME CONFIG FILE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/kiwi.html#compatibility">COMPATIBILITY</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../commands/result_list.html">kiwi result list</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/result_list.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/result_list.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/result_list.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../commands/result_bundle.html">kiwi result bundle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/result_bundle.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/result_bundle.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/result_bundle.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../commands/system_prepare.html">kiwi system prepare</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/system_prepare.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/system_prepare.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/system_prepare.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../commands/system_update.html">kiwi system update</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/system_update.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/system_update.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/system_update.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../commands/system_build.html">kiwi system build</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/system_build.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/system_build.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/system_build.html#options">OPTIONS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/system_build.html#uri-types">URI_TYPES</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../commands/system_create.html">kiwi system create</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/system_create.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/system_create.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/system_create.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../commands/image_resize.html">kiwi image resize</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/image_resize.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/image_resize.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/image_resize.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../commands/image_info.html">kiwi image info</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/image_info.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/image_info.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../commands/image_info.html#options">OPTIONS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../development.html">Development and Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../development/api/kiwi.html">API Documentation 9.9.2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.bootloader.html">kiwi.bootloader Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.builder.html">kiwi.builder Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.container.html">kiwi.container Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.filesystem.html">kiwi.filesystem Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.package_manager.html">kiwi.package_manager Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.partitioner.html">kiwi.partitioner Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.repository.html">kiwi.repository Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.storage.html">kiwi.storage Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.system.html">kiwi.system Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.solver.html">kiwi.solver Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.tasks.html">kiwi.tasks package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.utils.html">kiwi.utils Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../development/api/kiwi.volume_manager.html">kiwi.volume_manager Package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#module-kiwi.app"><code class="docutils literal"><span class="pre">kiwi.app</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#module-kiwi.cli"><code class="docutils literal"><span class="pre">kiwi.cli</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#module-kiwi.command"><code class="docutils literal"><span class="pre">kiwi.command</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#module-kiwi.command_process"><code class="docutils literal"><span class="pre">kiwi.command_process</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#module-kiwi.defaults"><code class="docutils literal"><span class="pre">kiwi.defaults</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#module-kiwi.exceptions"><code class="docutils literal"><span class="pre">kiwi.exceptions</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#module-kiwi.firmware"><code class="docutils literal"><span class="pre">kiwi.firmware</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#module-kiwi.help"><code class="docutils literal"><span class="pre">kiwi.help</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#module-kiwi.iso"><code class="docutils literal"><span class="pre">kiwi.iso</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#module-kiwi.kiwi"><code class="docutils literal"><span class="pre">kiwi.kiwi</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#module-kiwi.logger"><code class="docutils literal"><span class="pre">kiwi.logger</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#module-kiwi.mount_manager"><code class="docutils literal"><span class="pre">kiwi.mount_manager</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#module-kiwi.path"><code class="docutils literal"><span class="pre">kiwi.path</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#module-kiwi.privileges"><code class="docutils literal"><span class="pre">kiwi.privileges</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#module-kiwi.version"><code class="docutils literal"><span class="pre">kiwi.version</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#module-kiwi.xml_description"><code class="docutils literal"><span class="pre">kiwi.xml_description</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#module-kiwi.xml_state"><code class="docutils literal"><span class="pre">kiwi.xml_state</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/api/kiwi.html#module-kiwi">Module Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../development/schema.html">Schema Documentation 6.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../development/schema_extensions.html">Extending KIWI with Custom Operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../development/schema_extensions.html#the-extension-section">The &lt;extension&gt; Section</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/schema_extensions.html#relax-ng-schema-for-the-extension">RELAX NG Schema for the Extension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/schema_extensions.html#extension-schema-in-xml-catalog">Extension Schema in XML catalog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/schema_extensions.html#using-the-extension">Using the Extension</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../development.html#fork-the-upstream-kiwi-repository">Fork the upstream KIWI repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../development.html#create-a-local-clone-of-the-forked-kiwi-repository">Create a local clone of the forked KIWI repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../development.html#create-a-python-virtual-development-environment">Create a python virtual development environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../development.html#running-test-cases">Running Test Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../development.html#create-a-branch-for-each-feature-or-bugfix">Create a branch for each feature or bugfix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../development.html#good-to-know">Good to know</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../development.html#signing-git-patches">Signing Git Patches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development.html#raising-versions">Raising Versions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development.html#creating-a-package">Creating a Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development.html#building-documentation">Building Documentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">kiwi</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>kiwi.defaults</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for kiwi.defaults</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright (c) 2015 SUSE Linux GmbH.  All rights reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># This file is part of kiwi.</span>
+<span class="c1">#</span>
+<span class="c1"># kiwi is free software: you can redistribute it and/or modify</span>
+<span class="c1"># it under the terms of the GNU General Public License as published by</span>
+<span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1"># (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># kiwi is distributed in the hope that it will be useful,</span>
+<span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1"># GNU General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License</span>
+<span class="c1"># along with kiwi.  If not, see &lt;http://www.gnu.org/licenses/&gt;</span>
+<span class="c1">#</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">namedtuple</span>
+<span class="kn">import</span> <span class="nn">platform</span>
+<span class="kn">from</span> <span class="nn">pkg_resources</span> <span class="k">import</span> <span class="n">resource_filename</span>
+
+<span class="c1"># project</span>
+<span class="kn">from</span> <span class="nn">.path</span> <span class="k">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">.version</span> <span class="k">import</span> <span class="n">__githash__</span>
+
+
+<div class="viewcode-block" id="Defaults"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults">[docs]</a><span class="k">class</span> <span class="nc">Defaults</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Default values and export methods</span>
+
+<span class="sd">    Attributes</span>
+
+<span class="sd">    * :attr:`defaults`</span>
+<span class="sd">        dict of default profile values</span>
+
+<span class="sd">    * :attr:`profile_key_list`</span>
+<span class="sd">        list of profile keys to import into an instance of Profile</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">defaults</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="c1"># alignment in bytes</span>
+            <span class="s1">&#39;kiwi_align&#39;</span><span class="p">:</span> <span class="mi">1048576</span><span class="p">,</span>
+            <span class="c1"># start sector number</span>
+            <span class="s1">&#39;kiwi_startsector&#39;</span><span class="p">:</span> <span class="mi">2048</span><span class="p">,</span>
+            <span class="c1"># sectorsize in bytes</span>
+            <span class="s1">&#39;kiwi_sectorsize&#39;</span><span class="p">:</span> <span class="mi">512</span><span class="p">,</span>
+            <span class="c1"># inode size in bytes for inode based filesystems</span>
+            <span class="s1">&#39;kiwi_inode_size&#39;</span><span class="p">:</span> <span class="mi">256</span><span class="p">,</span>
+            <span class="c1"># inode ratio for inode based filesystems</span>
+            <span class="s1">&#39;kiwi_inode_ratio&#39;</span><span class="p">:</span> <span class="mi">16384</span><span class="p">,</span>
+            <span class="c1"># minimum inode number for inode based filesystems</span>
+            <span class="s1">&#39;kiwi_min_inodes&#39;</span><span class="p">:</span> <span class="mi">20000</span><span class="p">,</span>
+            <span class="c1"># kiwi git revision</span>
+            <span class="s1">&#39;kiwi_revision&#39;</span><span class="p">:</span> <span class="n">__githash__</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">profile_key_list</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;kiwi_align&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;kiwi_startsector&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;kiwi_sectorsize&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;kiwi_revision&#39;</span>
+        <span class="p">]</span>
+
+<div class="viewcode-block" id="Defaults.get_xz_compression_options"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_xz_compression_options">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_xz_compression_options</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="s1">&#39;--check=crc32&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--lzma2=dict=512KiB&#39;</span>
+        <span class="p">]</span></div>
+
+<div class="viewcode-block" id="Defaults.is_buildservice_worker"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.is_buildservice_worker">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">is_buildservice_worker</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># the presence of /.buildenv on the build host indicates</span>
+        <span class="c1"># we are building inside of the open buildservice</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;/.buildenv&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Defaults.get_obs_download_server_url"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_obs_download_server_url">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_obs_download_server_url</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The default download server url hosting the public open</span>
+<span class="sd">        buildservice repositories</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;http://download.opensuse.org/repositories&#39;</span></div>
+
+<div class="viewcode-block" id="Defaults.get_s390_disk_block_size"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_s390_disk_block_size">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_s390_disk_block_size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The default block size for s390 storage disks</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;4096&#39;</span></div>
+
+<div class="viewcode-block" id="Defaults.get_s390_disk_type"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_s390_disk_type">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_s390_disk_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The default disk type for s390 storage disks</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;CDL&#39;</span></div>
+
+<div class="viewcode-block" id="Defaults.get_solvable_location"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_solvable_location">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_solvable_location</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The directory to store SAT solvables for repositories.</span>
+<span class="sd">        The solvable files are used to perform package</span>
+<span class="sd">        dependency and metadata resolution</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;/var/tmp/kiwi/satsolver&#39;</span></div>
+
+<div class="viewcode-block" id="Defaults.get_shared_cache_location"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_shared_cache_location">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_shared_cache_location</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The shared location is a directory which shares data from</span>
+<span class="sd">        the image buildsystem host with the image root system.</span>
+<span class="sd">        The location is returned as an absolute path stripped off</span>
+<span class="sd">        by the leading &#39;/&#39;. This is because the path is transparently</span>
+<span class="sd">        used on the host /&lt;cache-dir&gt; and inside of the image</span>
+<span class="sd">        imageroot/&lt;cache-dir&gt;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">.cli</span> <span class="k">import</span> <span class="n">Cli</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span>
+            <span class="n">Cli</span><span class="p">()</span><span class="o">.</span><span class="n">get_global_args</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;--shared-cache-dir&#39;</span><span class="p">)</span>
+        <span class="p">))</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Defaults.get_failsafe_kernel_options"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_failsafe_kernel_options">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_failsafe_kernel_options</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Failsafe boot kernel options</span>
+
+<span class="sd">        :return: kernel options list</span>
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="s1">&#39;ide=nodma&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;apm=off&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;noresume&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;edd=off&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;powersaved=off&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;nohz=off&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;highres=off&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;processor.max+cstate=1&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;nomodeset&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;x11failsafe&#39;</span>
+            <span class="p">]</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="Defaults.get_video_mode_map"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_video_mode_map">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_video_mode_map</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implements video mode map</span>
+
+<span class="sd">        Assign a tuple to each kernel vesa hex id for each of the</span>
+<span class="sd">        supported bootloaders</span>
+
+<span class="sd">        :return: video type map</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">video_type</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span>
+            <span class="s1">&#39;video_type&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;grub2&#39;</span><span class="p">,</span> <span class="s1">&#39;isolinux&#39;</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s1">&#39;0x301&#39;</span><span class="p">:</span> <span class="n">video_type</span><span class="p">(</span><span class="n">grub2</span><span class="o">=</span><span class="s1">&#39;640x480&#39;</span><span class="p">,</span> <span class="n">isolinux</span><span class="o">=</span><span class="s1">&#39;640 480&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;0x310&#39;</span><span class="p">:</span> <span class="n">video_type</span><span class="p">(</span><span class="n">grub2</span><span class="o">=</span><span class="s1">&#39;640x480&#39;</span><span class="p">,</span> <span class="n">isolinux</span><span class="o">=</span><span class="s1">&#39;640 480&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;0x311&#39;</span><span class="p">:</span> <span class="n">video_type</span><span class="p">(</span><span class="n">grub2</span><span class="o">=</span><span class="s1">&#39;640x480&#39;</span><span class="p">,</span> <span class="n">isolinux</span><span class="o">=</span><span class="s1">&#39;640 480&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;0x312&#39;</span><span class="p">:</span> <span class="n">video_type</span><span class="p">(</span><span class="n">grub2</span><span class="o">=</span><span class="s1">&#39;640x480&#39;</span><span class="p">,</span> <span class="n">isolinux</span><span class="o">=</span><span class="s1">&#39;640 480&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;0x303&#39;</span><span class="p">:</span> <span class="n">video_type</span><span class="p">(</span><span class="n">grub2</span><span class="o">=</span><span class="s1">&#39;800x600&#39;</span><span class="p">,</span> <span class="n">isolinux</span><span class="o">=</span><span class="s1">&#39;800 600&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;0x313&#39;</span><span class="p">:</span> <span class="n">video_type</span><span class="p">(</span><span class="n">grub2</span><span class="o">=</span><span class="s1">&#39;800x600&#39;</span><span class="p">,</span> <span class="n">isolinux</span><span class="o">=</span><span class="s1">&#39;800 600&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;0x314&#39;</span><span class="p">:</span> <span class="n">video_type</span><span class="p">(</span><span class="n">grub2</span><span class="o">=</span><span class="s1">&#39;800x600&#39;</span><span class="p">,</span> <span class="n">isolinux</span><span class="o">=</span><span class="s1">&#39;800 600&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;0x315&#39;</span><span class="p">:</span> <span class="n">video_type</span><span class="p">(</span><span class="n">grub2</span><span class="o">=</span><span class="s1">&#39;800x600&#39;</span><span class="p">,</span> <span class="n">isolinux</span><span class="o">=</span><span class="s1">&#39;800 600&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;0x305&#39;</span><span class="p">:</span> <span class="n">video_type</span><span class="p">(</span><span class="n">grub2</span><span class="o">=</span><span class="s1">&#39;1024x768&#39;</span><span class="p">,</span> <span class="n">isolinux</span><span class="o">=</span><span class="s1">&#39;1024 768&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;0x316&#39;</span><span class="p">:</span> <span class="n">video_type</span><span class="p">(</span><span class="n">grub2</span><span class="o">=</span><span class="s1">&#39;1024x768&#39;</span><span class="p">,</span> <span class="n">isolinux</span><span class="o">=</span><span class="s1">&#39;1024 768&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;0x317&#39;</span><span class="p">:</span> <span class="n">video_type</span><span class="p">(</span><span class="n">grub2</span><span class="o">=</span><span class="s1">&#39;1024x768&#39;</span><span class="p">,</span> <span class="n">isolinux</span><span class="o">=</span><span class="s1">&#39;1024 768&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;0x318&#39;</span><span class="p">:</span> <span class="n">video_type</span><span class="p">(</span><span class="n">grub2</span><span class="o">=</span><span class="s1">&#39;1024x768&#39;</span><span class="p">,</span> <span class="n">isolinux</span><span class="o">=</span><span class="s1">&#39;1024 768&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;0x307&#39;</span><span class="p">:</span> <span class="n">video_type</span><span class="p">(</span><span class="n">grub2</span><span class="o">=</span><span class="s1">&#39;1280x1024&#39;</span><span class="p">,</span> <span class="n">isolinux</span><span class="o">=</span><span class="s1">&#39;1280 1024&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;0x319&#39;</span><span class="p">:</span> <span class="n">video_type</span><span class="p">(</span><span class="n">grub2</span><span class="o">=</span><span class="s1">&#39;1280x1024&#39;</span><span class="p">,</span> <span class="n">isolinux</span><span class="o">=</span><span class="s1">&#39;1280 1024&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;0x31a&#39;</span><span class="p">:</span> <span class="n">video_type</span><span class="p">(</span><span class="n">grub2</span><span class="o">=</span><span class="s1">&#39;1280x1024&#39;</span><span class="p">,</span> <span class="n">isolinux</span><span class="o">=</span><span class="s1">&#39;1280 1024&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;0x31b&#39;</span><span class="p">:</span> <span class="n">video_type</span><span class="p">(</span><span class="n">grub2</span><span class="o">=</span><span class="s1">&#39;1280x1024&#39;</span><span class="p">,</span> <span class="n">isolinux</span><span class="o">=</span><span class="s1">&#39;1280 1024&#39;</span><span class="p">),</span>
+        <span class="p">}</span></div>
+
+<div class="viewcode-block" id="Defaults.get_default_video_mode"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_default_video_mode">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_default_video_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implements 800x600 default video mode</span>
+
+<span class="sd">        :return: video mode name</span>
+<span class="sd">        :rtype: string</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;0x303&#39;</span></div>
+
+<div class="viewcode-block" id="Defaults.get_grub_boot_directory_name"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_grub_boot_directory_name">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_grub_boot_directory_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lookup_path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get grub2 data directory name in boot/ directory</span>
+
+<span class="sd">        Depending on the distribution the grub2 boot path could be</span>
+<span class="sd">        either boot/grub2 or boot/grub. The method will decide for</span>
+<span class="sd">        the correct base directory name according to the name pattern</span>
+<span class="sd">        of the installed grub2 tools</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">chroot_env</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;PATH&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">lookup_path</span><span class="p">,</span> <span class="s1">&#39;usr&#39;</span><span class="p">,</span> <span class="s1">&#39;sbin&#39;</span><span class="p">])</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="n">Path</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;grub2-install&#39;</span><span class="p">,</span> <span class="n">custom_env</span><span class="o">=</span><span class="n">chroot_env</span><span class="p">):</span>
+            <span class="c1"># the presence of grub2-install is an indicator to put all</span>
+            <span class="c1"># grub2 data below boot/grub2</span>
+            <span class="k">return</span> <span class="s1">&#39;grub2&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># in any other case the assumption is made that all grub</span>
+            <span class="c1"># boot data should live below boot/grub</span>
+            <span class="k">return</span> <span class="s1">&#39;grub&#39;</span></div>
+
+<div class="viewcode-block" id="Defaults.get_grub_basic_modules"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_grub_basic_modules">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_grub_basic_modules</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiboot</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implements list of basic grub modules</span>
+
+<span class="sd">        :param bool multiboot: grub multiboot mode</span>
+
+<span class="sd">        :return: module name</span>
+<span class="sd">        :rtype: string</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">modules</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;ext2&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;iso9660&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;linux&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;echo&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;configfile&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;search_label&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;search_fs_file&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;search&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;search_fs_uuid&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;ls&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;normal&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;gzio&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;png&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;fat&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;gettext&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;font&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;minicmd&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;gfxterm&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;gfxmenu&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;video&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;video_fb&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;xfs&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;btrfs&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;lvm&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;test&#39;</span>
+        <span class="p">]</span>
+        <span class="k">if</span> <span class="n">multiboot</span><span class="p">:</span>
+            <span class="n">modules</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;multiboot&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">modules</span></div>
+
+<div class="viewcode-block" id="Defaults.get_grub_efi_modules"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_grub_efi_modules">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_grub_efi_modules</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiboot</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implements list of grub efi modules</span>
+
+<span class="sd">        :param bool multiboot: grub multiboot mode</span>
+
+<span class="sd">        :return: module name</span>
+<span class="sd">        :rtype: string</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">host_architecture</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">machine</span><span class="p">()</span>
+        <span class="n">modules</span> <span class="o">=</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_grub_basic_modules</span><span class="p">(</span><span class="n">multiboot</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span>
+            <span class="s1">&#39;part_gpt&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;part_msdos&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;efi_gop&#39;</span>
+        <span class="p">]</span>
+        <span class="k">if</span> <span class="n">host_architecture</span> <span class="o">==</span> <span class="s1">&#39;x86_64&#39;</span><span class="p">:</span>
+            <span class="n">modules</span> <span class="o">+=</span> <span class="p">[</span>
+                <span class="s1">&#39;efi_uga&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;linuxefi&#39;</span>
+            <span class="p">]</span>
+        <span class="k">return</span> <span class="n">modules</span></div>
+
+<div class="viewcode-block" id="Defaults.get_grub_bios_modules"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_grub_bios_modules">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_grub_bios_modules</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiboot</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implements list of grub bios modules</span>
+
+<span class="sd">        :param bool multiboot: grub multiboot mode</span>
+
+<span class="sd">        :return: module name</span>
+<span class="sd">        :rtype: string</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">modules</span> <span class="o">=</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_grub_basic_modules</span><span class="p">(</span><span class="n">multiboot</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span>
+            <span class="s1">&#39;part_gpt&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;part_msdos&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;biosdisk&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;vga&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;vbe&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;chain&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;boot&#39;</span>
+        <span class="p">]</span>
+        <span class="k">return</span> <span class="n">modules</span></div>
+
+<div class="viewcode-block" id="Defaults.get_grub_ofw_modules"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_grub_ofw_modules">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_grub_ofw_modules</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implements list of grub ofw modules (ppc)</span>
+
+<span class="sd">        :return: module name</span>
+<span class="sd">        :rtype: string</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">modules</span> <span class="o">=</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">get_grub_basic_modules</span><span class="p">(</span><span class="n">multiboot</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span>
+            <span class="s1">&#39;part_gpt&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;part_msdos&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;boot&#39;</span>
+        <span class="p">]</span>
+        <span class="k">return</span> <span class="n">modules</span></div>
+
+<div class="viewcode-block" id="Defaults.get_grub_path"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_grub_path">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_grub_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lookup_path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Depending on the distribution grub could be installed below</span>
+<span class="sd">        a grub2 or grub directory. Therefore this information needs</span>
+<span class="sd">        to be dynamically looked up</span>
+
+<span class="sd">        :param string lookup_path: path name</span>
+
+<span class="sd">        :return: grub2 install directory path name</span>
+<span class="sd">        :rtype: string</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">grub_name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;grub2&#39;</span><span class="p">,</span> <span class="s1">&#39;grub&#39;</span><span class="p">]:</span>
+            <span class="n">grub_path</span> <span class="o">=</span> <span class="n">lookup_path</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">grub_name</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">grub_path</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">grub_path</span></div>
+
+<div class="viewcode-block" id="Defaults.get_preparer"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_preparer">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_preparer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implements ISO preparer name</span>
+
+<span class="sd">        :return: name</span>
+<span class="sd">        :rtype: string</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;KIWI - http://suse.github.com/kiwi&#39;</span></div>
+
+<div class="viewcode-block" id="Defaults.get_publisher"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_publisher">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_publisher</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implements ISO publisher name</span>
+
+<span class="sd">        :return: name</span>
+<span class="sd">        :rtype: string</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;SUSE LINUX GmbH&#39;</span></div>
+
+<div class="viewcode-block" id="Defaults.get_shim_loader"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_shim_loader">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_shim_loader</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return shim loader file path or None if not found</span>
+
+<span class="sd">        :param string root_path: image root path</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">shim_file_patterns</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;/usr/lib64/efi/shim.efi&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;/boot/efi/EFI/*/shim.efi&#39;</span>
+        <span class="p">]</span>
+        <span class="k">for</span> <span class="n">shim_file_pattern</span> <span class="ow">in</span> <span class="n">shim_file_patterns</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">shim_file</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">iglob</span><span class="p">(</span><span class="n">root_path</span> <span class="o">+</span> <span class="n">shim_file_pattern</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">shim_file</span></div>
+
+<div class="viewcode-block" id="Defaults.get_signed_grub_loader"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_signed_grub_loader">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_signed_grub_loader</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return shim signed grub loader file path or None</span>
+
+<span class="sd">        :param string root_path: image root path</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">signed_grub_file_patterns</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;/usr/lib64/efi/grub.efi&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;/boot/efi/EFI/*/grub*.efi&#39;</span>
+        <span class="p">]</span>
+        <span class="k">for</span> <span class="n">signed_grub_pattern</span> <span class="ow">in</span> <span class="n">signed_grub_file_patterns</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">signed_grub</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">iglob</span><span class="p">(</span><span class="n">root_path</span> <span class="o">+</span> <span class="n">signed_grub_pattern</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">signed_grub</span></div>
+
+<div class="viewcode-block" id="Defaults.get_shim_vendor_directory"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_shim_vendor_directory">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_shim_vendor_directory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return shim vendor directory or None</span>
+
+<span class="sd">        :param string root_path: image root path</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">shim_vendor_patterns</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;/boot/efi/EFI/*/shim.efi&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;/EFI/*/shim.efi&#39;</span>
+        <span class="p">]</span>
+        <span class="k">for</span> <span class="n">shim_vendor_pattern</span> <span class="ow">in</span> <span class="n">shim_vendor_patterns</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">shim_file</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">iglob</span><span class="p">(</span><span class="n">root_path</span> <span class="o">+</span> <span class="n">shim_vendor_pattern</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">shim_file</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Defaults.get_default_volume_group_name"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_default_volume_group_name">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_default_volume_group_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implements default LVM volume group name</span>
+
+<span class="sd">        :return: name</span>
+<span class="sd">        :rtype: string</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;systemVG&#39;</span></div>
+
+<div class="viewcode-block" id="Defaults.get_min_volume_mbytes"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_min_volume_mbytes">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_min_volume_mbytes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implements default minimum LVM volume size in mbytes</span>
+
+<span class="sd">        :return: mbsize</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="mi">30</span></div>
+
+<div class="viewcode-block" id="Defaults.get_default_boot_mbytes"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_default_boot_mbytes">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_default_boot_mbytes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implements default boot partition size in mbytes</span>
+
+<span class="sd">        :return: mbsize</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="mi">300</span></div>
+
+<div class="viewcode-block" id="Defaults.get_default_efi_boot_mbytes"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_default_efi_boot_mbytes">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_default_efi_boot_mbytes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implements default EFI partition size in mbytes</span>
+
+<span class="sd">        :return: mbsize</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="mi">20</span></div>
+
+<div class="viewcode-block" id="Defaults.get_recovery_spare_mbytes"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_recovery_spare_mbytes">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_recovery_spare_mbytes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implements spare size of recovery partition in mbytes</span>
+
+<span class="sd">        :return: mbsize</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="mi">300</span></div>
+
+<div class="viewcode-block" id="Defaults.get_default_legacy_bios_mbytes"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_default_legacy_bios_mbytes">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_default_legacy_bios_mbytes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implements default size of bios_grub partition in mbytes</span>
+
+<span class="sd">        :return: mbsize</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="mi">2</span></div>
+
+<div class="viewcode-block" id="Defaults.get_default_prep_mbytes"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_default_prep_mbytes">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_default_prep_mbytes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implements default size of prep partition in mbytes</span>
+
+<span class="sd">        :return: mbsize</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="mi">8</span></div>
+
+<div class="viewcode-block" id="Defaults.get_disk_format_types"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_disk_format_types">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_disk_format_types</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implements supported disk format types</span>
+
+<span class="sd">        :return: disk types</span>
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="s1">&#39;gce&#39;</span><span class="p">,</span> <span class="s1">&#39;qcow2&#39;</span><span class="p">,</span> <span class="s1">&#39;vmdk&#39;</span><span class="p">,</span> <span class="s1">&#39;vmx&#39;</span><span class="p">,</span> <span class="s1">&#39;vhd&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;vhdfixed&#39;</span><span class="p">,</span> <span class="s1">&#39;vdi&#39;</span><span class="p">,</span> <span class="s1">&#39;vagrant.libvirt.box&#39;</span>
+        <span class="p">]</span></div>
+
+<div class="viewcode-block" id="Defaults.get_firmware_types"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_firmware_types">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_firmware_types</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implements supported architecture specific firmware types</span>
+
+<span class="sd">        :return: firmware types</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s1">&#39;x86_64&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;efi&#39;</span><span class="p">,</span> <span class="s1">&#39;uefi&#39;</span><span class="p">,</span> <span class="s1">&#39;bios&#39;</span><span class="p">,</span> <span class="s1">&#39;ec2hvm&#39;</span><span class="p">,</span> <span class="s1">&#39;ec2&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;i586&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;bios&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;i686&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;bios&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;aarch64&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;efi&#39;</span><span class="p">,</span> <span class="s1">&#39;uefi&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;arm64&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;efi&#39;</span><span class="p">,</span> <span class="s1">&#39;uefi&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;armv5el&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;efi&#39;</span><span class="p">,</span> <span class="s1">&#39;uefi&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;armv5tel&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;efi&#39;</span><span class="p">,</span> <span class="s1">&#39;uefi&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;armv6hl&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;efi&#39;</span><span class="p">,</span> <span class="s1">&#39;uefi&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;armv6l&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;efi&#39;</span><span class="p">,</span> <span class="s1">&#39;uefi&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;armv7hl&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;efi&#39;</span><span class="p">,</span> <span class="s1">&#39;uefi&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;armv7l&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;efi&#39;</span><span class="p">,</span> <span class="s1">&#39;uefi&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;ppc&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;ofw&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;ppc64&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;ofw&#39;</span><span class="p">,</span> <span class="s1">&#39;opal&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;ppc64le&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;ofw&#39;</span><span class="p">,</span> <span class="s1">&#39;opal&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;s390&#39;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s1">&#39;s390x&#39;</span><span class="p">:</span> <span class="p">[]</span>
+        <span class="p">}</span></div>
+
+<div class="viewcode-block" id="Defaults.get_default_firmware"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_default_firmware">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_default_firmware</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arch</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implements default firmware for specified architecture</span>
+
+<span class="sd">        :param string arch: platform.machine</span>
+
+<span class="sd">        :return: firmware</span>
+<span class="sd">        :rtype: string</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">default_firmware</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;x86_64&#39;</span><span class="p">:</span> <span class="s1">&#39;bios&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;i586&#39;</span><span class="p">:</span> <span class="s1">&#39;bios&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;i686&#39;</span><span class="p">:</span> <span class="s1">&#39;bios&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;ppc&#39;</span><span class="p">:</span> <span class="s1">&#39;ofw&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;ppc64&#39;</span><span class="p">:</span> <span class="s1">&#39;ofw&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;ppc64le&#39;</span><span class="p">:</span> <span class="s1">&#39;ofw&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;arm64&#39;</span><span class="p">:</span> <span class="s1">&#39;efi&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;armv5el&#39;</span><span class="p">:</span> <span class="s1">&#39;efi&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;armv5tel&#39;</span><span class="p">:</span> <span class="s1">&#39;efi&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;armv6hl&#39;</span><span class="p">:</span> <span class="s1">&#39;efi&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;armv6l&#39;</span><span class="p">:</span> <span class="s1">&#39;efi&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;armv7hl&#39;</span><span class="p">:</span> <span class="s1">&#39;efi&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;armv7l&#39;</span><span class="p">:</span> <span class="s1">&#39;efi&#39;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="n">arch</span> <span class="ow">in</span> <span class="n">default_firmware</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">default_firmware</span><span class="p">[</span><span class="n">arch</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="Defaults.get_efi_capable_firmware_names"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_efi_capable_firmware_names">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_efi_capable_firmware_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implements list of EFI capable firmware names. These are</span>
+<span class="sd">        those for which kiwi supports the creation of an EFI</span>
+<span class="sd">        bootable disk image</span>
+
+<span class="sd">        :return: firmware names</span>
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;efi&#39;</span><span class="p">,</span> <span class="s1">&#39;uefi&#39;</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="Defaults.get_ec2_capable_firmware_names"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_ec2_capable_firmware_names">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_ec2_capable_firmware_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implements list of EC2 capable firmware names. These are</span>
+<span class="sd">        those for which kiwi supports the creation of disk images</span>
+<span class="sd">        bootable within the Amazon EC2 public cloud</span>
+
+<span class="sd">        :return: firmware names</span>
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;ec2&#39;</span><span class="p">,</span> <span class="s1">&#39;ec2hvm&#39;</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="Defaults.get_efi_module_directory_name"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_efi_module_directory_name">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_efi_module_directory_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arch</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implements architecture specific EFI directory name which</span>
+<span class="sd">        stores the EFI binaries for the desired architecture.</span>
+
+<span class="sd">        :param string arch: platform.machine</span>
+
+<span class="sd">        :return: directory name</span>
+<span class="sd">        :rtype: string</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">default_module_directory_names</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;x86_64&#39;</span><span class="p">:</span> <span class="s1">&#39;x86_64-efi&#39;</span><span class="p">,</span>
+
+            <span class="c1"># There is no dedicated xen architecture but there are</span>
+            <span class="c1"># modules provided for xen. Thus we treat it as an</span>
+            <span class="c1"># architecture</span>
+            <span class="s1">&#39;x86_64_xen&#39;</span><span class="p">:</span> <span class="s1">&#39;x86_64-xen&#39;</span><span class="p">,</span>
+
+            <span class="s1">&#39;aarch64&#39;</span><span class="p">:</span> <span class="s1">&#39;arm64-efi&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;arm64&#39;</span><span class="p">:</span> <span class="s1">&#39;arm64-efi&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;armv5el&#39;</span><span class="p">:</span> <span class="s1">&#39;arm-efi&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;armv5tel&#39;</span><span class="p">:</span> <span class="s1">&#39;arm-efi&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;armv6l&#39;</span><span class="p">:</span> <span class="s1">&#39;arm-efi&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;armv7l&#39;</span><span class="p">:</span> <span class="s1">&#39;arm-efi&#39;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="n">arch</span> <span class="ow">in</span> <span class="n">default_module_directory_names</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">default_module_directory_names</span><span class="p">[</span><span class="n">arch</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="Defaults.get_efi_image_name"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_efi_image_name">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_efi_image_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arch</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implements architecture specific EFI boot binary name</span>
+
+<span class="sd">        :param string arch: platform.machine</span>
+
+<span class="sd">        :return: name</span>
+<span class="sd">        :rtype: string</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">default_efi_image_names</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;x86_64&#39;</span><span class="p">:</span> <span class="s1">&#39;bootx64.efi&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;aarch64&#39;</span><span class="p">:</span> <span class="s1">&#39;bootaa64.efi&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;arm64&#39;</span><span class="p">:</span> <span class="s1">&#39;bootaa64.efi&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;armv5el&#39;</span><span class="p">:</span> <span class="s1">&#39;bootarm.efi&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;armv5tel&#39;</span><span class="p">:</span> <span class="s1">&#39;bootarm.efi&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;armv6l&#39;</span><span class="p">:</span> <span class="s1">&#39;bootarm.efi&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;armv7l&#39;</span><span class="p">:</span> <span class="s1">&#39;bootarm.efi&#39;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="n">arch</span> <span class="ow">in</span> <span class="n">default_efi_image_names</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">default_efi_image_names</span><span class="p">[</span><span class="n">arch</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="Defaults.get_default_boot_timeout_seconds"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_default_boot_timeout_seconds">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_default_boot_timeout_seconds</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implements default boot timeout in seconds</span>
+
+<span class="sd">        :return: seconds</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="mi">10</span></div>
+
+<div class="viewcode-block" id="Defaults.get_default_inode_size"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_default_inode_size">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_default_inode_size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implements default size of inodes in bytes. This is only</span>
+<span class="sd">        relevant for inode based filesystems</span>
+
+<span class="sd">        :return: bytesize</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="mi">256</span></div>
+
+<div class="viewcode-block" id="Defaults.get_archive_image_types"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_archive_image_types">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_archive_image_types</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implements list of supported archive image types</span>
+
+<span class="sd">        :return: archive names</span>
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;tbz&#39;</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="Defaults.get_container_image_types"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_container_image_types">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_container_image_types</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implements list of supported container image types</span>
+
+<span class="sd">        :return: container names</span>
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;docker&#39;</span><span class="p">,</span> <span class="s1">&#39;oci&#39;</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="Defaults.get_filesystem_image_types"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_filesystem_image_types">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_filesystem_image_types</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implements list of supported filesystem image types</span>
+
+<span class="sd">        :return: filesystem names</span>
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="s1">&#39;ext2&#39;</span><span class="p">,</span> <span class="s1">&#39;ext3&#39;</span><span class="p">,</span> <span class="s1">&#39;ext4&#39;</span><span class="p">,</span> <span class="s1">&#39;btrfs&#39;</span><span class="p">,</span> <span class="s1">&#39;squashfs&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;xfs&#39;</span><span class="p">,</span> <span class="s1">&#39;fat16&#39;</span><span class="p">,</span> <span class="s1">&#39;fat32&#39;</span>
+        <span class="p">]</span></div>
+
+<div class="viewcode-block" id="Defaults.get_live_iso_types"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_live_iso_types">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_live_iso_types</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implements list of supported live ISO image types</span>
+
+<span class="sd">        :return: live iso names</span>
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s1">&#39;overlay&#39;</span><span class="p">:</span> <span class="s1">&#39;squashfs&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;clic&#39;</span><span class="p">:</span> <span class="s1">&#39;clicfs&#39;</span>
+        <span class="p">}</span></div>
+
+<div class="viewcode-block" id="Defaults.get_live_iso_client_parameters"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_live_iso_client_parameters">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_live_iso_client_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implements parameters to setup the overlay filesystem used</span>
+<span class="sd">        for the live ISO image. Each supported overlay filesystem</span>
+<span class="sd">        needs the information about the target block device, the</span>
+<span class="sd">        copy on write device and the used kernel union filesystem</span>
+<span class="sd">        name</span>
+
+<span class="sd">        :return: union client parameters</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s1">&#39;overlay&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;loop&#39;</span><span class="p">,</span> <span class="s1">&#39;tmpfs&#39;</span><span class="p">,</span> <span class="s1">&#39;overlay&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;clic&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;/dev/ram1&#39;</span><span class="p">,</span> <span class="s1">&#39;/dev/ram1&#39;</span><span class="p">,</span> <span class="s1">&#39;clicfs&#39;</span><span class="p">]</span>
+        <span class="p">}</span></div>
+
+<div class="viewcode-block" id="Defaults.get_default_live_iso_type"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_default_live_iso_type">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_default_live_iso_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implements default live iso union type</span>
+
+<span class="sd">        :return: live iso type</span>
+<span class="sd">        :rtype: string</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;overlay&#39;</span></div>
+
+<div class="viewcode-block" id="Defaults.get_disk_image_types"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_disk_image_types">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_disk_image_types</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implements supported disk image types</span>
+
+<span class="sd">        :return: disk image type names</span>
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;oem&#39;</span><span class="p">,</span> <span class="s1">&#39;vmx&#39;</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="Defaults.get_live_image_types"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_live_image_types">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_live_image_types</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implements supported live image types</span>
+
+<span class="sd">        :return: live image type names</span>
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;iso&#39;</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="Defaults.get_network_image_types"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_network_image_types">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_network_image_types</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implements supported pxe image types</span>
+
+<span class="sd">        :return: pxe image type names</span>
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;pxe&#39;</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="Defaults.get_boot_image_description_path"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_boot_image_description_path">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_boot_image_description_path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implements bootloader path for ISO images</span>
+
+<span class="sd">        :return: directory path</span>
+<span class="sd">        :rtype: string</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">project_file</span><span class="p">(</span><span class="s1">&#39;boot/arch/&#39;</span> <span class="o">+</span> <span class="n">platform</span><span class="o">.</span><span class="n">machine</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="Defaults.get_boot_image_strip_file"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_boot_image_strip_file">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_boot_image_strip_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implements file path to bootloader strip metadata.</span>
+<span class="sd">        This file contains information about the files and directories</span>
+<span class="sd">        automatically striped out from the kiwi initrd</span>
+
+<span class="sd">        :return: file path</span>
+<span class="sd">        :rtype: string</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">project_file</span><span class="p">(</span><span class="s1">&#39;config/strip.xml&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Defaults.get_schema_file"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_schema_file">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_schema_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implements file path to kiwi RNG schema</span>
+
+<span class="sd">        :return: file path</span>
+<span class="sd">        :rtype: string</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">project_file</span><span class="p">(</span><span class="s1">&#39;schema/kiwi.rng&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Defaults.get_common_functions_file"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_common_functions_file">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_common_functions_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implements file path to bootloader functions metadata.</span>
+<span class="sd">        This file contains bash functions used in the boot code</span>
+<span class="sd">        from the kiwi initrd</span>
+
+<span class="sd">        :return: file path</span>
+<span class="sd">        :rtype: string</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">project_file</span><span class="p">(</span><span class="s1">&#39;config/functions.sh&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Defaults.get_xsl_stylesheet_file"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_xsl_stylesheet_file">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_xsl_stylesheet_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implements file path to kiwi XSLT style sheets</span>
+
+<span class="sd">        :return: file path</span>
+<span class="sd">        :rtype: string</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Defaults</span><span class="o">.</span><span class="n">project_file</span><span class="p">(</span><span class="s1">&#39;xsl/master.xsl&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Defaults.project_file"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.project_file">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">project_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implements python module base directory search path</span>
+<span class="sd">        The method uses the resource_filename method to identify</span>
+<span class="sd">        files and directories from the application</span>
+
+<span class="sd">        :param string filename: relative project file</span>
+
+<span class="sd">        :return: full qualified filename</span>
+<span class="sd">        :rtype: string</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">resource_filename</span><span class="p">(</span><span class="s1">&#39;kiwi&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Defaults.get_imported_root_image"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get_imported_root_image">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_imported_root_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the path of the image used to import a root during</span>
+<span class="sd">        the prepare task. This is the filename expected to be</span>
+<span class="sd">        found during the create step if derived_from attribute is</span>
+<span class="sd">        present.</span>
+
+<span class="sd">        :param string root_dir: is the root directory of the current build</span>
+
+<span class="sd">        :return: file name of the image</span>
+<span class="sd">        :rtype: string</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;image&#39;</span><span class="p">,</span> <span class="s1">&#39;imported_root&#39;</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="Defaults.get"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implements get method for profile elements</span>
+
+<span class="sd">        :param string key: profile keyname</span>
+
+<span class="sd">        :return: key value</span>
+<span class="sd">        :rtype: string</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">defaults</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">defaults</span><span class="p">[</span><span class="n">key</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="Defaults.to_profile"><a class="viewcode-back" href="../../development/api/kiwi.html#kiwi.defaults.Defaults.to_profile">[docs]</a>    <span class="k">def</span> <span class="nf">to_profile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">profile</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implements method to add list of profile keys and their values</span>
+<span class="sd">        to the specified instance of a Profile class</span>
+
+<span class="sd">        :param object profile: Profile instance</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">profile_key_list</span><span class="p">):</span>
+            <span class="n">profile</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">))</span></div></div>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Marcus Schäfer.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'9.9.2',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,821 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Building in a Self-Contained Environment &mdash; kiwi 9.9.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="kiwi 9.9.2 documentation" href="../index.html"/>
+        <link rel="up" title="Building Images" href="../building.html"/>
+        <link rel="next" title="Building in the Open Buildservice" href="build_in_buildservice.html"/>
+        <link rel="prev" title="Build a Docker Container Image" href="build_docker_container.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> kiwi
+          
+
+          
+            
+            <img src="../_static/kiwi-logo.png" class="logo" />
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview/legacy_kiwi.html">Legacy KIWI vs. Next Generation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../overview/legacy_kiwi.html#when-do-i-need-to-use-the-legacy-kiwi">When Do I need to use the legacy kiwi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/legacy_kiwi.html#dropped-features">Dropped Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/legacy_kiwi.html#compatibility">Compatibility</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/workflow.html">Basic Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../overview/workflow.html#building-images">Building Images</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../overview/workflow.html#the-prepare-step">The Prepare Step</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../overview/workflow.html#the-create-step">The Create Step</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/workflow.html#components-of-an-image-description">Components of an Image Description</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../overview/workflow.html#image-customization-with-config-sh-shell-script">Image Customization with <code class="docutils literal"><span class="pre">config.sh</span></code> Shell Script</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../overview/workflow.html#image-customization-with-images-sh-shell-script">Image Customization with <code class="docutils literal"><span class="pre">images.sh</span></code> Shell Script</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/workflow.html#customizing-the-boot-process">Customizing the Boot Process</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../overview/workflow.html#boot-image-hook-scripts">Boot Image Hook-Scripts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../overview/workflow.html#boot-parameters">Boot Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../overview/workflow.html#faq-boot-image-customization">FAQ: Boot Image Customization</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/workflow.html#distribution-specific-code">Distribution Specific Code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#conceptual-overview">Conceptual Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#terminology">Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#system-requirements">System Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#before-you-start">Before you start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#build-your-first-image">Build your first image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#run-your-image">Run your image</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../building.html">Building Images</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="build_live_iso.html">Build an ISO Hybrid Live Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build_vmx_disk.html">Build a Virtual Disk Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build_oem_disk.html">Build an OEM Expandable Disk Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="build_oem_disk.html#deployment-methods">Deployment Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="build_oem_disk.html#manual-deployment">Manual Deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="build_oem_disk.html#cd-dvd-deployment">CD/DVD Deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="build_oem_disk.html#network-deployment">Network Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="build_pxe_root_filesystem.html">Build a PXE Root File System Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build_docker_container.html">Build a Docker Container Image</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Building in a Self-Contained Environment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-and-setting-up-dice">Installing and Setting up Dice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-and-setting-up-docker">Installing and Setting up Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-and-setting-up-the-build-container">Installing and Setting up the Build Container</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-and-setting-up-vagrant">Installing and Setting up Vagrant</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-dice">Configuring Dice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#selecting-a-kiwi-template">Selecting a KIWI Template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-dicefile">The Dicefile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-with-dice">Building with Dice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#buildsystem-backends">Buildsystem Backends</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-with-the-host-buildsystem">Building with the Host Buildsystem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">The Dicefile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-with-the-vagrant-buildsystem">Building with the Vagrant Buildsystem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">The Dicefile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-vagrant-setup-for-the-docker-provider">The Vagrant setup for the Docker Provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-vagrantfile">The Vagrantfile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-vagrant-setup-for-the-libvirt-provider">The Vagrant setup for the libvirt Provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-vagrant-build-box">The Vagrant Build Box</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">The Vagrantfile</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="build_in_buildservice.html">Building in the Open Buildservice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="working_with_images.html">Working with Images</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="working_with_images/iso_to_usb_stick_deployment.html">Deploy ISO Image on an USB Stick</a></li>
+<li class="toctree-l3"><a class="reference internal" href="working_with_images/vmx_setup_for_ec2.html">KIWI Image Description for Amazon EC2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="working_with_images/vmx_setup_for_azure.html">KIWI Image Description for Microsoft Azure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="working_with_images/vmx_setup_for_google.html">KIWI Image Description for Google Compute Engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="working_with_images/setup_pxe_bootserver.html">Setting Up a Network Boot Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="working_with_images/setup_pxe_bootserver.html#installing-and-configuring-atftp">Installing and Configuring atftp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="working_with_images/setup_pxe_bootserver.html#installing-and-configuring-dhcp">Installing and Configuring DHCP</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="working_with_images/pxe_client_configuration.html">PXE Client Setup Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="working_with_images/pxe_client_configuration.html#setup-client-with-remote-root">Setup Client with Remote Root</a></li>
+<li class="toctree-l4"><a class="reference internal" href="working_with_images/pxe_client_configuration.html#setup-client-with-system-on-local-disk">Setup Client with System on Local Disk</a></li>
+<li class="toctree-l4"><a class="reference internal" href="working_with_images/pxe_client_configuration.html#setup-client-with-system-on-local-md-raid-disk">Setup Client with System on Local MD RAID Disk</a></li>
+<li class="toctree-l4"><a class="reference internal" href="working_with_images/pxe_client_configuration.html#setup-loading-of-custom-configuration-file-s">Setup Loading of Custom Configuration File(s)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="working_with_images/pxe_client_configuration.html#setup-client-to-force-reload-image">Setup Client to Force Reload Image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="working_with_images/pxe_client_configuration.html#setup-client-to-force-reload-configuration-files">Setup Client to Force Reload Configuration Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="working_with_images/pxe_client_configuration.html#setup-client-for-reboot-after-deployment">Setup Client for Reboot After Deployment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="working_with_images/pxe_client_configuration.html#setup-custom-kernel-boot-options">Setup custom kernel boot options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="working_with_images/pxe_client_configuration.html#setup-a-custom-boot-timeout">Setup a Custom Boot Timeout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="working_with_images/pxe_client_configuration.html#setup-a-different-download-protocol-and-server">Setup a Different Download Protocol and Server</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../building.html#supported-distributions">Supported Distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../commands.html">KIWI Commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../commands/kiwi.html">kiwi</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../commands/kiwi.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/kiwi.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/kiwi.html#global-options">GLOBAL OPTIONS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/kiwi.html#example">EXAMPLE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/kiwi.html#runtime-config-file">RUNTIME CONFIG FILE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/kiwi.html#compatibility">COMPATIBILITY</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/result_list.html">kiwi result list</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../commands/result_list.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/result_list.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/result_list.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/result_bundle.html">kiwi result bundle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../commands/result_bundle.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/result_bundle.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/result_bundle.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/system_prepare.html">kiwi system prepare</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_prepare.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_prepare.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_prepare.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/system_update.html">kiwi system update</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_update.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_update.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_update.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/system_build.html">kiwi system build</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_build.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_build.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_build.html#options">OPTIONS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_build.html#uri-types">URI_TYPES</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/system_create.html">kiwi system create</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_create.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_create.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_create.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/image_resize.html">kiwi image resize</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../commands/image_resize.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/image_resize.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/image_resize.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/image_info.html">kiwi image info</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../commands/image_info.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/image_info.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/image_info.html#options">OPTIONS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../development.html">Development and Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/api/kiwi.html">API Documentation 9.9.2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.bootloader.html">kiwi.bootloader Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.builder.html">kiwi.builder Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.container.html">kiwi.container Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.filesystem.html">kiwi.filesystem Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.package_manager.html">kiwi.package_manager Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.partitioner.html">kiwi.partitioner Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.repository.html">kiwi.repository Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.storage.html">kiwi.storage Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.system.html">kiwi.system Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.solver.html">kiwi.solver Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.tasks.html">kiwi.tasks package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.utils.html">kiwi.utils Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.volume_manager.html">kiwi.volume_manager Package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.app"><code class="docutils literal"><span class="pre">kiwi.app</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.cli"><code class="docutils literal"><span class="pre">kiwi.cli</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.command"><code class="docutils literal"><span class="pre">kiwi.command</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.command_process"><code class="docutils literal"><span class="pre">kiwi.command_process</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.defaults"><code class="docutils literal"><span class="pre">kiwi.defaults</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.exceptions"><code class="docutils literal"><span class="pre">kiwi.exceptions</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.firmware"><code class="docutils literal"><span class="pre">kiwi.firmware</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.help"><code class="docutils literal"><span class="pre">kiwi.help</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.iso"><code class="docutils literal"><span class="pre">kiwi.iso</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.kiwi"><code class="docutils literal"><span class="pre">kiwi.kiwi</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.logger"><code class="docutils literal"><span class="pre">kiwi.logger</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.mount_manager"><code class="docutils literal"><span class="pre">kiwi.mount_manager</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.path"><code class="docutils literal"><span class="pre">kiwi.path</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.privileges"><code class="docutils literal"><span class="pre">kiwi.privileges</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.version"><code class="docutils literal"><span class="pre">kiwi.version</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.xml_description"><code class="docutils literal"><span class="pre">kiwi.xml_description</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.xml_state"><code class="docutils literal"><span class="pre">kiwi.xml_state</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi">Module Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../development/schema.html">Schema Documentation 6.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/schema_extensions.html">Extending KIWI with Custom Operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../development/schema_extensions.html#the-extension-section">The &lt;extension&gt; Section</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/schema_extensions.html#relax-ng-schema-for-the-extension">RELAX NG Schema for the Extension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/schema_extensions.html#extension-schema-in-xml-catalog">Extension Schema in XML catalog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/schema_extensions.html#using-the-extension">Using the Extension</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../development.html#fork-the-upstream-kiwi-repository">Fork the upstream KIWI repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development.html#create-a-local-clone-of-the-forked-kiwi-repository">Create a local clone of the forked KIWI repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development.html#create-a-python-virtual-development-environment">Create a python virtual development environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development.html#running-test-cases">Running Test Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development.html#create-a-branch-for-each-feature-or-bugfix">Create a branch for each feature or bugfix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development.html#good-to-know">Good to know</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../development.html#signing-git-patches">Signing Git Patches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development.html#raising-versions">Raising Versions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development.html#creating-a-package">Creating a Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development.html#building-documentation">Building Documentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">kiwi</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../building.html">Building Images</a> &raquo;</li>
+        
+      <li>Building in a Self-Contained Environment</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/building/build_containerized.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="building-in-a-self-contained-environment">
+<span id="container-building"></span><h1>Building in a Self-Contained Environment<a class="headerlink" href="#building-in-a-self-contained-environment" title="Permalink to this headline">¶</a></h1>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p><strong>Abstract</strong></p>
+<p>Users building images with KIWI face problems if they want
+to build an image matching one of the following criteria:</p>
+<ul class="simple">
+<li>build should happen as non root user.</li>
+<li>build should happen on a host system distribution for which
+no KIWI packages exists.</li>
+<li>build happens on an incompatible host system distribution
+compared to the target image distribution. For example
+the host system rpm database is incompatible with the image
+rpm database and a dump/reload cycle is not possible
+between the two versions. Ideally the host system distribution
+is the same as the target image distribution.</li>
+</ul>
+<p>This document describes how to perform the build process in
+a Docker container using the Dice containment build system
+written for KIWI in order to address the issues listed above.</p>
+<p class="last">The changes on the machine to become a build host will
+be reduced to the requirements of Dice and Docker.</p>
+</div>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<p>The following components needs to be installed on the build system:</p>
+<ul class="simple">
+<li>Dice - a containment build system for KIWI.</li>
+<li>Docker - a container framework based on the Linux
+container support in the kernel.</li>
+<li>Docker Image - a docker build container for KIWI.</li>
+<li>optionally Vagrant - a framework to run, provision and control
+virtual machines and container instances. Vagrant has a very nice
+interface to provision a machine prior to running the actual build.
+It also supports docker as a provider which makes it a perfect fit
+for complex provisioning tasks in combination with the Docker
+container system.</li>
+<li>optionally libvirt - Toolkit to interact with the virtualization
+capabilities of Linux. In combination with vagrant, libvirt can
+be used as provider for provision and control full virtual
+instances running via qemu. As docker shares the host system
+kernel and thus any device, because KIWI needs to use privileged
+docker containers for building images, the more secure but less
+performant solution is to use virtual machines to run the KIWI
+build.</li>
+</ul>
+</div>
+<div class="section" id="installing-and-setting-up-dice">
+<h2>Installing and Setting up Dice<a class="headerlink" href="#installing-and-setting-up-dice" title="Permalink to this headline">¶</a></h2>
+<p>The Dice packages and sources are available at the following locations:</p>
+<ul class="simple">
+<li>Build service project:
+<a class="reference external" href="http://download.opensuse.org/repositories/Virtualization:/Appliances:/ContainerBuilder">http://download.opensuse.org/repositories/Virtualization:/Appliances:/ContainerBuilder</a></li>
+<li>Sources: <a class="reference external" href="https://github.com/SUSE/dice">https://github.com/SUSE/dice</a></li>
+</ul>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span>$ sudo zypper in ruby2.1-rubygem-dice
+</pre></div>
+</div>
+</div>
+<div class="section" id="installing-and-setting-up-docker">
+<h2>Installing and Setting up Docker<a class="headerlink" href="#installing-and-setting-up-docker" title="Permalink to this headline">¶</a></h2>
+<p>Docker packages are usually available with the used distribution.</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span>$ sudo zypper in docker
+</pre></div>
+</div>
+<p>Make sure that the user, who is intended to build images, is a member
+of the <code class="xref py py-obj docutils literal"><span class="pre">docker</span></code> group. Run the following command:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span>$ sudo useradd -G docker &lt;builduser&gt;
+</pre></div>
+</div>
+<p>It is required to logout and login again to let this change
+become active.</p>
+<p>Once this is done you need to setup the Docker storage backend.
+By default Docker uses the device mapper to manage the storage for
+the containers it starts. Unfortunately, this does not work if the
+container is supposed to build images because it runs into conflicts
+with tools like <strong class="command">kpartx</strong> which itself maps devices using
+the device mapper.</p>
+<p>Fortunately, there is a solution for Docker which allows us to use
+Btrfs as the storage backend. The following is only required if your
+host system root filesystem is not btrfs:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span>$ sudo qemu-img create /var/lib/docker-storage.btrfs 20g
+$ sudo mkfs.btrfs /var/lib/docker-storage.btrfs
+$ sudo mkdir -p /var/lib/docker
+$ sudo mount /var/lib/docker-storage.btrfs /var/lib/docker
+
+$ sudo vi /etc/fstab
+
+  /var/lib/docker-storage.btrfs /var/lib/docker btrfs defaults 0 0
+
+$ sudo vi /etc/sysconfig/docker
+
+  DOCKER_OPTS=&quot;-s btrfs&quot;
+</pre></div>
+</div>
+<p>Finally start the docker service:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span>$ sudo systemctl restart docker
+</pre></div>
+</div>
+</div>
+<div class="section" id="installing-and-setting-up-the-build-container">
+<h2>Installing and Setting up the Build Container<a class="headerlink" href="#installing-and-setting-up-the-build-container" title="Permalink to this headline">¶</a></h2>
+<p>In order to build in a contained environment Docker has to start a
+privileged system container. Such a container must be imported before
+Docker can use it. The build container is provided to you as a
+service and build with KIWI in the project
+at <a class="reference external" href="http://download.opensuse.org/repositories/Virtualization:/Appliances:/Images">http://download.opensuse.org/repositories/Virtualization:/Appliances:/Images</a>.
+The result image is pushed to <a class="reference external" href="https://hub.docker.com/r/opensuse/dice">https://hub.docker.com/r/opensuse/dice</a>.</p>
+<p>When building with Dice, the container will be automatically fetched
+from the docker registry. However this step can also be done prior to
+calling <strong class="command">dice</strong> as follows:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span>$ docker pull opensuse/dice:latest
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Optional step</p>
+<p>If a custom or newer version of the Build Container should be used,
+it is required to update the registry. This is because Dice always
+fetches the latest version of the Build Container from the registry.</p>
+<ol class="arabic simple">
+<li>Download the .tar.bz2 file which starts with <code class="file docutils literal"><span class="pre">Docker-Tumbleweed</span></code></li>
+</ol>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span>$ wget http://download.opensuse.org/repositories/Virtualization:/Appliances:/Images/images/Docker-Tumbleweed.XXXXXXX.docker.tar.xz
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Import the downloaded tarball with the command <strong class="command">docker</strong>:</li>
+</ol>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span>$ docker load -i Docker-Tumbleweed.XXXXXXX.docker.tar.xz
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Tag the container and push back to the registry</li>
+</ol>
+<div class="code bash last highlight-default"><div class="highlight"><pre><span></span>$ docker push opensuse/dice:latest
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="installing-and-setting-up-vagrant">
+<h2>Installing and Setting up Vagrant<a class="headerlink" href="#installing-and-setting-up-vagrant" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Optional step</p>
+<p class="last">By default Dice shares the KIWI image description directory with
+the Docker instance. If more data from the host should be shared
+with the Docker instance we recommend to use Vagrant for this
+provision tasks.</p>
+</div>
+<p>Installing Vagrant is well documented at
+<a class="reference external" href="https://www.vagrantup.com/docs/installation/index.html">https://www.vagrantup.com/docs/installation/index.html</a></p>
+<p>Access to a machine started by Vagrant is done through SSH exclusively.
+Because of that an initial key setup is required in the Docker image vagrant
+should start. The KIWI Docker image includes the public key of the Vagrant
+key pair and thus allows access. It is important to understand that the
+private Vagrant key is not a secure key because the private key is not
+protected.</p>
+<p>However, this is not a problem because Vagrant creates a new
+key pair for each machine it starts. In order to allow Vagrant the initial
+access and the creation of a new key pair, it’s required to provide access
+to the insecure Vagrant private key. The following commands should not be
+executed as root, but as the intended user to build images.</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span>$ mkdir -p ~/.dice/key
+$ cp -a /usr/share/doc/packages/ruby*-rubygem-dice/key ~/.dice/key
+</pre></div>
+</div>
+</div>
+<div class="section" id="configuring-dice">
+<h2>Configuring Dice<a class="headerlink" href="#configuring-dice" title="Permalink to this headline">¶</a></h2>
+<p>If you build in a contained environment, there is no need to have KIWI
+installed on the host system. KIWI is part of the container and is only
+called there. However, a KIWI image description and some metadata
+defining how to run the container are required as input data.</p>
+</div>
+<div class="section" id="selecting-a-kiwi-template">
+<h2>Selecting a KIWI Template<a class="headerlink" href="#selecting-a-kiwi-template" title="Permalink to this headline">¶</a></h2>
+<p>If you don’t have a KIWI description select one from the templates
+provided at the GitHub project hosting example appliance descriptions.</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span>$ git clone https://github.com/SUSE/kiwi-descriptions
+</pre></div>
+</div>
+<p>The descriptions hosted here also provides a default <code class="file docutils literal"><span class="pre">Dicefile</span></code>
+as part of each image description.</p>
+</div>
+<div class="section" id="the-dicefile">
+<h2>The Dicefile<a class="headerlink" href="#the-dicefile" title="Permalink to this headline">¶</a></h2>
+<p>The Dicefile is the configuration file for the dice buildsystem backend.
+All it needs to know for a plain docker based build process is the
+selection of the buildhost to be a Docker container. The Dicefile’s
+found in the above mentioned appliance descriptions look all like the
+following:</p>
+<div class="code ruby highlight-default"><div class="highlight"><pre><span></span><span class="n">Dice</span><span class="o">.</span><span class="n">configure</span> <span class="n">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">buildhost</span> <span class="o">=</span> <span class="p">:</span><span class="n">DOCKER</span>
+<span class="n">end</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="building-with-dice">
+<h2>Building with Dice<a class="headerlink" href="#building-with-dice" title="Permalink to this headline">¶</a></h2>
+<p>If you have choosen to just use the default Dice configuration as
+provided with the example appliance descriptions, the following example
+command will build the image:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span>$ cd &lt;git-clone-result-kiwi-descriptions&gt;
+
+$ dice build suse/x86_64/suse-leap-42.1-JeOS
+$ dice status suse/x86_64/suse-leap-42.1-JeOS
+</pre></div>
+</div>
+</div>
+<div class="section" id="buildsystem-backends">
+<h2>Buildsystem Backends<a class="headerlink" href="#buildsystem-backends" title="Permalink to this headline">¶</a></h2>
+<p>Dice currently supports three build system backends:</p>
+<ol class="arabic simple">
+<li>Host buildsystem - Dice builds on the host like if you would call
+KIWI on the host directly.</li>
+<li>Vagrant Buildsystem - Dice uses Vagrant to run a virtual system which
+could also be a container and build the image on this machine.</li>
+<li>Docker buildsystem - Dice uses Docker directly to run the build in
+a container</li>
+</ol>
+<p>The use of the Docker buildsystem has been already explained in the
+above chapters. The following sections explains the pros and cons of
+the other two available Buildsystem Backends.</p>
+</div>
+<div class="section" id="building-with-the-host-buildsystem">
+<h2>Building with the Host Buildsystem<a class="headerlink" href="#building-with-the-host-buildsystem" title="Permalink to this headline">¶</a></h2>
+<p>Using the Host Buildsystem basically tells Dice to ssh into the
+specified machine with the specified user and run KIWI. This is
+also the information which needs to be provided in a Dicefile.
+Using the Host Buildsystem is recommended if there are dedicated
+build machines available to take over KIWI build jobs.</p>
+</div>
+<div class="section" id="id1">
+<h2>The Dicefile<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="code ruby highlight-default"><div class="highlight"><pre><span></span><span class="n">Dice</span><span class="o">.</span><span class="n">configure</span> <span class="n">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">buildhost</span> <span class="o">=</span> <span class="s2">&quot;full-qualified-dns-name-or-ip-address&quot;</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">ssh_user</span> <span class="o">=</span> <span class="s2">&quot;vagrant&quot;</span>
+<span class="n">end</span>
+</pre></div>
+</div>
+<p>After these changes a <strong class="command">dice build</strong> command will make use
+of the Host Buildsystem and starts the KIWI build process there.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Provisioning of the Host Buildsystem</p>
+<p class="last">There is no infrastructure in place which manages the machine
+specified as config.buildhost. This means it is currently in the
+responsibility of the user to make sure the specified machine
+exists and is accessible via the configured user. For the future
+we plan to implement a Public Cloud Buildsystem which then will
+allow provisioning and management of a public cloud instance
+e.g on Amazon EC2 in order to run the build. However we are
+not there yet.</p>
+</div>
+</div>
+<div class="section" id="building-with-the-vagrant-buildsystem">
+<h2>Building with the Vagrant Buildsystem<a class="headerlink" href="#building-with-the-vagrant-buildsystem" title="Permalink to this headline">¶</a></h2>
+<p>Using the Vagrant Buildsystem should be considered if one or both of the
+following use cases applies:</p>
+<ol class="arabic simple">
+<li>The build task requires additional content or logic before the build
+can start. Vagrant serves as provisioning system to share data
+from the host with the guest containers.</li>
+<li>The build task should run in a completely isolated virtual machine
+environment. Vagrant in combination with the libvirt provider serves
+as both; The tool to interact with the virtualization capabilities
+to run and manage virtual machine instances and as provisioning system
+to share data from the host with the virtual machines.</li>
+</ol>
+</div>
+<div class="section" id="id2">
+<h2>The Dicefile<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>The Dicefile in the context of Vagrant needs to know the user name to
+access the instance. The reason for this is, in Vagrant access to the
+system is handled over SSH.</p>
+<div class="code ruby highlight-default"><div class="highlight"><pre><span></span><span class="n">Dice</span><span class="o">.</span><span class="n">configure</span> <span class="n">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">ssh_user</span> <span class="o">=</span> <span class="s2">&quot;vagrant&quot;</span>
+<span class="n">end</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-vagrant-setup-for-the-docker-provider">
+<h2>The Vagrant setup for the Docker Provider<a class="headerlink" href="#the-vagrant-setup-for-the-docker-provider" title="Permalink to this headline">¶</a></h2>
+<p>The following is an example for the first use case and describes how
+to configure Dice to use Docker in combination with Vagrant as
+provisioning system.</p>
+</div>
+<div class="section" id="the-vagrantfile">
+<h2>The Vagrantfile<a class="headerlink" href="#the-vagrantfile" title="Permalink to this headline">¶</a></h2>
+<p>The existence of a Vagrantfile tells Dice to use Vagrant as Buildsystem.
+Once you call <strong class="command">dice</strong> to build the image it will
+call <strong class="command">vagrant</strong> to bring up the container. In order to allow this,
+we have to tell Vagrant to use Docker for this task and provide parameters
+on how to run the container. At the same place the Dicefile exists we create
+the Vagrantfile with the following content:</p>
+<div class="code ruby highlight-default"><div class="highlight"><pre><span></span><span class="n">VAGRANTFILE_API_VERSION</span> <span class="o">=</span> <span class="s2">&quot;2&quot;</span>
+
+<span class="n">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">VAGRANTFILE_API_VERSION</span><span class="p">)</span> <span class="n">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provider</span> <span class="s2">&quot;docker&quot;</span> <span class="n">do</span> <span class="o">|</span><span class="n">d</span><span class="o">|</span>
+    <span class="n">d</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="s2">&quot;opensuse/dice:latest&quot;</span>
+    <span class="n">d</span><span class="o">.</span><span class="n">create_args</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;-privileged=true&quot;</span><span class="p">,</span> <span class="s2">&quot;-i&quot;</span><span class="p">,</span> <span class="s2">&quot;-t&quot;</span><span class="p">]</span>
+    <span class="c1"># start the sshd in foreground to keep the container in running state</span>
+    <span class="n">d</span><span class="o">.</span><span class="n">cmd</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;/usr/sbin/sshd&quot;</span><span class="p">,</span> <span class="s2">&quot;-D&quot;</span><span class="p">]</span>
+    <span class="n">d</span><span class="o">.</span><span class="n">has_ssh</span> <span class="o">=</span> <span class="n">true</span>
+  <span class="n">end</span>
+<span class="n">end</span>
+</pre></div>
+</div>
+<p>After these changes a <strong class="command">dice build</strong> command will make use
+of the Vagrant build system and offers a nice way to provision
+the Docker container instances prior to the actual KIWI build process.
+Vagrant will take over the task to run and manage the docker container
+via the <code class="xref py py-obj docutils literal"><span class="pre">docker</span></code> tool chain.</p>
+</div>
+<div class="section" id="the-vagrant-setup-for-the-libvirt-provider">
+<h2>The Vagrant setup for the libvirt Provider<a class="headerlink" href="#the-vagrant-setup-for-the-libvirt-provider" title="Permalink to this headline">¶</a></h2>
+<p>The following sections are an example for the second use case and describes
+how to configure Dice to use libvirt in combination with Vagrant as
+provisioning and virtualization system.</p>
+</div>
+<div class="section" id="the-vagrant-build-box">
+<h2>The Vagrant Build Box<a class="headerlink" href="#the-vagrant-build-box" title="Permalink to this headline">¶</a></h2>
+<p>Apart from the Docker build container the Dice infrastructure also
+provides a virtual machine image also known as vagrant box which
+contains a system ready to build images with KIWI.</p>
+<p>Download the Vagrant build box which starts with
+<code class="file docutils literal"><span class="pre">Vagrant-Libvirt-Tumbleweed</span></code> from the Open BuildService and add
+the box to vagrant as follows:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span>$ wget http://download.opensuse.org/repositories/Virtualization:/Appliances:/Images/images/Vagrant-Libvirt-Tumbleweed.XXXXXXX.vagrant.libvirt.box
+
+$ vagrant box add --provider libvirt --name kiwi-build-box Vagrant-Libvirt-Tumbleweed.XXXXXXX.vagrant.libvirt.box
+
+$ export VAGRANT_DEFAULT_PROVIDER=libvirt
+</pre></div>
+</div>
+<p>The command <strong class="command">vagrant box list</strong> must list the box with
+name <code class="xref py py-obj docutils literal"><span class="pre">kiwi-build-box</span></code> as referenced in the following Vagrantfile setup.</p>
+</div>
+<div class="section" id="id3">
+<h2>The Vagrantfile<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="code ruby highlight-default"><div class="highlight"><pre><span></span><span class="n">VAGRANTFILE_API_VERSION</span> <span class="o">=</span> <span class="s2">&quot;2&quot;</span>
+
+<span class="n">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">VAGRANTFILE_API_VERSION</span><span class="p">)</span> <span class="n">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box</span> <span class="o">=</span> <span class="s2">&quot;kiwi-build-box&quot;</span>
+
+  <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provider</span> <span class="s2">&quot;libvirt&quot;</span> <span class="n">do</span> <span class="o">|</span><span class="n">lv</span><span class="o">|</span>
+    <span class="n">lv</span><span class="o">.</span><span class="n">memory</span> <span class="o">=</span> <span class="s2">&quot;1024&quot;</span>
+  <span class="n">end</span>
+<span class="n">end</span>
+</pre></div>
+</div>
+<p>After these changes a <strong class="command">dice build</strong> command will make use
+of the Vagrant build system and offers a nice way to provision
+fully isolated qemu instances via libvirt prior to the actual KIWI
+build process. Vagrant will take over the task to run and manage the
+virtual machines via the <code class="xref py py-obj docutils literal"><span class="pre">libvirt</span></code> tool chain.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="build_in_buildservice.html" class="btn btn-neutral float-right" title="Building in the Open Buildservice" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="build_docker_container.html" class="btn btn-neutral" title="Build a Docker Container Image" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Marcus Schäfer.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'9.9.2',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

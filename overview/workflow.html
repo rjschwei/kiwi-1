@@ -1,0 +1,1496 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Basic Workflow &mdash; kiwi 9.9.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="kiwi 9.9.2 documentation" href="../index.html"/>
+        <link rel="up" title="Overview" href="../overview.html"/>
+        <link rel="next" title="Installation" href="../installation.html"/>
+        <link rel="prev" title="Legacy KIWI vs. Next Generation" href="legacy_kiwi.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> kiwi
+          
+
+          
+            
+            <img src="../_static/kiwi-logo.png" class="logo" />
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../overview.html">Overview</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="legacy_kiwi.html">Legacy KIWI vs. Next Generation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="legacy_kiwi.html#when-do-i-need-to-use-the-legacy-kiwi">When Do I need to use the legacy kiwi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="legacy_kiwi.html#dropped-features">Dropped Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="legacy_kiwi.html#compatibility">Compatibility</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Basic Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#building-images">Building Images</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#the-prepare-step">The Prepare Step</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-create-step">The Create Step</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#components-of-an-image-description">Components of an Image Description</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#image-customization-with-config-sh-shell-script">Image Customization with <code class="docutils literal"><span class="pre">config.sh</span></code> Shell Script</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#image-customization-with-images-sh-shell-script">Image Customization with <code class="docutils literal"><span class="pre">images.sh</span></code> Shell Script</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#customizing-the-boot-process">Customizing the Boot Process</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#boot-image-hook-scripts">Boot Image Hook-Scripts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#boot-parameters">Boot Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#faq-boot-image-customization">FAQ: Boot Image Customization</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#distribution-specific-code">Distribution Specific Code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#conceptual-overview">Conceptual Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#terminology">Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#system-requirements">System Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#example-appliance-descriptions">Example Appliance Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#before-you-start">Before you start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#build-your-first-image">Build your first image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#run-your-image">Run your image</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../building.html">Building Images</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../building/build_live_iso.html">Build an ISO Hybrid Live Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../building/build_vmx_disk.html">Build a Virtual Disk Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../building/build_oem_disk.html">Build an OEM Expandable Disk Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_oem_disk.html#deployment-methods">Deployment Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_oem_disk.html#manual-deployment">Manual Deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_oem_disk.html#cd-dvd-deployment">CD/DVD Deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_oem_disk.html#network-deployment">Network Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../building/build_pxe_root_filesystem.html">Build a PXE Root File System Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../building/build_docker_container.html">Build a Docker Container Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../building/build_containerized.html">Building in a Self-Contained Environment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#installing-and-setting-up-dice">Installing and Setting up Dice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#installing-and-setting-up-docker">Installing and Setting up Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#installing-and-setting-up-the-build-container">Installing and Setting up the Build Container</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#installing-and-setting-up-vagrant">Installing and Setting up Vagrant</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#configuring-dice">Configuring Dice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#selecting-a-kiwi-template">Selecting a KIWI Template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#the-dicefile">The Dicefile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#building-with-dice">Building with Dice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#buildsystem-backends">Buildsystem Backends</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#building-with-the-host-buildsystem">Building with the Host Buildsystem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#id1">The Dicefile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#building-with-the-vagrant-buildsystem">Building with the Vagrant Buildsystem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#id2">The Dicefile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#the-vagrant-setup-for-the-docker-provider">The Vagrant setup for the Docker Provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#the-vagrantfile">The Vagrantfile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#the-vagrant-setup-for-the-libvirt-provider">The Vagrant setup for the libvirt Provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#the-vagrant-build-box">The Vagrant Build Box</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/build_containerized.html#id3">The Vagrantfile</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../building/build_in_buildservice.html">Building in the Open Buildservice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../building/working_with_images.html">Working with Images</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../building/working_with_images/iso_to_usb_stick_deployment.html">Deploy ISO Image on an USB Stick</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/working_with_images/vmx_setup_for_ec2.html">KIWI Image Description for Amazon EC2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/working_with_images/vmx_setup_for_azure.html">KIWI Image Description for Microsoft Azure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/working_with_images/vmx_setup_for_google.html">KIWI Image Description for Google Compute Engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building/working_with_images/setup_pxe_bootserver.html">Setting Up a Network Boot Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../building/working_with_images/setup_pxe_bootserver.html#installing-and-configuring-atftp">Installing and Configuring atftp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../building/working_with_images/setup_pxe_bootserver.html#installing-and-configuring-dhcp">Installing and Configuring DHCP</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../building/working_with_images/pxe_client_configuration.html">PXE Client Setup Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../building/working_with_images/pxe_client_configuration.html#setup-client-with-remote-root">Setup Client with Remote Root</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../building/working_with_images/pxe_client_configuration.html#setup-client-with-system-on-local-disk">Setup Client with System on Local Disk</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../building/working_with_images/pxe_client_configuration.html#setup-client-with-system-on-local-md-raid-disk">Setup Client with System on Local MD RAID Disk</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../building/working_with_images/pxe_client_configuration.html#setup-loading-of-custom-configuration-file-s">Setup Loading of Custom Configuration File(s)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../building/working_with_images/pxe_client_configuration.html#setup-client-to-force-reload-image">Setup Client to Force Reload Image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../building/working_with_images/pxe_client_configuration.html#setup-client-to-force-reload-configuration-files">Setup Client to Force Reload Configuration Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../building/working_with_images/pxe_client_configuration.html#setup-client-for-reboot-after-deployment">Setup Client for Reboot After Deployment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../building/working_with_images/pxe_client_configuration.html#setup-custom-kernel-boot-options">Setup custom kernel boot options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../building/working_with_images/pxe_client_configuration.html#setup-a-custom-boot-timeout">Setup a Custom Boot Timeout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../building/working_with_images/pxe_client_configuration.html#setup-a-different-download-protocol-and-server">Setup a Different Download Protocol and Server</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../building.html#supported-distributions">Supported Distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../commands.html">KIWI Commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../commands/kiwi.html">kiwi</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../commands/kiwi.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/kiwi.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/kiwi.html#global-options">GLOBAL OPTIONS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/kiwi.html#example">EXAMPLE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/kiwi.html#runtime-config-file">RUNTIME CONFIG FILE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/kiwi.html#compatibility">COMPATIBILITY</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/result_list.html">kiwi result list</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../commands/result_list.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/result_list.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/result_list.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/result_bundle.html">kiwi result bundle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../commands/result_bundle.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/result_bundle.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/result_bundle.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/system_prepare.html">kiwi system prepare</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_prepare.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_prepare.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_prepare.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/system_update.html">kiwi system update</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_update.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_update.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_update.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/system_build.html">kiwi system build</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_build.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_build.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_build.html#options">OPTIONS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_build.html#uri-types">URI_TYPES</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/system_create.html">kiwi system create</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_create.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_create.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/system_create.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/image_resize.html">kiwi image resize</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../commands/image_resize.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/image_resize.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/image_resize.html#options">OPTIONS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/image_info.html">kiwi image info</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../commands/image_info.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/image_info.html#description">DESCRIPTION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../commands/image_info.html#options">OPTIONS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../development.html">Development and Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development/kiwi_from_python.html">Using KIWI NG in a Python Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/api/kiwi.html">API Documentation 9.9.2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.archive.html">kiwi.archive Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.boot.html">kiwi.boot Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.bootloader.html">kiwi.bootloader Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.builder.html">kiwi.builder Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.container.html">kiwi.container Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.filesystem.html">kiwi.filesystem Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.package_manager.html">kiwi.package_manager Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.partitioner.html">kiwi.partitioner Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.repository.html">kiwi.repository Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.storage.html">kiwi.storage Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.system.html">kiwi.system Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.solver.html">kiwi.solver Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.tasks.html">kiwi.tasks package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.utils.html">kiwi.utils Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../development/api/kiwi.volume_manager.html">kiwi.volume_manager Package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.app"><code class="docutils literal"><span class="pre">kiwi.app</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.cli"><code class="docutils literal"><span class="pre">kiwi.cli</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.command"><code class="docutils literal"><span class="pre">kiwi.command</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.command_process"><code class="docutils literal"><span class="pre">kiwi.command_process</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.defaults"><code class="docutils literal"><span class="pre">kiwi.defaults</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.exceptions"><code class="docutils literal"><span class="pre">kiwi.exceptions</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.firmware"><code class="docutils literal"><span class="pre">kiwi.firmware</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.help"><code class="docutils literal"><span class="pre">kiwi.help</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.iso"><code class="docutils literal"><span class="pre">kiwi.iso</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.kiwi"><code class="docutils literal"><span class="pre">kiwi.kiwi</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.logger"><code class="docutils literal"><span class="pre">kiwi.logger</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.mount_manager"><code class="docutils literal"><span class="pre">kiwi.mount_manager</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.path"><code class="docutils literal"><span class="pre">kiwi.path</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.privileges"><code class="docutils literal"><span class="pre">kiwi.privileges</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.version"><code class="docutils literal"><span class="pre">kiwi.version</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.xml_description"><code class="docutils literal"><span class="pre">kiwi.xml_description</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi.xml_state"><code class="docutils literal"><span class="pre">kiwi.xml_state</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/api/kiwi.html#module-kiwi">Module Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../development/schema.html">Schema Documentation 6.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/schema_extensions.html">Extending KIWI with Custom Operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../development/schema_extensions.html#the-extension-section">The &lt;extension&gt; Section</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/schema_extensions.html#relax-ng-schema-for-the-extension">RELAX NG Schema for the Extension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/schema_extensions.html#extension-schema-in-xml-catalog">Extension Schema in XML catalog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/schema_extensions.html#using-the-extension">Using the Extension</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../development.html#fork-the-upstream-kiwi-repository">Fork the upstream KIWI repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development.html#create-a-local-clone-of-the-forked-kiwi-repository">Create a local clone of the forked KIWI repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development.html#create-a-python-virtual-development-environment">Create a python virtual development environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development.html#running-test-cases">Running Test Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development.html#create-a-branch-for-each-feature-or-bugfix">Create a branch for each feature or bugfix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development.html#good-to-know">Good to know</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../development.html#signing-git-patches">Signing Git Patches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development.html#raising-versions">Raising Versions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development.html#creating-a-package">Creating a Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development.html#building-documentation">Building Documentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">kiwi</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../overview.html">Overview</a> &raquo;</li>
+        
+      <li>Basic Workflow</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/overview/workflow.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="basic-workflow">
+<h1>Basic Workflow<a class="headerlink" href="#basic-workflow" title="Permalink to this headline">¶</a></h1>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p><strong>Abstract</strong></p>
+<p class="last">Installation of a Linux system generally occurs by booting the target
+system from an installation source such as an installation CD/DVD, a live
+CD/DVD, or a network boot environment (PXE). The installation process is
+often driven by an installer that interacts with the user to collect
+information about the installation. This information generally includes the
+<em>software to be installed</em>, the <em>timezone</em>, system <em>user</em> data, and
+other information. Once all the information is collected, the installer
+installs the software onto the target system using packages from the
+software sources (repositories) available. After the installation is
+complete the system usually reboots and enters a configuration procedure
+upon start-up. The configuration may be fully automatic or it may include
+user interaction.
+This description applies for version 9.9.2.</p>
+</div>
+<p>A system image (usually called “image”), is a <em>complete installation</em> of a Linux
+system within a file. The image represents an operational system and,
+optionally, contains the “final” configuration.</p>
+<p>The behavior of the image upon deployment varies depending on the image type
+and the image configuration since KIWI allows you to completely customize
+the initial start-up behavior of the image. Among others, this includes
+images that:</p>
+<ul class="simple">
+<li>can be deployed inside an existing virtual environment without requiring
+configuration at start-up.</li>
+<li>automatically configure themselves in a known target environment.</li>
+<li>prompt the user for an interactive system configuration.</li>
+</ul>
+<p>The image creation process with KIWI is automated and does not require any
+user interaction. The information required for the image creation process is
+provided by the primary configuration file named <code class="file docutils literal"><span class="pre">config.xml</span></code>.
+This file is validated against the schema documented in
+<a class="reference internal" href="../development/schema.html#schema-docs"><span class="std std-ref">Schema Documentation</span></a> section.
+In addition, the image can optionally be customized
+using the <code class="file docutils literal"><span class="pre">config.sh</span></code> and <code class="file docutils literal"><span class="pre">images.sh</span></code> scripts
+and by using an <em>overlay tree (directory)</em> called <code class="file docutils literal"><span class="pre">root</span></code>.
+See <a class="reference internal" href="#components-of-an-image-description">Components of an Image Description</a> section for further details.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Previous Knowledge</p>
+<p class="last">This documentation assumes that you are familiar with the general
+concepts of Linux, including the boot process, and distribution concepts
+such as package management.</p>
+</div>
+<div class="section" id="building-images">
+<h2>Building Images<a class="headerlink" href="#building-images" title="Permalink to this headline">¶</a></h2>
+<p>KIWI creates images in a two step process. The first step, the
+<code class="docutils literal"><span class="pre">prepare</span></code> operation, generates a so-called <em>unpacked image</em> tree
+(directory) using the information provided in the <code class="file docutils literal"><span class="pre">config.xml</span></code>
+configuration file. The <code class="file docutils literal"><span class="pre">config.xml</span></code> file is part of the <em>configuration
+directory (tree)</em> that describes the image to be created by KIWI.</p>
+<p>The second step, the <code class="docutils literal"><span class="pre">create</span></code> operation, creates the <em>packed image</em> or
+<em>image</em> in the specified format based on the unpacked image and the information
+provided in the <code class="file docutils literal"><span class="pre">config.xml</span></code> configuration file.</p>
+<div class="figure align-center" id="id3">
+<img alt="Image Creation Architecture" src="../_images/intro.png" />
+<p class="caption"><span class="caption-text">Image Creation Architecture</span></p>
+</div>
+<ol class="arabic simple">
+<li>Unpacked Image
+Encapsulated system reachable via chroot</li>
+<li>Packed Image
+Encapsulated system reachable via kernel file system/extension drivers such
+as loopback mounts, etc.</li>
+</ol>
+<div class="admonition note" id="name-convention">
+<p class="first admonition-title">Note</p>
+<p>KIWI configuration file name convention</p>
+<p class="last">KIWI at first place looks for a configuration file named
+<code class="file docutils literal"><span class="pre">config.xml</span></code>. If there is no such file, KIWI looks for files with a
+<code class="regexp docutils literal"><span class="pre">*.kiwi</span></code> extension. In that case, the first match is the loaded file.</p>
+</div>
+<div class="section" id="the-prepare-step">
+<span id="prepare-step"></span><h3>The Prepare Step<a class="headerlink" href="#the-prepare-step" title="Permalink to this headline">¶</a></h3>
+<p>The creation of an image with KIWI is a two step process. The first step is
+called the <code class="docutils literal"><span class="pre">prepare</span></code> step and it must complete successfully before the
+second step, the <code class="docutils literal"><span class="pre">create</span></code> step can be executed.</p>
+<p>During the prepare step, KIWI creates an <em>unpacked image</em>, also called “root
+tree”. The new root tree is created in a directory specified on the command
+line with the option <code class="xref py py-obj docutils literal"><span class="pre">--root</span></code> argument or the value of the <code class="docutils literal"><span class="pre">defaultroot</span></code>
+element in the <code class="file docutils literal"><span class="pre">config.xml</span></code> file. This directory will be the installation
+target for software packages to be installed during the image creation process.</p>
+<p>For package installation, KIWI relies on the package manager specified with the
+<code class="docutils literal"><span class="pre">packagemanager</span></code> element in the <code class="file docutils literal"><span class="pre">config.xml</span></code> file. KIWI supports the
+following package managers: <code class="docutils literal"><span class="pre">dnf</span></code>, <code class="docutils literal"><span class="pre">zypper</span></code> (default), <code class="docutils literal"><span class="pre">yum</span></code> and
+<code class="docutils literal"><span class="pre">apt/dpkg</span></code>.</p>
+<p>The prepare step consists of the following substeps:</p>
+<ol class="arabic">
+<li><p class="first"><strong>Create Target Root Directory.</strong></p>
+<p>KIWI will exit with an error if the target root tree already exists to
+avoid accidental deletion of an existing unpacked image.</p>
+</li>
+<li><p class="first"><strong>Install Packages.</strong></p>
+<p>Initially, KIWI configures the package manager to use the repositories
+specified in the configuration file and/or the command line. Following the
+repository setup, the packages specified in the <code class="docutils literal"><span class="pre">bootstrap</span></code> section of the
+configuration file are installed in a temporary workspace external to
+the target root tree. This establishes the initial environment to support
+the completion of the process in chroot setting. The essential packages to
+specify as part of the bootstrap environment are the <code class="docutils literal"><span class="pre">filesystem</span></code> and
+<code class="docutils literal"><span class="pre">glibc-locale</span></code> packages. The dependency chain of these two packages is
+sufficient to populate the bootstrap environment with all required software
+to support the installation of packages into the new root tree.</p>
+<p>The installation of software packages through the selected package manager
+may install unwanted packages. Removing such packages can be accomplished by
+marking them for deletion in the configuration file. To do so specify a
+configuration entry like:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;package</span> <span class="na">type=</span><span class="s">&quot;delete&quot;</span><span class="nt">&gt;</span>package_to_be_deleted<span class="nt">&lt;/package&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><strong>Apply the Overlay Tree.</strong></p>
+<p>After the package installation is complete, KIWI will apply all files and
+directories present in the overlay directory named <code class="file docutils literal"><span class="pre">root</span></code> to the target
+root tree. Files already present in the target root directory will be
+overwritten, others will be added. This allows you to overwrite any file
+that was installed by one of the packages during the installation phase.</p>
+</li>
+<li><p class="first"><strong>Apply Archives.</strong></p>
+<p>Any archive specified with the <code class="docutils literal"><span class="pre">archive</span></code> element in the <code class="file docutils literal"><span class="pre">config.xml</span></code>
+file is applied in the specified order (top to bottom) after the overlay
+tree copy operation is complete. Files and directories will be extracted
+relative to the top level of the new root tree. As with the overlay tree,
+it is possible to overwrite files already existing in the target root tree.</p>
+</li>
+<li><p class="first"><strong>Execute the User-defined Scripts</strong> <code class="file docutils literal"><span class="pre">config.sh</span></code>.</p>
+<p>At the end of the preparation stage the script named <code class="file docutils literal"><span class="pre">config.sh</span></code> is
+executed if present. It is executed on the top level of the target root tree.
+The script’s primary function is to complete the system configuration, for
+example, by activating services. See <a class="reference internal" href="#image-customization-with-config-sh-shell-script">Image Customization with
+config.sh Shell Script</a> section for further details.</p>
+</li>
+<li><p class="first"><strong>Manage The New Root Tree.</strong></p>
+<p>The unpacked image directory is a directory, as far as the build system is
+concerned you can manipulate the content of this directory according to
+your needs. Since it represents a system installation you can “chroot” into
+this directory for testing purposes. The file system contains an additional
+directory named <code class="file docutils literal"><span class="pre">/image</span></code> that is not present in a regular system. It
+contains information KIWI requires during the create step, including a copy
+of the <code class="file docutils literal"><span class="pre">config.xml</span></code> file.</p>
+<p>Do not make any changes to the system, since they will get lost when
+re-running the <code class="docutils literal"><span class="pre">prepare</span></code> step again. Additionally, you may introduce errors
+that will occur during the <code class="docutils literal"><span class="pre">create</span></code> step which are difficult to track. The
+recommended way to apply changes to the unpacked image directory is to change
+the configuration and re-run the <code class="docutils literal"><span class="pre">prepare</span></code> step.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="the-create-step">
+<span id="create-step"></span><h3>The Create Step<a class="headerlink" href="#the-create-step" title="Permalink to this headline">¶</a></h3>
+<p>The successful completion of the <code class="docutils literal"><span class="pre">prepare</span></code> step is a prerequisite for the
+<code class="docutils literal"><span class="pre">create</span></code> step. It ensures the unpacked root tree is complete and consistent.
+Creating the packed, or final, image is done in the <code class="docutils literal"><span class="pre">create</span></code> step. Multiple
+images can be created using the same unpacked root tree. It is, for example,
+possible to create a self installing OEM image and a virtual machine image from
+a single unpacked root tree. The only prerequisite is that both image types are
+specified in the <code class="file docutils literal"><span class="pre">config.xml</span></code> before the prepare step is executed.</p>
+<p>During the <code class="docutils literal"><span class="pre">create</span></code> step the following major operations are performed by
+KIWI:</p>
+<ol class="arabic">
+<li><p class="first"><strong>Execute the User-defined Script</strong> <code class="docutils literal"><span class="pre">images.sh</span></code>.</p>
+<p>At the beginning of the image creation process the script named
+<code class="file docutils literal"><span class="pre">images.sh</span></code> is executed if present. It is executed on the top level of
+the target root tree. The script is usually used to remove files that are no
+needed in the final image. For example, if an appliance is being built for a
+specific hardware, unnecessary kernel drivers can be removed using this
+script.</p>
+</li>
+<li><p class="first"><strong>Create Requested Image Type.</strong></p>
+<p>The image types that can be created from a prepared image tree depend on the
+types specified in the image description <code class="file docutils literal"><span class="pre">config.xml</span></code> file. The
+configuration file must contain at least one <code class="docutils literal"><span class="pre">type</span></code> element.</p>
+<p>The currently supported image types are:</p>
+<ol class="arabic simple">
+<li><strong>Live Image</strong>: For CDs, DVDs or flash disks.</li>
+<li><strong>Disk image</strong>: Virtual system disk that can be used in virtual
+environments such as VMware, Xen, Amazon Cloud, KVM, and others. Depending
+on the format a guest configuration file is created.</li>
+<li><strong>OEM Image</strong>: Preload system for install media CD/DVD or flash disk.</li>
+<li><strong>PXE Image</strong>: Network boot image.</li>
+<li><strong>Container Image</strong>: Base images for the Docker engine.</li>
+</ol>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="components-of-an-image-description">
+<span id="decription-components"></span><h2>Components of an Image Description<a class="headerlink" href="#components-of-an-image-description" title="Permalink to this headline">¶</a></h2>
+<p>A KIWI image description can composed by several parts. The main part is
+the KIWI description file itself (named <code class="file docutils literal"><span class="pre">config.xml</span></code> or an arbitrary
+name plus the <code class="file docutils literal"><span class="pre">*.kiwi</span></code> extension). The configuration XML is the
+only required component, others are optional.</p>
+<p>These are the optional components of an image description:</p>
+<ol class="arabic">
+<li><p class="first"><code class="docutils literal"><span class="pre">config.sh</span></code> shell script</p>
+<p>Is the configuration shell script that runs and the end of the
+<a class="reference internal" href="#prepare-step"><span class="std std-ref">prepare step</span></a> if present. It can be used to
+fine tune the unpacked image.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">images.sh</span></code> shell script</p>
+<p>Is the configuration shell script that runs at the begining of the
+create step. So it is expected to be used to handle image type specific
+tasks.</p>
+</li>
+<li><p class="first">Overlay tree directory</p>
+<p>The <em>overlay tree</em> is a folder (called <code class="file docutils literal"><span class="pre">root</span></code>)
+or a tarball file (called <code class="file docutils literal"><span class="pre">root.tar.gz</span></code>) that contains
+files and directories that will be copied to the target image build tree
+during the <a class="reference internal" href="#prepare-step"><span class="std std-ref">prepare step</span></a>. It is executed
+after all the packages included in the <code class="file docutils literal"><span class="pre">config.xml</span></code> file
+have been installed. Any already present file is overwritten.</p>
+</li>
+<li><p class="first">Archives included in the <code class="file docutils literal"><span class="pre">config.xml</span></code> file.</p>
+<p>The archives that are included in the <code class="xref py py-obj docutils literal"><span class="pre">&lt;packages&gt;</span></code> using the <code class="xref py py-obj docutils literal"><span class="pre">&lt;archive&gt;</span></code>
+subsection:</p>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">packages</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;image&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">archive</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;custom-archive.tgz&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="n">packages</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="section" id="image-customization-with-config-sh-shell-script">
+<h3>Image Customization with <code class="docutils literal"><span class="pre">config.sh</span></code> Shell Script<a class="headerlink" href="#image-customization-with-config-sh-shell-script" title="Permalink to this headline">¶</a></h3>
+<p>The KIWI image description allows to have an optional <code class="file docutils literal"><span class="pre">config.sh</span></code> bash
+script in place. It can be used for changes appropriate for all images
+to be created from a given unpacked image (since config.sh runs prior
+to create step). Basically the script should be designed to take over
+control of adding the image operating system configuration. Configuration
+in that sense means all tasks which runs once in an os installation process
+like activating services, creating configuration files, prepare an
+environment for a firstboot workflow, etc. The <code class="file docutils literal"><span class="pre">config.sh</span></code> script is
+called at the end of the <a class="reference internal" href="#prepare-step"><span class="std std-ref">prepare step</span></a> (after
+users have been set and the <em>overlay tree directory</em> has been applied). If
+<code class="file docutils literal"><span class="pre">config.sh</span></code> exits with an exit code != 0 the kiwi process will
+exit with an error too.</p>
+<p>See below a common template for <code class="xref py py-obj docutils literal"><span class="pre">config.sh</span></code> script:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="c1">#======================================</span>
+<span class="c1"># Functions...</span>
+<span class="c1">#--------------------------------------</span>
+<span class="n">test</span> <span class="o">-</span><span class="n">f</span> <span class="o">/.</span><span class="n">kconfig</span> <span class="o">&amp;&amp;</span> <span class="o">.</span> <span class="o">/.</span><span class="n">kconfig</span>
+<span class="n">test</span> <span class="o">-</span><span class="n">f</span> <span class="o">/.</span><span class="n">profile</span> <span class="o">&amp;&amp;</span> <span class="o">.</span> <span class="o">/.</span><span class="n">profile</span>
+
+<span class="c1">#======================================</span>
+<span class="c1"># Greeting...</span>
+<span class="c1">#--------------------------------------</span>
+<span class="n">echo</span> <span class="s2">&quot;Configure image: [$kiwi_iname]...&quot;</span>
+
+<span class="c1">#======================================</span>
+<span class="c1"># Mount system filesystems</span>
+<span class="c1">#--------------------------------------</span>
+<span class="n">baseMount</span>
+
+<span class="c1">#======================================</span>
+<span class="c1"># Call configuration code/functions</span>
+<span class="c1">#--------------------------------------</span>
+<span class="o">...</span>
+
+<span class="c1">#======================================</span>
+<span class="c1"># Umount kernel filesystems</span>
+<span class="c1">#--------------------------------------</span>
+<span class="n">baseCleanMount</span>
+
+<span class="c1">#======================================</span>
+<span class="c1"># Exit safely</span>
+<span class="c1">#--------------------------------------</span>
+<span class="n">exit</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<div class="section" id="common-functions">
+<h4>Common Functions<a class="headerlink" href="#common-functions" title="Permalink to this headline">¶</a></h4>
+<p>The <code class="file docutils literal"><span class="pre">.kconfig</span></code> file allows to make use of a common set of functions.
+Functions specific to SUSE Linux specific begin with the name suse.
+Functions applicable to all linux systems starts with the name base.
+The following list describes the functions available inside the
+<code class="file docutils literal"><span class="pre">config.sh</span></code> script.</p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">baseCleanMount</span></code></dt>
+<dd>Umount the system filesystems <code class="file docutils literal"><span class="pre">/proc</span></code>, <code class="file docutils literal"><span class="pre">/dev/pts</span></code>, and
+<code class="file docutils literal"><span class="pre">/sys</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">baseDisableCtrlAltDel</span></code></dt>
+<dd>Disable the Ctrl–Alt–Del key sequence setting in <code class="file docutils literal"><span class="pre">/etc/inittab</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">baseGetPackagesForDeletion</span></code></dt>
+<dd>Return the name(s) of packages which will be deleted.</dd>
+<dt><code class="docutils literal"><span class="pre">baseGetProfilesUsed</span></code></dt>
+<dd>Return the name(s) of profiles used to build this image.</dd>
+<dt><code class="docutils literal"><span class="pre">baseSetRunlevel</span> <span class="pre">{value}</span></code></dt>
+<dd>Set the default run level.</dd>
+<dt><code class="docutils literal"><span class="pre">baseSetupBoot</span></code></dt>
+<dd>Set up the linuxrc as init.</dd>
+<dt><code class="docutils literal"><span class="pre">baseSetupBusyBox</span> <span class="pre">{-f}</span></code></dt>
+<dd><p class="first">Activates busybox if installed for all links from the
+<code class="file docutils literal"><span class="pre">busybox/busybox.links</span></code> file—you can choose custom apps to be forced
+into busybox with the -f option as first parameter, for example:</p>
+<div class="code bash last highlight-default"><div class="highlight"><pre><span></span><span class="n">baseSetupBusyBox</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">zcat</span> <span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">vi</span>
+</pre></div>
+</div>
+</dd>
+<dt><code class="docutils literal"><span class="pre">baseSetupInPlaceGITRepository</span></code></dt>
+<dd>Create an in place git repository of the root directory. This process
+may take some time and you may expect problems with binary data handling.</dd>
+<dt><code class="docutils literal"><span class="pre">baseSetupInPlaceSVNRepository</span> <span class="pre">{path_list}</span></code></dt>
+<dd>Create an in place subversion repository for the specified directories.
+A standard call could look like this baseSetupInPlaceSVNRepository
+<code class="file docutils literal"><span class="pre">/etc</span></code>, <code class="file docutils literal"><span class="pre">/srv</span></code>, and <code class="file docutils literal"><span class="pre">/var/log</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">baseSetupPlainTextGITRepository</span></code></dt>
+<dd>Create an in place git repository of the root directory containing all
+plain/text files.</dd>
+<dt><code class="docutils literal"><span class="pre">baseSetupUserPermissions</span></code></dt>
+<dd>Search all home directories of all users listed in <code class="file docutils literal"><span class="pre">/etc/passwd</span></code> and
+change the ownership of all files to belong to the correct user and group.</dd>
+<dt><code class="docutils literal"><span class="pre">baseStripAndKeep</span> <span class="pre">{list</span> <span class="pre">of</span> <span class="pre">info-files</span> <span class="pre">to</span> <span class="pre">keep}</span></code></dt>
+<dd>Helper function for strip* functions read stdin lines of files to check
+for removing params: files which should be keep.</dd>
+<dt><code class="docutils literal"><span class="pre">baseStripDocs</span> <span class="pre">{list</span> <span class="pre">of</span> <span class="pre">docu</span> <span class="pre">names</span> <span class="pre">to</span> <span class="pre">keep</span></code></dt>
+<dd>Remove all documentation, except one given as parameter.</dd>
+<dt><code class="docutils literal"><span class="pre">baseStripInfos</span> <span class="pre">{list</span> <span class="pre">of</span> <span class="pre">info-files</span> <span class="pre">to</span> <span class="pre">keep}</span></code></dt>
+<dd>Remove all info files, except one given as parameter.</dd>
+<dt><code class="docutils literal"><span class="pre">baseStripLocales</span> <span class="pre">{list</span> <span class="pre">of</span> <span class="pre">locales}</span></code></dt>
+<dd>Remove all locales, except one given as parameter.</dd>
+<dt><code class="docutils literal"><span class="pre">baseStripMans</span> <span class="pre">{list</span> <span class="pre">of</span> <span class="pre">manpages</span> <span class="pre">to</span> <span class="pre">keep}</span></code></dt>
+<dd><p class="first">Remove all manual pages, except one given as parameter
+example:</p>
+<div class="code bash last highlight-default"><div class="highlight"><pre><span></span><span class="n">baseStripMans</span> <span class="n">more</span> <span class="n">less</span>
+</pre></div>
+</div>
+</dd>
+<dt><code class="docutils literal"><span class="pre">baseStripRPM</span></code></dt>
+<dd>Remove rpms defined in <code class="file docutils literal"><span class="pre">config.xml</span></code> in the image type=delete section.</dd>
+<dt><code class="docutils literal"><span class="pre">suseRemovePackagesMarkedForDeletion</span></code></dt>
+<dd>Remove rpms defined in <code class="file docutils literal"><span class="pre">config.xml</span></code> in the image <code class="xref py py-obj docutils literal"><span class="pre">type=delete</span></code>
+section. The difference compared to <code class="xref py py-obj docutils literal"><span class="pre">baseStripRPM</span></code> is that the suse
+variant checks if the package is really installed prior to passing it
+to rpm to uninstall it. The suse rpm exits with an error exit code
+while there are other rpm version which just ignore if an uninstall
+request was set on a package which is not installed.</dd>
+<dt><code class="docutils literal"><span class="pre">baseStripTools</span> <span class="pre">{list</span> <span class="pre">of</span> <span class="pre">toolpath}</span> <span class="pre">{list</span> <span class="pre">of</span> <span class="pre">tools}</span></code></dt>
+<dd>Helper function for suseStripInitrd function params: toolpath, tools.</dd>
+<dt><code class="docutils literal"><span class="pre">baseStripUnusedLibs</span></code></dt>
+<dd>Remove libraries which are not directly linked against applications
+in the bin directories.</dd>
+<dt><code class="docutils literal"><span class="pre">baseUpdateSysConfig</span> <span class="pre">{filename}</span> <span class="pre">{variable}</span> <span class="pre">{value}</span></code></dt>
+<dd>Update sysconfig variable contents.</dd>
+<dt><code class="docutils literal"><span class="pre">Debug</span> <span class="pre">{message}</span></code></dt>
+<dd>Helper function to print a message if the variable DEBUG is set to 1.</dd>
+<dt><code class="docutils literal"><span class="pre">Echo</span> <span class="pre">{echo</span> <span class="pre">commandline}</span></code></dt>
+<dd>Helper function to print a message to the controlling terminal.</dd>
+<dt><code class="docutils literal"><span class="pre">Rm</span> <span class="pre">{list</span> <span class="pre">of</span> <span class="pre">files}</span></code></dt>
+<dd>Helper function to delete files and announce it to log.</dd>
+<dt><code class="docutils literal"><span class="pre">Rpm</span> <span class="pre">{rpm</span> <span class="pre">commandline}</span></code></dt>
+<dd>Helper function to the RPM function and announce it to log.</dd>
+<dt><code class="docutils literal"><span class="pre">suseConfig</span></code></dt>
+<dd>Setup keytable language, timezone and hwclock if specified in
+<code class="file docutils literal"><span class="pre">config.xml</span></code> and call SuSEconfig afterwards SuSEconfig is only
+called on systems which still support it.</dd>
+<dt><code class="docutils literal"><span class="pre">suseInsertService</span> <span class="pre">{servicename}</span></code></dt>
+<dd>This function calls baseInsertService and exists only for
+compatibility reasons.</dd>
+<dt><code class="docutils literal"><span class="pre">suseRemoveService</span> <span class="pre">{servicename}</span></code></dt>
+<dd>This function calls baseRemoveService and exists only for
+compatibility reasons.</dd>
+<dt><code class="docutils literal"><span class="pre">baseInsertService</span> <span class="pre">{servicename}</span></code></dt>
+<dd>Activate the given service by using the <strong class="command">chkconfig</strong>
+or <strong class="command">systemctl</strong> program. Which init system is in use
+is auto detected.</dd>
+<dt><code class="docutils literal"><span class="pre">baseRemoveService</span> <span class="pre">{servicename}</span></code></dt>
+<dd>Deactivate the given service by using the <strong class="command">chkconfig</strong>
+or <strong class="command">systemctl</strong> program. Which init system is in
+use is auto detected.</dd>
+<dt><code class="docutils literal"><span class="pre">baseService</span> <span class="pre">{servicename}</span> <span class="pre">{on|off}</span></code></dt>
+<dd>Activate/Deactivate a service by using the <strong class="command">chkconfig</strong>
+or <strong class="command">systemctl</strong> program. The function requires the service
+name and the value on or off as parameters. Which init system is in
+use is auto detected.</dd>
+<dt><code class="docutils literal"><span class="pre">suseActivateDefaultServices</span></code></dt>
+<dd>Activates the following sysVInit services to be on by default using
+the <strong class="command">chkconfig</strong> program: boot.rootfsck, boot.cleanup,
+boot.localfs, boot.localnet, boot.clock, policykitd, dbus, consolekit,
+haldaemon, network, atd, syslog, cron, kbd. And the following for
+systemd systems: network, cron.</dd>
+<dt><code class="docutils literal"><span class="pre">suseSetupProduct</span></code></dt>
+<dd>This function creates the baseproduct link in <code class="file docutils literal"><span class="pre">/etc/products.d</span></code>
+pointing to the installed product.</dd>
+<dt><code class="docutils literal"><span class="pre">suseSetupProductInformation</span></code></dt>
+<dd>This function will use zypper to search for the installed product
+and install all product specific packages. This function only
+makes sense if zypper is used as package manager.</dd>
+<dt><code class="docutils literal"><span class="pre">suseStripPackager</span> <span class="pre">{-a}</span></code></dt>
+<dd>Remove smart or zypper packages and db files Also remove rpm
+package and db if -a given.</dd>
+</dl>
+</div>
+<div class="section" id="profile-environment-variables">
+<h4>Profile Environment Variables<a class="headerlink" href="#profile-environment-variables" title="Permalink to this headline">¶</a></h4>
+<p>The <code class="file docutils literal"><span class="pre">.profile</span></code> environment file contains a specific set of
+variables which are listed below. Some of the functions above
+use the variables.</p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">$kiwi_compressed</span></code></dt>
+<dd>The value of the compressed attribute set in the type element
+in <code class="file docutils literal"><span class="pre">config.xml</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">$kiwi_delete</span></code></dt>
+<dd>A list of all packages which are part of the packages section
+with <code class="xref py py-obj docutils literal"><span class="pre">type=&quot;delete&quot;</span></code> in <code class="file docutils literal"><span class="pre">config.xml</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">$kiwi_drivers</span></code></dt>
+<dd>A comma separated list of the driver entries as listed in the
+drivers section of the <code class="file docutils literal"><span class="pre">config.xml</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">$kiwi_iname</span></code></dt>
+<dd>The name of the image as listed in <code class="file docutils literal"><span class="pre">config.xml</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">$kiwi_iversion</span></code></dt>
+<dd>The image version string major.minor.release.</dd>
+<dt><code class="docutils literal"><span class="pre">$kiwi_keytable</span></code></dt>
+<dd>The contents of the keytable setup as done in <code class="file docutils literal"><span class="pre">config.xml</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">$kiwi_language</span></code></dt>
+<dd>The contents of the locale setup as done in <code class="file docutils literal"><span class="pre">config.xml</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">$kiwi_profiles</span></code></dt>
+<dd>A list of profiles used to build this image.</dd>
+<dt><code class="docutils literal"><span class="pre">$kiwi_size</span></code></dt>
+<dd>The predefined size value for this image. This is not the
+computed size but only the optional size value of the preferences
+section in <code class="file docutils literal"><span class="pre">config.xml</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">$kiwi_timezone</span></code></dt>
+<dd>The contents of the timezone setup as done in <code class="file docutils literal"><span class="pre">config.xml</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">$kiwi_type</span></code></dt>
+<dd>The basic image type.</dd>
+</dl>
+</div>
+<div class="section" id="configuration-tips">
+<h4>Configuration Tips<a class="headerlink" href="#configuration-tips" title="Permalink to this headline">¶</a></h4>
+<p>In this section some ideas of how <code class="file docutils literal"><span class="pre">config.sh</span></code> file could be used to
+fine tune the resulting unpacked image are quickly described:</p>
+<ol class="arabic simple">
+<li><strong>Stateless systemd UUIDs:</strong></li>
+</ol>
+<blockquote>
+<div><p>Usually during the image packages installation when <em>dbus</em> and/or
+<em>systemd</em> are installed machine ID files are created and set
+(<code class="file docutils literal"><span class="pre">/etc/machine-id</span></code>, <code class="file docutils literal"><span class="pre">/var/lib/dbus/machine-id</span></code>). Those
+UUIDs are meant to be unique and set only once in each deployment. In
+order to ensure that every single box running out from the same image
+has its own specific systemd UUID, the original image must not include
+any systemd or dbus ID, this way it is assigned during the first boot.
+The following bash snippet allows this behavior in <code class="file docutils literal"><span class="pre">config.sh</span></code>:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="c1">#======================================</span>
+<span class="c1"># Make machine-id stateless</span>
+<span class="c1">#--------------------------------------</span>
+<span class="k">if</span> <span class="p">[</span> <span class="o">-</span><span class="n">e</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">machine</span><span class="o">-</span><span class="nb">id</span> <span class="p">];</span> <span class="n">then</span>
+    <span class="o">&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">machine</span><span class="o">-</span><span class="nb">id</span>
+    <span class="k">if</span> <span class="p">[</span> <span class="o">-</span><span class="n">e</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">dbus</span><span class="o">/</span><span class="n">machine</span><span class="o">-</span><span class="nb">id</span> <span class="p">];</span> <span class="n">then</span>
+        <span class="n">rm</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">dbus</span><span class="o">/</span><span class="n">machine</span><span class="o">-</span><span class="nb">id</span>
+    <span class="n">fi</span>
+    <span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">machine</span><span class="o">-</span><span class="nb">id</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">dbus</span><span class="o">/</span><span class="n">machine</span><span class="o">-</span><span class="nb">id</span>
+<span class="n">fi</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Avoid interactive boot</p>
+<p class="last">It is important to remark that the file <code class="file docutils literal"><span class="pre">/etc/machine-id</span></code>
+is set to an empty file instead of deleting it. Systemd may trigger
+<strong class="command">systemd-firstboot</strong> service if this file is not present,
+which leads to an interactive firstboot where the user is
+asked to provide some data.</p>
+</div>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="image-customization-with-images-sh-shell-script">
+<h3>Image Customization with <code class="docutils literal"><span class="pre">images.sh</span></code> Shell Script<a class="headerlink" href="#image-customization-with-images-sh-shell-script" title="Permalink to this headline">¶</a></h3>
+<p>The KIWI image description allows to have an optional <code class="file docutils literal"><span class="pre">images.sh</span></code>
+bash script in place. It can be used for changes appropriate for
+certain images/image types on case-by-case basis (since it runs at
+beginning of <a class="reference internal" href="#create-step"><span class="std std-ref">create step</span></a>). Basically the script
+should be designed to take over control of handling image type specific
+tasks. For example if building the oem type requires some additional
+package or config it can be handled in <code class="file docutils literal"><span class="pre">images.sh</span></code>. Please keep in
+mind there is only one unpacked root tree the script operates in. This
+means all changes are permanent and will not be automatically restored.
+It is also the script authors tasks to check if changes done before do not
+interfere in a negative way if another image type is created from the
+same unpacked image root tree. If <code class="file docutils literal"><span class="pre">images.sh</span></code> exits with an exit
+code != 0 the kiwi process will exit with an error too.</p>
+<p>See below a common template for <code class="file docutils literal"><span class="pre">images.sh</span></code> script:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="c1">#======================================</span>
+<span class="c1"># Functions...</span>
+<span class="c1">#--------------------------------------</span>
+<span class="n">test</span> <span class="o">-</span><span class="n">f</span> <span class="o">/.</span><span class="n">kconfig</span> <span class="o">&amp;&amp;</span> <span class="o">.</span> <span class="o">/.</span><span class="n">kconfig</span>
+<span class="n">test</span> <span class="o">-</span><span class="n">f</span> <span class="o">/.</span><span class="n">profile</span> <span class="o">&amp;&amp;</span> <span class="o">.</span> <span class="o">/.</span><span class="n">profile</span>
+
+<span class="c1">#======================================</span>
+<span class="c1"># Greeting...</span>
+<span class="c1">#--------------------------------------</span>
+<span class="n">echo</span> <span class="s2">&quot;Configure image: [$kiwi_iname]...&quot;</span>
+
+<span class="c1">#======================================</span>
+<span class="c1"># Call configuration code/functions</span>
+<span class="c1">#--------------------------------------</span>
+<span class="o">...</span>
+
+<span class="c1">#======================================</span>
+<span class="c1"># Exit safely</span>
+<span class="c1">#--------------------------------------</span>
+<span class="n">exit</span>
+</pre></div>
+</div>
+<div class="section" id="id1">
+<h4>Common Functions<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<p>The <code class="file docutils literal"><span class="pre">.kconfig</span></code> file allows to make use of a common set of functions.
+Functions specific to SUSE Linux specific begin with the name <em>suse</em>.
+Functions applicable to all linux systems starts with the name <em>base</em>.
+The following list describes the functions available inside the
+<code class="file docutils literal"><span class="pre">images.sh</span></code> script.</p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">baseCleanMount</span></code></dt>
+<dd>Umount the system file systems <code class="file docutils literal"><span class="pre">/proc</span></code>, <code class="file docutils literal"><span class="pre">/dev/pts</span></code>,
+and <code class="file docutils literal"><span class="pre">/sys</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">baseGetProfilesUsed</span></code></dt>
+<dd>Return the name(s) of profiles used to build this image.</dd>
+<dt><code class="docutils literal"><span class="pre">baseGetPackagesForDeletion</span></code></dt>
+<dd>Return the list of packages setup in the packages <em>type=”delete”</em>
+section of the <code class="file docutils literal"><span class="pre">config.xml</span></code> used to build this image.</dd>
+<dt><code class="docutils literal"><span class="pre">suseGFXBoot</span> <span class="pre">{theme}</span> <span class="pre">{loadertype}</span></code></dt>
+<dd>This function requires the gfxboot and at least one <em>bootsplash-theme-*</em>
+package to be installed to work correctly. The function creates from
+this package data a graphics boot screen for the isolinux and grub boot
+loaders. Additionally it creates the bootsplash files for the
+resolutions 800x600, 1024x768, and 1280x1024.</dd>
+<dt><code class="docutils literal"><span class="pre">suseStripKernel</span></code></dt>
+<dd>This function removes all kernel drivers which are not listed in the
+drivers sections of the <code class="file docutils literal"><span class="pre">config.xml</span></code> file.</dd>
+<dt><code class="docutils literal"><span class="pre">suseStripInitrd</span></code></dt>
+<dd>This function removes a whole bunch of tools binaries and libraries
+which are not required to boot a suse system with KIWI.</dd>
+<dt><code class="docutils literal"><span class="pre">Rm</span> <span class="pre">{list</span> <span class="pre">of</span> <span class="pre">files}</span></code></dt>
+<dd>Helper function to delete files and announce it to log.</dd>
+<dt><code class="docutils literal"><span class="pre">Rpm</span> <span class="pre">{rpm</span> <span class="pre">commandline}</span></code></dt>
+<dd>Helper function to the rpm function and announce it to log.</dd>
+<dt><code class="docutils literal"><span class="pre">Echo</span> <span class="pre">{echo</span> <span class="pre">commandline}</span></code></dt>
+<dd>Helper function to print a message to the controlling terminal.</dd>
+<dt><code class="docutils literal"><span class="pre">Debug</span> <span class="pre">{message}</span></code></dt>
+<dd>Helper function to print a message if the variable <em>DEBUG</em> is set to 1.</dd>
+</dl>
+</div>
+<div class="section" id="id2">
+<h4>Profile environment variables<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p>The <code class="file docutils literal"><span class="pre">.profile</span></code> environment file contains a specific set of
+variables which are listed below. Some of the functions above use the
+variables.</p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">$kiwi_iname</span></code></dt>
+<dd>The name of the image as listed in <code class="file docutils literal"><span class="pre">config.xml</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">$kiwi_iversion</span></code></dt>
+<dd>The image version string major.minor.release.</dd>
+<dt><code class="docutils literal"><span class="pre">$kiwi_keytable</span></code></dt>
+<dd>The contents of the keytable setup as done in <code class="file docutils literal"><span class="pre">config.xml</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">$kiwi_language</span></code></dt>
+<dd>The contents of the locale setup as done in <code class="file docutils literal"><span class="pre">config.xml</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">$kiwi_timezone</span></code></dt>
+<dd>The contents of the timezone setup as done in <code class="file docutils literal"><span class="pre">config.xml</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">$kiwi_delete</span></code></dt>
+<dd>A list of all packages which are part of the packages section with
+<em>type=”delete”</em> in <code class="file docutils literal"><span class="pre">config.xml</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">$kiwi_profiles</span></code></dt>
+<dd>A list of profiles used to build this image.</dd>
+<dt><code class="docutils literal"><span class="pre">$kiwi_drivers</span></code></dt>
+<dd>A comma separated list of the driver entries as listed in the drivers
+section of the <code class="file docutils literal"><span class="pre">config.xml</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">$kiwi_size</span></code></dt>
+<dd>The predefined size value for this image. This is not the computed size
+but only the optional size value of the preferences section in
+<code class="file docutils literal"><span class="pre">config.xml</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">$kiwi_compressed</span></code></dt>
+<dd>The value of the compressed attribute set in the type element in
+<code class="file docutils literal"><span class="pre">config.xml</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">$kiwi_type</span></code></dt>
+<dd>The basic image type.</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="section" id="customizing-the-boot-process">
+<h2>Customizing the Boot Process<a class="headerlink" href="#customizing-the-boot-process" title="Permalink to this headline">¶</a></h2>
+<p>Most Linux systems use a special boot image to control the system boot process
+after the system firmware, BIOS or UEFI, hands control of the hardware to the
+operating system. This boot image is called the <code class="file docutils literal"><span class="pre">initrd</span></code>. The Linux kernel
+loads the <code class="file docutils literal"><span class="pre">initrd</span></code>, a compressed cpio initial RAM disk, into the RAM and
+executes <strong class="command">init</strong> or, if present, <strong class="command">linuxrc</strong>.</p>
+<p>Depending on the image type, KIWI creates the boot image automatically during
+the <code class="docutils literal"><span class="pre">create</span></code> step. Each image type has its own description for the boot image.
+Common functionality is shared between the boot images through a set of
+functions. The boot image descriptions follow the same principles as the system
+image descriptions, KIWI ships with pre-defined boot image descriptions.</p>
+<p>This is the default behavior of KIWI and provides support for multiple boot
+modes like <em>oem install</em>, <em>pxe install</em>, <em>live images</em>, <em>network clients</em>, etc.
+However this KIWI version also provides support for <strong class="command">dracut</strong>
+generated images which is used when fast boot or small <em>initrd</em> images are
+important requirements. This is possible by setting the <code class="docutils literal"><span class="pre">initrd_system</span></code>
+attribute withint the <code class="docutils literal"><span class="pre">type</span></code> section of the configuration file. For example:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;vmx&quot;</span> <span class="na">initrd_system=</span><span class="s">&quot;dracut&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p>dracut images limited features</p>
+<p class="last">The counter part of using <strong class="command">dracut</strong> images is that only
+limited features are supported in this case. In fact, all the following
+documentation about customizing the boot process does not apply using
+<strong class="command">dracut</strong> images. <code class="docutils literal"><span class="pre">initrd_system</span></code> is only available for <em>oem</em> and
+<em>vmx</em> image types.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Boot Image Descriptions provided by KIWI</p>
+<p class="last">The boot image descriptions provided by KIWI cover almost all use
+cases. Creating custom boot descriptions should not be necessary, unless you
+have special requirements.</p>
+</div>
+<div class="figure align-center" id="id4">
+<img alt="Image Descriptions" src="../_images/activation.png" />
+<p class="caption"><span class="caption-text">Image Descriptions</span></p>
+</div>
+<ol class="arabic">
+<li><p class="first"><strong>Boot Image</strong></p>
+<p>Boot image descriptions are provided by KIWI, use is recommended but not
+required.</p>
+</li>
+<li><p class="first"><strong>System Image</strong></p>
+<p>The system image description is created by the KIWI user or a KIWI
+provided template may be used.</p>
+</li>
+</ol>
+<p>The boot image descriptions are stored in the
+<code class="file docutils literal"><span class="pre">&lt;INSTALL-DIR&gt;/kiwi/boot/*</span></code> directories. KIWI selects the boot image
+based on the value of the <code class="docutils literal"><span class="pre">boot</span></code> attribute of the <code class="docutils literal"><span class="pre">type</span></code> element. The
+attribute value is expected in the general form of <em>BOOTTYPE</em>/<em>DISTRIBUTION</em>.
+For example to select the OEM boot image for SLES version 12 the element would
+look like the following:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;type</span> <span class="na">boot=</span><span class="s">&quot;oemboot/suse-SLES12&quot;</span><span class="nt">&gt;</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p>Difference Between Boot Image and System Image
+Descriptions</p>
+<p>The <em>boot image description</em> only represents the initrd used to boot the
+system and as such serves a limited purpose. The boot image descriptions is
+used to build the boot image independently from the system image. Usually a
+pre-defined boot image descriptions shipped with KIWI is used.</p>
+<p class="last">The system image description is used to build the image running on the target
+system. It is manually created and usually tailor-made for a specific use case.</p>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p>De-activating Hooks at Boot Time</p>
+<div class="last highlight-bash"><div class="highlight"><pre><span></span><span class="nv">KIWI_FORBID_HOOKS</span><span class="o">=</span><span class="m">1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="boot-image-hook-scripts">
+<h3>Boot Image Hook-Scripts<a class="headerlink" href="#boot-image-hook-scripts" title="Permalink to this headline">¶</a></h3>
+<p>All KIWI created boot images contain KIWI boot code that gets executed when the
+image is booted for the first time. This boot code differs from image type to
+image type. It provides hooks to execute user defined shell scripts.</p>
+<p>These scripts may extend the firstboot process and are expected to exist inside
+the boot image in a specific location with specific names. The following
+instructions explain the concept of hook scripts, which is common to all image
+types, and how to include the scripts in the initrd.</p>
+<div class="section" id="script-types">
+<h4>Script Types<a class="headerlink" href="#script-types" title="Permalink to this headline">¶</a></h4>
+<p>Hook scripts are executed using a predetermined name that is hard coded into the
+KIWI boot code. This name is extended using the <code class="file docutils literal"><span class="pre">.sh</span></code> extension and
+differs by boot image type. Therefore, the boot script naming in the archive
+must be exact. Boot scripts are sourced in the kiwi boot code. This provides the
+hook script access to all variables set in the boot environment. This also
+implies that no separate shell process is started and the boot scripts do not
+need to have the executable bit set. Encoding the interpreter location with the
+<code class="docutils literal"><span class="pre">#!</span></code> shebang is superfluous.</p>
+<p>The following list provides information about the hook names, timing of the
+execution, and the applicable boot image.</p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">handleMachineID</span></code></dt>
+<dd>This hook is called as part of the pre-init phase when the system root
+mountpoint has already been moved and is ready to hand over the control
+to the init system. It’s purpose is to setup the machine id as used by
+systemd and dbus. Under normal conditions it is preferred to write a
+systemd firstboot service script to setup the machine id. However
+depending on the distribution such a service might not exist and in
+this case the machine id setup can be done from within that kiwi
+hook script.</dd>
+<dt><code class="docutils literal"><span class="pre">handleSplash</span></code></dt>
+<dd>This hook is called prior to any dialog/exception message or progress dialog.
+The hook can be used to customize the behavior of the splash screen. KIWI
+automatically hides a plymouth or kernel based splash screen if there is only
+one active console.</dd>
+<dt><code class="docutils literal"><span class="pre">init</span></code></dt>
+<dd>This hook is called before udev is started. It exists only for the <em>PXE</em>
+image type.</dd>
+<dt><code class="docutils literal"><span class="pre">preconfig</span></code> | <code class="docutils literal"><span class="pre">postconfig</span></code></dt>
+<dd>The hooks are called before and after the client configuration files (CONF
+contents) are setup, respectively. The hooks only exist for the <em>PXE</em> image
+type.</dd>
+<dt><code class="docutils literal"><span class="pre">predownload</span></code> | <code class="docutils literal"><span class="pre">postdownload</span></code></dt>
+<dd>The hooks are called before and after the client image receives the root file
+system, respectively. The hooks only exist for the <em>PXE</em> image type.</dd>
+<dt><code class="docutils literal"><span class="pre">preImageDump</span></code> | <code class="docutils literal"><span class="pre">postImageDump</span></code></dt>
+<dd>The hooks are called before and after the install image is dumped on the
+target disk, respectively. The hooks only exist for the <em>OEM</em> image type.</dd>
+<dt><code class="docutils literal"><span class="pre">preLoadConfiguration</span></code> | <code class="docutils literal"><span class="pre">postLoadConfiguration</span></code></dt>
+<dd>The hooks are called before and after the client configuration file
+<code class="file docutils literal"><span class="pre">config.MAC</span></code> is loaded, respectively. The hooks only exist for the
+<em>PXE</em> image type.</dd>
+<dt><code class="docutils literal"><span class="pre">premount</span></code> | <code class="docutils literal"><span class="pre">postmount</span></code></dt>
+<dd>The hooks are called before and after the client root file system is mounted,
+respectively. The hooks only exist for the PXE image type.</dd>
+<dt><code class="docutils literal"><span class="pre">prenetwork</span></code> | <code class="docutils literal"><span class="pre">postnetwork</span></code></dt>
+<dd>The hooks are called before and after the client network is setup,
+respectively. The hooks only exist for the <em>PXE</em> image type.</dd>
+<dt><code class="docutils literal"><span class="pre">prepartition</span></code> | <code class="docutils literal"><span class="pre">postpartition</span></code></dt>
+<dd>The hooks are called before and after the client creates the partition table
+on the target disk, respectively. The hooks only exist for the <em>PXE</em> image
+type.</dd>
+<dt><code class="docutils literal"><span class="pre">preprobe</span></code> | <code class="docutils literal"><span class="pre">postprobe</span></code></dt>
+<dd>The hooks are called before and after the loading of modules not handled by
+udev, respectively. The hooks only exist for the <em>PXE</em> image type.</dd>
+<dt><code class="docutils literal"><span class="pre">preswap</span></code> | <code class="docutils literal"><span class="pre">postswap</span></code></dt>
+<dd>The hooks are called before and after the creation of the swap space,
+respectively. The hooks only exist for the <em>PXE</em> image type.</dd>
+<dt><code class="docutils literal"><span class="pre">preactivate</span></code></dt>
+<dd>This hook is called before the root file system is moved to <code class="file docutils literal"><span class="pre">/</span></code>. The
+hook only exists for the <em>PXE</em> image type.</dd>
+<dt><code class="docutils literal"><span class="pre">preCallInit</span></code></dt>
+<dd>This hook is called before the initialization process, init or systemd, is
+started. At call time the root file system has already been moved to
+<code class="file docutils literal"><span class="pre">/</span></code>. The hook only exists for the <em>OEM</em> and <em>VMX</em> image types.</dd>
+<dt><code class="docutils literal"><span class="pre">preRecovery</span></code> | <code class="docutils literal"><span class="pre">postRecovery</span></code></dt>
+<dd>This hook is called before and after the recovery code is processed. At call
+time of preRecovery the recovery partition is not yet mounted. At call time
+of postRecovery the recovery partition is still mounted on <code class="file docutils literal"><span class="pre">/reco-save</span></code>.
+The hook only exists for the <em>OEM</em> image type.</dd>
+<dt><code class="docutils literal"><span class="pre">preRecoverySetup</span></code> | <code class="docutils literal"><span class="pre">postRecoverySetup</span></code></dt>
+<dd>This hook is called before and after the recovery setup is processed. At call
+time of preRecoverySetup the recovery partition is not yet mounted. At call
+time of postRecoverySetup the recovery partition is still mounted on
+<code class="file docutils literal"><span class="pre">/reco-save</span></code>. The hook only exists for the <em>OEM</em> image type.</dd>
+<dt><code class="docutils literal"><span class="pre">preException</span></code></dt>
+<dd>This hook is called before a system error is handled. The error message is
+passed as parameter. This hook can be used for all image types.</dd>
+<dt><code class="docutils literal"><span class="pre">preHWdetect</span></code> | <code class="docutils literal"><span class="pre">postHWdetect</span></code></dt>
+<dd>The hooks are called before and after the install image boot code detects
+the possible target storage device(s). The hooks only exist for the <em>OEM</em>
+image type.</dd>
+<dt><code class="docutils literal"><span class="pre">preNetworkRelease</span></code></dt>
+<dd>This hook is called before the network connection is released. The hook only
+exists for the <em>PXE</em> image type.</dd>
+</dl>
+</div>
+<div class="section" id="including-hook-scripts-into-the-boot-image">
+<h4>Including Hook Scripts into the Boot Image<a class="headerlink" href="#including-hook-scripts-into-the-boot-image" title="Permalink to this headline">¶</a></h4>
+<p>All hook scripts must be located in the <code class="file docutils literal"><span class="pre">kiwi-hooks</span></code> directory at the top
+level of the initrd. The best approach to including the hook scripts in the
+initrd is to create an archive of a <code class="file docutils literal"><span class="pre">kiwi-hooks</span></code> directory that contains
+the custom boot scripts.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>mkdir kiwi-hooks
+<span class="c1"># place all scripts inside kiwi-hooks</span>
+tar -cf kiwi-hooks.tgz kiwi-hooks/
+</pre></div>
+</div>
+<p>The TAR archive must be located at the top level of the image description
+directory, this is the same level that contains the <code class="file docutils literal"><span class="pre">config.xml</span></code> file.</p>
+<p>Hook scripts are only executed within KIWI’s boot code and must therefore be
+part of the KIWI created boot image. Including the content of a TAR archive in
+the initrd is accomplished by setting the value of the <code class="docutils literal"><span class="pre">bootinclude</span></code> attribute
+of the <code class="docutils literal"><span class="pre">archive</span></code> element to true in the <code class="file docutils literal"><span class="pre">config.xml</span></code> file as shown
+below:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;packages</span> <span class="na">type=</span><span class="s">&quot;image&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;archive</span> <span class="na">name=</span><span class="s">&quot;kiwi-hooks.tgz&quot;</span> <span class="na">bootinclude=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/packages&gt;</span>
+</pre></div>
+</div>
+<p>The concept of including an archive in the boot image follows the same concepts
+described for the system image previously. To use an archive in a pre-built boot
+image the archive must be part of the boot image description in which case it is
+not necessary to set the <code class="docutils literal"><span class="pre">bootinclude</span></code> attribute.</p>
+</div>
+<div class="section" id="post-commands">
+<h4>Post Commands<a class="headerlink" href="#post-commands" title="Permalink to this headline">¶</a></h4>
+<p>In addition to the hook script itself it is also possible to run a post command
+after the hook script was called. This allows to run commands tied to a hook
+script without changing the initrd and thus provides a certain flexibility when
+writing the hook. The post command execution is based on variables that can be
+passed to the kernel command line. The following rules for the processing post
+commands apply:</p>
+<ol class="arabic">
+<li><p class="first">Command post processing needs to be activated within the corresponding hook
+script. this is achieved by setting the variable
+<code class="docutils literal"><span class="pre">KIWI_ALLOW_HOOK_CMD_hookname</span></code> to <code class="docutils literal"><span class="pre">1</span></code>. For example:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">KIWI_ALLOW_HOOK_CMD_preHWdetect</span><span class="o">=</span><span class="m">1</span>
+</pre></div>
+</div>
+<p>This will activate the post command execution for the <code class="docutils literal"><span class="pre">preHWdetect</span></code> hook.
+If this variable is not set, the post command will not be executed.</p>
+</li>
+<li><p class="first">The corresponding variable <code class="docutils literal"><span class="pre">KIWI_HOOK_CMD_hookname</span></code>
+needs to passed to the Kernel command line. Its value contains the command
+that is to be executed, for example:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">KIWI_HOOK_CMD_preHWdetect</span><span class="o">=</span><span class="s2">&quot;ls -l&quot;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p>To disable all post commands for the current boot process pass the
+following variable to the Kernel command line:</p>
+<div class="last highlight-bash"><div class="highlight"><pre><span></span><span class="nv">KIWI_FORBID_HOOK_CMDS</span><span class="o">=</span><span class="m">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="boot-parameters">
+<h3>Boot Parameters<a class="headerlink" href="#boot-parameters" title="Permalink to this headline">¶</a></h3>
+<p>A KIWI created initrd based on one of the KIWI provided boot image descriptions
+recognizes kernel parameters that can be useful for debugging purposes or to set
+some specific boot variables. These parameters may not work if the image
+contains a custom boot image where the KIWI boot code has been replaced, and the
+parameters are not recognized after the initial KIWI created initrd has been
+replaced by the “regular” distribution created initrd after the initial boot of
+the image.</p>
+<p>The following list are some of the variables that might be included as kernel
+parameters:</p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">BOOTIF</span></code></dt>
+<dd>This variable sets the interface to boot in <em>PXE</em> images. It’s the MAC
+address of the desired interface. If <code class="docutils literal"><span class="pre">BOOTIF</span></code> is not set the boot code
+selects the first interface responding to the DHCP server.</dd>
+<dt><code class="docutils literal"><span class="pre">DEVICE_TIMEOUT</span></code></dt>
+<dd>This variable sets the time (in seconds) that the system waits until a
+storage device is considered to be unaccessible. By default, this value is set
+to 60 seconds. It can be handy in order to limit the wait time, specially
+if there are operations pending on removable devices which may not be always
+present.</dd>
+<dt><code class="docutils literal"><span class="pre">DIALOG_LANG</span></code></dt>
+<dd>This variable holds the language code that will be used to select the
+corresponding language literals used in the installation dialogs. By default
+is set to ‘ask’, it meaning the user is prompted to select one. If unattended
+mode has been selected, <code class="docutils literal"><span class="pre">DIALOG_LANG</span></code> is always set to US English.</dd>
+<dt><code class="docutils literal"><span class="pre">KIWI_ALLOW_HOOK_CMD_hookname</span></code></dt>
+<dd>This variable enables the execution of a command right after the execution of
+the corresponding hook script identified by <em>hookname</em>. If set to <code class="docutils literal"><span class="pre">1</span></code> the
+post command related to <em>hookname</em> will be executed.</dd>
+<dt><code class="docutils literal"><span class="pre">kiwi_cowdevice</span></code></dt>
+<dd>This variable sets the device to use for copy-on-write (cow) operations
+in hybrid images. If used, <code class="docutils literal"><span class="pre">kiwi_cowsystem</span></code> also needs to be defined.</dd>
+<dt><code class="docutils literal"><span class="pre">kiwi_cowsystem</span></code></dt>
+<dd>This variable sets the cow file to use inside the write partition defined by
+<code class="docutils literal"><span class="pre">kiwi_device</span></code> in hybrid images. If used, <code class="docutils literal"><span class="pre">kiwi_cowdevice</span></code> also needs to
+be defined.</dd>
+<dt><code class="docutils literal"><span class="pre">kiwidebug</span></code></dt>
+<dd>This variable sets to enter on a limited shell in case there is a fatal error
+during the boot process. The default behavior is to reboot after 120 seconds,
+this variable prevents this behavior setting its value to <code class="docutils literal"><span class="pre">1</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">KIWI_FORBID_HOOKS</span></code></dt>
+<dd>This variable disables all post commands int he boot process.</dd>
+<dt><code class="docutils literal"><span class="pre">KIWI_HOOK_CMD_hookname</span></code></dt>
+<dd>This variable sets the post command of the corresponding hook script
+identified by <em>hookname</em>. The value must be the command line including
+all arguments all in a single string.</dd>
+<dt><code class="docutils literal"><span class="pre">kiwi_hybridpersistent</span></code></dt>
+<dd>This variable sets if a write partition for hybrid images should be created or
+not. It is boolean value represented by ‘true’ or ‘false’.</dd>
+<dt><code class="docutils literal"><span class="pre">kiwi_hybridpersistent_cow_filename</span></code></dt>
+<dd>This variable sets the filename of the cow file for hybrid images. By default
+it is set to <code class="docutils literal"><span class="pre">Live</span> <span class="pre">OS's</span> <span class="pre">persistent</span> <span class="pre">storage.fs</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">kiwi_hybridpersistent_filesystem</span></code></dt>
+<dd>This variable sets the filesystem to be used within the write partition of
+hybrid images. By default is set to btrfs.</dd>
+<dt><code class="docutils literal"><span class="pre">kiwi_ramonly</span></code></dt>
+<dd>This variable sets to mount the clicfs or unionfs read/write device on a
+ram disk or not. Any empty value activates the ramonly mode.</dd>
+<dt><code class="docutils literal"><span class="pre">kiwinoswapsearch</span></code></dt>
+<dd>This variable prevents the search for an existing swap partition.
+The lookup of a swap partition is done when using the oem
+installer in partition based installation mode or on live images
+in order to activate swap when it exists.</dd>
+</dl>
+<div class="section" id="boot-debugging">
+<h4>Boot Debugging<a class="headerlink" href="#boot-debugging" title="Permalink to this headline">¶</a></h4>
+<p>If the boot process encounters a fatal error, the default behavior is to reboot
+the system after 120 seconds. Prevent this behavior by using the <code class="docutils literal"><span class="pre">kiwidebug</span></code>
+parameter described in the previous sections by setting its value to <code class="docutils literal"><span class="pre">1</span></code>:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">kiwidebug</span><span class="o">=</span><span class="m">1</span>
+</pre></div>
+</div>
+<p>This should be set the Kernel command line. With that parameter set to 1, the
+system will enter a limited shell environment in case of a fatal during boot.
+The shell contains a basic set of commands. The first place to look for
+debugging information should be the boot log file <code class="file docutils literal"><span class="pre">/var/log/kiwi.boot</span></code>.</p>
+<p>In addition to the shell, KIWI also starts the <em>dropbear</em> SSH server if the
+environment is suitable. Support for <em>dropbear</em> can be added to the netboot and
+oemboot (in PXE boot mode) boot images. For isoboot and vmxboot boot images
+there is no remote login support because they do not set up a network. It is
+required that the repository setup provides <code class="docutils literal"><span class="pre">dropbear</span></code> package.</p>
+<p>To have dropbear installed as part of the boot image the following needs to be
+added to the system image configuration:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;packages</span> <span class="na">type=</span><span class="s">&quot;image&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;dropbear&quot;</span> <span class="na">bootinclude=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/packages&gt;</span>
+</pre></div>
+</div>
+<p>It might be useful to also include a tool for copying remote files, such as
+<strong class="command">scp</strong> or <strong class="command">rsync</strong> into the boot image. Note that the required
+packages need to be provided by the repositories configured. To include
+<strong class="command">rsync</strong>, for example, add the line <code class="docutils literal"><span class="pre">&lt;package</span> <span class="pre">name=&quot;rsync&quot;</span>
+<span class="pre">bootinclude=&quot;true&quot;/&gt;</span></code> to the listing above.</p>
+<p>To access the boot image via SSH it is required to provide a public key on the
+PXE server in the directory: <code class="file docutils literal"><span class="pre">SERVER-ROOT/KIWI/debug_ssh.pub</span></code>. KIWI
+exclusively searches for that file name, so it is required to name it
+<code class="file docutils literal"><span class="pre">debug_ssh.pub</span></code>. <code class="file docutils literal"><span class="pre">SERVER-ROOT</span></code> depends on what server type was
+configured to download the image. By default this is done via TFTP. In that case
+<code class="file docutils literal"><span class="pre">SERVER-ROOT</span></code> translates to <code class="file docutils literal"><span class="pre">/srv/tftpboot</span></code> on the PXE server.
+Adjust the path accordingly if having used HTTP or FTP.</p>
+<p>Adding more than one public key to file is possible, the file uses the same
+format as the common SSH file “authorized_keys”. If a public key was found login
+as follows:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>ssh root@IP-ADDRESS
+</pre></div>
+</div>
+<p>In case <strong class="command">rsync</strong> is available, copy the KIWI boot log to your local
+machine as follows:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">RSYNC_RSH</span><span class="o">=</span><span class="s1">&#39;ssh -l root&#39;</span>
+rsync -avz &lt;ip&gt;:/var/log/boot.kiwi
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="faq-boot-image-customization">
+<h3>FAQ: Boot Image Customization<a class="headerlink" href="#faq-boot-image-customization" title="Permalink to this headline">¶</a></h3>
+<p>The KIWI provided boot image descriptions should satisfy the requirements for a
+majority of image builds and the environments in which these images are
+deployed. In case a customized boot image is needed, KIWI provides appropriate
+configuration options in <code class="file docutils literal"><span class="pre">config.xml</span></code>.</p>
+<p>Using these options allow users to base the boot image on the KIWI provided
+descriptions rather than having to define a configuration from scratch (however,
+this is possible if wanted). The following question and answer section provides
+solutions to the most common scenarios that require a customized boot image.</p>
+<dl class="docutils">
+<dt><strong>Why is the boot image so big? Can I reduce its size?</strong></dt>
+<dd><p class="first">KIWI includes all required tools and libraries to boot the image under all
+circumstances in all target environments supported by the image type. In case
+the target environment is well defined it is possible to remove libraries,
+drivers and tools not needed in the target environment.</p>
+<p>This will decrease the size of the initrd and will also decrease boot time.
+Removing files in the boot image is accomplished by adding a <code class="docutils literal"><span class="pre">strip</span></code>
+section to the system image in the <code class="file docutils literal"><span class="pre">config.xml</span></code> file, with the <code class="docutils literal"><span class="pre">type</span></code>
+attribute set to <code class="docutils literal"><span class="pre">delete</span></code>, as shown below:</p>
+<div class="last highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;strip</span> <span class="na">type=</span><span class="s">&quot;delete&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;file</span> <span class="na">name=</span><span class="s">&quot;...&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/strip&gt;</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>Can drivers be added to the boot image?</strong></dt>
+<dd><p class="first">KIWI uses a subset of the Kernel. Therefore drivers shipped with the Kernel
+that have not been included by the KIWI build process, can be added. Do so
+by adding a <code class="docutils literal"><span class="pre">drivers</span></code> section to the system image configuration file
+<code class="file docutils literal"><span class="pre">config.xml</span></code>, as follows:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;drivers&gt;</span>
+  <span class="nt">&lt;file</span> <span class="na">name=</span><span class="s">&quot;drivers/...&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/drivers&gt;</span>
+</pre></div>
+</div>
+<p>If the driver is provided by a package, the package itself needs to be
+specified as part of the <code class="docutils literal"><span class="pre">image</span></code> package section. Additionally, it must be
+marked for boot image inclusion by setting the value of the <code class="docutils literal"><span class="pre">bootinclude</span></code>
+attribute of the <code class="docutils literal"><span class="pre">package</span></code> element to <code class="docutils literal"><span class="pre">true</span></code>, as follows:</p>
+<div class="last highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;packages</span> <span class="na">type=</span><span class="s">&quot;image&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;PACKAGE&quot;</span> <span class="na">bootinclude=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/packages&gt;</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>How to add missing tools or libraries</strong></dt>
+<dd><p class="first">Additional software can be added to the boot image with the use of the
+<code class="docutils literal"><span class="pre">bootinclude</span></code> attribute of the <code class="docutils literal"><span class="pre">package</span></code> or the <code class="docutils literal"><span class="pre">archive</span></code> element. At
+the end of the boot image creation process kiwi attempts to reduce the size
+of the boot image by removing files that are not part of a known list of
+required files or their dependencies.</p>
+<p>The list of required files is hard coded in the
+<code class="file docutils literal"><span class="pre">&lt;install-dir&gt;kiwi/config/strip.xml</span></code> file. If you added files to the
+boot image that are needed for your specific use case, you need to instruct
+kiwi to not strip them from the image. This is accomplished by adding a
+<code class="docutils literal"><span class="pre">strip</span></code> section to the system image <code class="file docutils literal"><span class="pre">config.xml</span></code> file, with the type
+attribute set to tools, as follows:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;strip</span> <span class="na">type=</span><span class="s">&quot;tools&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;file</span> <span class="na">name=</span><span class="s">&quot;FILENAME&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/strip&gt;</span>
+</pre></div>
+</div>
+<p class="last">The removal/preservation of files is name-based only, so you do not need to
+specify a complete path, but rather the file name.</p>
+</dd>
+<dt><strong>Is it possible to add boot code?</strong></dt>
+<dd>Yes, as described in the <a class="reference internal" href="#boot-image-hook-scripts">Boot Image Hook-Scripts</a> section above, KIWI
+supports the execution of boot code at various times for various image types
+using <em>hook</em> scripts.</dd>
+<dt><strong>Is it possible to include completely customized boot code?</strong></dt>
+<dd>No. In cases where the provided hooks are insufficient and the KIWI provided
+boot code needs to be replaced completely, it is necessary to create a custom
+boot image description. In this case, all parts of the boot image description
+must be created by the user. It is best to use one of the KIWI provided boot
+descriptions as a template.</dd>
+<dt><strong>My customized boot image refuses to boot. How to debug?</strong></dt>
+<dd>An initrd created by KIWI that is based on one of the KIWI-provided boot
+image descriptions recognizes kernel parameters that are useful for debugging
+purposes, in case the image does not boot. These parameters may not work if
+the image contains a custom boot image where the KIWI boot code has been
+completely replaced. Some hints are described in <a class="reference internal" href="#boot-debugging">Boot Debugging</a> section.</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="distribution-specific-code">
+<h2>Distribution Specific Code<a class="headerlink" href="#distribution-specific-code" title="Permalink to this headline">¶</a></h2>
+<p>KIWI is designed to be distribution-independent. However, Linux distributions
+differ from each other, primarily in the package management area and in the area
+of creation and composition of the boot image. The boot image code has been
+written as generic as possible, so all supported distributions use the same boot
+code. Within the KIWI code base, major areas of Linux distribution differences
+are isolated into specific and delimited regions of the code.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../installation.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="legacy_kiwi.html" class="btn btn-neutral" title="Legacy KIWI vs. Next Generation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Marcus Schäfer.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'9.9.2',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
